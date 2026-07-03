@@ -1,0 +1,25 @@
+{
+  "name": "xieyou-weekly-report-system",
+  "version": "1.0.0",
+  "description": "解悠科技有限公司实习生周报系统（轻量版）",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "keywords": [
+    "weekly-report",
+    "intern",
+    "management"
+  ],
+  "author": "Xieyou Tech",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

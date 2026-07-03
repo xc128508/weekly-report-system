@@ -1,0 +1,4932 @@
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #eef2ff;
+  --danger: #f97316;
+  --success: #16a34a;
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+a { color: inherit; text-decoration: none; }
+
+.login-body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eef5ff 0%, #f8fafc 55%, #e8f0ff 100%);
+  padding: 24px;
+}
+.login-card {
+  width: 420px;
+  background: var(--card);
+  border-radius: 22px;
+  padding: 36px;
+  box-shadow: var(--shadow);
+}
+.login-logo { color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+.login-card h1 { margin: 0 0 8px; font-size: 28px; }
+.login-card p { margin: 0 0 24px; color: var(--muted); }
+.demo-account {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.topbar {
+  height: 72px;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+}
+.company { font-weight: 800; color: var(--primary); }
+.system-name { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.topbar nav { display: flex; gap: 18px; align-items: center; }
+.topbar nav a { color: #374151; font-weight: 600; }
+.topbar nav a:hover { color: var(--primary); }
+.user-info { color: var(--muted); font-size: 14px; }
+.inline-form { display: inline; }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 32px 24px 56px; }
+.page-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.page-title h1 { margin: 0 0 8px; font-size: 30px; }
+.page-title p { margin: 0; color: var(--muted); }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  margin-bottom: 20px;
+}
+.card h2 { margin: 0 0 18px; font-size: 20px; }
+
+.form { display: grid; gap: 16px; }
+label { display: grid; gap: 8px; font-weight: 650; color: #374151; }
+input, textarea, select {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 11px 12px;
+  font: inherit;
+  outline: none;
+  background: #fff;
+}
+textarea { resize: vertical; line-height: 1.7; }
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+.two-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.filter-form { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-items: center; }
+.user-form { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+button, .primary, .secondary, .ghost, .ghost-link, .link-button {
+  border: 0;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.primary { background: var(--primary); color: white; }
+.primary:hover { background: var(--primary-dark); }
+.secondary { background: var(--secondary); color: var(--primary-dark); }
+.ghost { background: #f3f4f6; color: #374151; }
+.ghost-link { background: #f3f4f6; color: #374151; }
+.link-button { background: #eff6ff; color: var(--primary-dark); padding: 8px 12px; }
+.full { width: 100%; }
+.actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 4px; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+.stat-card span { display: block; color: var(--muted); margin-bottom: 8px; }
+.stat-card strong { font-size: 30px; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { color: #4b5563; background: #f9fafb; font-size: 14px; }
+.empty { text-align: center; color: var(--muted); padding: 30px; }
+.badge {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.badge.draft { background: #f3f4f6; color: #4b5563; }
+.badge.submitted { background: #dbeafe; color: #1d4ed8; }
+.badge.approved { background: #dcfce7; color: #15803d; }
+.badge.returned { background: #ffedd5; color: #c2410c; }
+
+.report-detail h2 { margin-top: 20px; margin-bottom: 8px; }
+.report-detail h2:first-child { margin-top: 0; }
+.report-detail p { margin: 0; color: #374151; line-height: 1.8; background: #f9fafb; padding: 14px; border-radius: 12px; }
+.feedback { border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-top: 12px; background: #fafafa; }
+.feedback-head { color: var(--muted); font-weight: 700; font-size: 13px; }
+.feedback p { margin: 8px 0 0; line-height: 1.7; }
+.muted { color: var(--muted); }
+.alert { padding: 12px 14px; border-radius: 12px; margin-bottom: 16px; font-weight: 650; }
+.alert.error { background: #fef2f2; color: #b91c1c; }
+.alert.success { background: #ecfdf5; color: #047857; }
+
+@media (max-width: 900px) {
+  .topbar { height: auto; padding: 18px; align-items: flex-start; gap: 12px; flex-direction: column; }
+  .topbar nav { flex-wrap: wrap; }
+  .page-title { flex-direction: column; align-items: flex-start; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .filter-form, .user-form, .two-cols { grid-template-columns: 1fr; }
+  table { display: block; overflow-x: auto; }
+}
+
+/* 每日任务与 AI 周报助手新增样式 */
+.ai-card {
+  background: linear-gradient(135deg, #ffffff 0%, #eef5ff 100%);
+  border-color: #dbeafe;
+}
+.stats.three { grid-template-columns: repeat(3, 1fr); }
+.compact-filter { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.hint-box {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: #475569;
+  line-height: 1.7;
+}
+.progress-badge {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #f0fdf4;
+  color: #15803d;
+  white-space: nowrap;
+}
+.wide-card { overflow-x: auto; }
+.wide-card table { min-width: 980px; }
+
+@media (max-width: 900px) {
+  .stats.three { grid-template-columns: 1fr; }
+  .compact-filter { grid-template-columns: 1fr; }
+}
+
+/* 任务总表认领与审核 */
+button.small, .link-button.small, .ghost.small, .primary.small, .danger.small {
+  padding: 7px 10px;
+  font-size: 12px;
+  border-radius: 9px;
+}
+button.danger, .danger {
+  background: #ef4444;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+}
+button.danger:hover, .danger:hover { background: #dc2626; }
+.actions-cell { min-width: 220px; }
+.actions-cell .inline-form { margin-right: 6px; margin-bottom: 6px; display: inline-block; }
+select {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  background: white;
+}
+
+/* 导出与生成周报页面 */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.section-head h2 { margin: 0; }
+@media (max-width: 900px) {
+  .section-head { flex-direction: column; align-items: flex-start; }
+}
+
+
+/* 任务总表表格优化：关键字段单行显示 */
+.task-pool-table th:nth-child(1), .task-pool-table td:nth-child(1),
+.task-pool-table th:nth-child(2), .task-pool-table td:nth-child(2),
+.task-pool-table th:nth-child(4), .task-pool-table td:nth-child(4),
+.task-pool-table th:nth-child(5), .task-pool-table td:nth-child(5),
+.task-pool-table th:nth-child(6), .task-pool-table td:nth-child(6),
+.task-pool-table th:nth-child(7), .task-pool-table td:nth-child(7) {
+  white-space: nowrap;
+}
+.task-pool-table th:nth-child(1), .task-pool-table td:nth-child(1) { min-width: 96px; }
+.task-pool-table th:nth-child(2), .task-pool-table td:nth-child(2) { min-width: 82px; }
+.task-pool-table th:nth-child(6), .task-pool-table td:nth-child(6) { min-width: 90px; }
+.task-pool-table th:nth-child(3), .task-pool-table td:nth-child(3) { min-width: 320px; }
+.task-pool-table th:nth-child(8), .task-pool-table td:nth-child(8) { min-width: 200px; }
+.task-pool-table th:nth-child(9), .task-pool-table td:nth-child(9) { min-width: 150px; }
+button:disabled, .primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* 日报列表优化：姓名、职位列加宽，操作按钮换行 */
+.daily-table {
+  table-layout: auto;
+  min-width: 1120px;
+}
+
+.admin-daily-table th:nth-child(2),
+.admin-daily-table td:nth-child(2),
+.today-detail-table th:nth-child(1),
+.today-detail-table td:nth-child(1) {
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+.admin-daily-table th:nth-child(3),
+.admin-daily-table td:nth-child(3),
+.today-detail-table th:nth-child(2),
+.today-detail-table td:nth-child(2) {
+  min-width: 180px;
+  white-space: nowrap;
+}
+
+.admin-daily-table th:nth-child(4),
+.admin-daily-table td:nth-child(4),
+.today-detail-table th:nth-child(3),
+.today-detail-table td:nth-child(3) {
+  min-width: 260px;
+}
+
+.admin-daily-table .actions-cell {
+  min-width: 78px;
+  white-space: normal;
+}
+
+.admin-daily-table .actions-cell .link-button,
+.admin-daily-table .actions-cell .inline-form {
+  display: block;
+  margin: 0 0 8px 0;
+}
+
+.admin-daily-table .actions-cell .inline-form button {
+  margin: 0;
+}
+
+
+/* 每日任务列表排版优化 */
+.admin-daily-table {
+  table-layout: auto;
+  min-width: 1500px;
+}
+
+.admin-daily-table th,
+.admin-daily-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.admin-daily-table th:nth-child(1),
+.admin-daily-table td:nth-child(1) {
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+.admin-daily-table th:nth-child(2),
+.admin-daily-table td:nth-child(2) {
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.admin-daily-table th:nth-child(3),
+.admin-daily-table td:nth-child(3) {
+  min-width: 180px;
+  white-space: nowrap;
+}
+
+.admin-daily-table th:nth-child(4),
+.admin-daily-table td:nth-child(4),
+.admin-daily-table .daily-task-title-cell {
+  min-width: 260px;
+  max-width: 360px;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.7;
+}
+
+.admin-daily-table th:nth-child(5),
+.admin-daily-table td:nth-child(5),
+.admin-daily-table th:nth-child(6),
+.admin-daily-table td:nth-child(6),
+.admin-daily-table th:nth-child(7),
+.admin-daily-table td:nth-child(7),
+.admin-daily-table .daily-long-cell {
+  min-width: 320px;
+  max-width: 460px;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.8;
+}
+
+.admin-daily-table th:nth-child(8),
+.admin-daily-table td:nth-child(8) {
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.admin-daily-table .actions-cell {
+  min-width: 90px;
+  white-space: normal;
+}
+
+.admin-daily-table .actions-cell .link-button,
+.admin-daily-table .actions-cell .inline-form {
+  display: block;
+  margin: 0 auto 8px auto;
+  text-align: center;
+}
+
+.admin-daily-table .actions-cell .inline-form button {
+  margin: 0 auto;
+}
+
+/* 账号管理删除按钮 */
+.inline-form {
+  display: inline-block;
+}
+
+button.danger,
+.danger {
+  background: #ef4444;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button.danger:hover,
+.danger:hover {
+  background: #dc2626;
+}
+
+button.small,
+.small {
+  padding: 7px 10px;
+  font-size: 12px;
+  border-radius: 9px;
+}
+
+/* 每日任务列表：固定表头 */
+.admin-daily-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #f8fafc;
+  color: #1f2937;
+  box-shadow: 0 2px 0 rgba(15, 23, 42, 0.08);
+}
+
+/* 防止固定表头透明导致文字重叠 */
+.admin-daily-table thead {
+  position: relative;
+  z-index: 20;
+}
+
+/* 横向滚动时保持表头可读 */
+.admin-daily-table th {
+  white-space: nowrap;
+}
+
+/* 表格外层如果出现横向滚动，保持滚动体验 */
+.card:has(.admin-daily-table) {
+  overflow-x: auto;
+}
+
+/* 取消顶部导航栏固定，只固定每日任务表头 */
+.topbar,
+.header,
+.site-header,
+.app-header,
+nav {
+  position: static !important;
+  top: auto !important;
+}
+
+/* 只固定每日任务列表表头：日期、姓名、职位等 */
+.admin-daily-table thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 30 !important;
+  background: #f8fafc !important;
+  color: #1f2937 !important;
+  box-shadow: 0 2px 0 rgba(15, 23, 42, 0.08);
+}
+
+/* 表头文字保持居中 */
+.admin-daily-table thead th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* 防止表头固定后透明重叠 */
+.admin-daily-table thead {
+  position: relative;
+  z-index: 30;
+}
+
+/* 每日任务列表：固定蓝色表头行 */
+.card:has(.admin-daily-table) {
+  max-height: calc(100vh - 190px);
+  overflow: auto;
+}
+
+/* 固定每日任务表头：日期、姓名、职位、关联任务等 */
+.admin-daily-table thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  background: #eaf3ff !important;
+  color: #1f4e79 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.12);
+}
+
+/* 表格内容居中 */
+.admin-daily-table td {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* 防止表头被内容覆盖 */
+.admin-daily-table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+/* 每日任务列表：冻结表头 + 冻结前 3 列 */
+.card:has(.admin-daily-table) {
+  max-height: calc(100vh - 190px);
+  overflow: auto;
+}
+
+/* 确保表格可以横向滚动 */
+.admin-daily-table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  min-width: 1700px !important;
+}
+
+/* 固定表头行 */
+.admin-daily-table thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 40 !important;
+  background: #eaf3ff !important;
+  color: #1f4e79 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.12);
+}
+
+/* 全部单元格居中 */
+.admin-daily-table th,
+.admin-daily-table td {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* 第 1 列：日期，左右滚动时固定 */
+.admin-daily-table th:nth-child(1),
+.admin-daily-table td:nth-child(1) {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 25 !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  background: #ffffff !important;
+  white-space: nowrap !important;
+}
+
+/* 第 2 列：姓名，左右滚动时固定 */
+.admin-daily-table th:nth-child(2),
+.admin-daily-table td:nth-child(2) {
+  position: sticky !important;
+  left: 120px !important;
+  z-index: 25 !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  background: #ffffff !important;
+  white-space: nowrap !important;
+}
+
+/* 第 3 列：职位，左右滚动时固定 */
+.admin-daily-table th:nth-child(3),
+.admin-daily-table td:nth-child(3) {
+  position: sticky !important;
+  left: 240px !important;
+  z-index: 25 !important;
+  width: 190px !important;
+  min-width: 190px !important;
+  max-width: 190px !important;
+  background: #ffffff !important;
+  white-space: nowrap !important;
+}
+
+/* 表头中的前 3 列，需要同时固定上方和左侧，层级最高 */
+.admin-daily-table thead th:nth-child(1),
+.admin-daily-table thead th:nth-child(2),
+.admin-daily-table thead th:nth-child(3) {
+  z-index: 80 !important;
+  background: #dbeafe !important;
+  color: #1f4e79 !important;
+}
+
+/* 给冻结列加右侧分隔线，避免视觉重叠 */
+.admin-daily-table th:nth-child(3),
+.admin-daily-table td:nth-child(3) {
+  box-shadow: 3px 0 5px rgba(15, 23, 42, 0.08);
+}
+
+/* 后面的内容列保持更宽，左右拖动查看 */
+.admin-daily-table th:nth-child(4),
+.admin-daily-table td:nth-child(4) {
+  min-width: 280px !important;
+}
+
+.admin-daily-table th:nth-child(5),
+.admin-daily-table td:nth-child(5),
+.admin-daily-table th:nth-child(6),
+.admin-daily-table td:nth-child(6),
+.admin-daily-table th:nth-child(7),
+.admin-daily-table td:nth-child(7) {
+  min-width: 360px !important;
+  max-width: 520px !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  line-height: 1.8 !important;
+}
+
+/* 取消每日任务列表之前设置的上下固定、左右固定效果 */
+.card:has(.admin-daily-table) {
+  max-height: none !important;
+  overflow-y: visible !important;
+  overflow-x: auto !important;
+}
+
+.admin-daily-table thead,
+.admin-daily-table thead th,
+.admin-daily-table th,
+.admin-daily-table td,
+.admin-daily-table th:nth-child(1),
+.admin-daily-table td:nth-child(1),
+.admin-daily-table th:nth-child(2),
+.admin-daily-table td:nth-child(2),
+.admin-daily-table th:nth-child(3),
+.admin-daily-table td:nth-child(3),
+.admin-daily-table thead th:nth-child(1),
+.admin-daily-table thead th:nth-child(2),
+.admin-daily-table thead th:nth-child(3) {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  z-index: auto !important;
+}
+
+.admin-daily-table {
+  border-collapse: collapse !important;
+}
+
+/* 今日工作内容：只显示预览，点击进入编辑页查看完整内容 */
+.admin-daily-table .daily-content-preview-cell {
+  min-width: 180px !important;
+  max-width: 220px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.admin-daily-table .daily-content-preview {
+  display: inline-block;
+  max-width: 180px;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-daily-table .daily-content-preview:hover {
+  text-decoration: underline;
+}
+
+/* 任务认领：多个申请人操作样式 */
+.approval-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.approval-row .inline-form {
+  margin: 0;
+}
+
+/* 任务认领审核操作样式 */
+.approval-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.approval-row .inline-form {
+  margin: 0;
+}
+
+/* 任务总表：操作列移动到第一列后的样式 */
+.task-pool-actions-first th:first-child,
+.task-pool-actions-first td:first-child {
+  min-width: 170px;
+  white-space: normal;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.task-pool-actions-first td:first-child .inline-form,
+.task-pool-actions-first td:first-child .link-button {
+  display: block;
+  margin: 0 auto 8px auto;
+  text-align: center;
+}
+
+.task-pool-actions-first td:first-child button {
+  margin: 0 auto;
+}
+
+/* 每日任务管理：操作列移动到第一列 */
+.daily-actions-first th:first-child,
+.daily-actions-first td:first-child {
+  min-width: 90px;
+  white-space: normal;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.daily-actions-first td:first-child .inline-form,
+.daily-actions-first td:first-child .link-button {
+  display: block;
+  margin: 0 auto 8px auto;
+  text-align: center;
+}
+
+.daily-actions-first td:first-child button {
+  margin: 0 auto;
+}
+
+/* 每日任务表格移动操作列后，整体排版保持舒展 */
+.daily-actions-first th,
+.daily-actions-first td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 任务总表 / 任务列表：对接人列行间距调小 */
+/* 如果操作列已移到第一列：操作 | 需求部门 | 对接人 */
+.task-pool-table.task-pool-actions-first th:nth-child(3),
+.task-pool-table.task-pool-actions-first td:nth-child(3),
+.task-pool-actions-first th:nth-child(3),
+.task-pool-actions-first td:nth-child(3) {
+  line-height: 1.15 !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  white-space: normal !important;
+}
+
+/* 如果操作列还没有移动：需求部门 | 对接人 */
+.task-pool-table:not(.task-pool-actions-first) th:nth-child(2),
+.task-pool-table:not(.task-pool-actions-first) td:nth-child(2) {
+  line-height: 1.15 !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  white-space: normal !important;
+}
+
+/* 任务总表：整体压缩行高，避免对接人列看起来间距过大 */
+.task-pool-actions-first th,
+.task-pool-actions-first td,
+.task-pool-table th,
+.task-pool-table td {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  line-height: 1.25 !important;
+  vertical-align: middle !important;
+}
+
+/* 任务总表：对接人列进一步压紧 */
+/* 操作列已移动到第一列后，对接人通常是第 3 列 */
+.task-pool-actions-first th:nth-child(3),
+.task-pool-actions-first td:nth-child(3),
+.task-pool-table th:nth-child(3),
+.task-pool-table td:nth-child(3) {
+  line-height: 1.1 !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  white-space: nowrap !important;
+}
+
+/* 任务总表：操作列按钮压缩，不再撑高整行 */
+.task-pool-actions-first td:first-child {
+  min-width: 130px !important;
+  width: 130px !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  line-height: 1.1 !important;
+}
+
+/* 操作列里的表单、按钮、标签全部压缩 */
+.task-pool-actions-first td:first-child .inline-form,
+.task-pool-actions-first td:first-child .link-button,
+.task-pool-actions-first td:first-child .approval-row {
+  display: block !important;
+  margin: 2px auto !important;
+  padding: 0 !important;
+  line-height: 1.1 !important;
+}
+
+.task-pool-actions-first td:first-child button,
+.task-pool-actions-first td:first-child .link-button,
+.task-pool-actions-first td:first-child .badge {
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  line-height: 1.1 !important;
+  border-radius: 8px !important;
+  margin: 2px auto !important;
+}
+
+/* 当前已关闭、重新开放等审核操作不要撑太高 */
+.task-pool-actions-first .approval-row {
+  gap: 3px !important;
+  margin-bottom: 2px !important;
+  line-height: 1.1 !important;
+}
+
+/* 任务标题列保持正常阅读，不要过度拉高 */
+.task-pool-actions-first td:nth-child(4),
+.task-pool-actions-first td:nth-child(5) {
+  line-height: 1.35 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+/* 任务总表：压缩第三列“对接人”宽度 */
+/* 当前表格顺序：操作 | 需求部门 | 对接人 | 任务标题 ... */
+.task-pool-actions-first th:nth-child(3),
+.task-pool-actions-first td:nth-child(3),
+.task-pool-table th:nth-child(3),
+.task-pool-table td:nth-child(3) {
+  width: 72px !important;
+  min-width: 72px !important;
+  max-width: 72px !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  white-space: normal !important;
+  word-break: keep-all !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+}
+
+/* 任务总表：把节省出来的空间给任务标题 */
+.task-pool-actions-first th:nth-child(4),
+.task-pool-actions-first td:nth-child(4),
+.task-pool-table th:nth-child(4),
+.task-pool-table td:nth-child(4) {
+  min-width: 320px !important;
+}
+
+/* 任务总表：任务标题最多显示两行 */
+.task-title-two-lines-table .task-title-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+
+  line-height: 1.35;
+  max-height: 2.7em;
+  word-break: break-word;
+  text-align: left;
+}
+
+/* 当前顺序：操作 | 需求部门 | 对接人 | 任务标题 */
+.task-pool-actions-first th:nth-child(4),
+.task-pool-actions-first td:nth-child(4),
+.task-pool-table th:nth-child(4),
+.task-pool-table td:nth-child(4) {
+  min-width: 260px !important;
+  max-width: 360px !important;
+  white-space: normal !important;
+  vertical-align: middle !important;
+  line-height: 1.35 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+/* 统一每日任务列表与任务总表颜色风格 */
+.admin-daily-table,
+.daily-actions-first,
+.task-pool-table,
+.task-pool-actions-first,
+.task-title-two-lines-table {
+  background: #ffffff !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  color: #1f2937 !important;
+}
+
+/* 统一表头颜色 */
+.admin-daily-table thead th,
+.daily-actions-first thead th,
+.task-pool-table thead th,
+.task-pool-actions-first thead th,
+.task-title-two-lines-table thead th {
+  background: #f1f7ff !important;
+  color: #1f4e79 !important;
+  font-weight: 700 !important;
+  border-bottom: 1px solid #dbeafe !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* 统一单元格颜色和边框 */
+.admin-daily-table tbody td,
+.daily-actions-first tbody td,
+.task-pool-table tbody td,
+.task-pool-actions-first tbody td,
+.task-title-two-lines-table tbody td {
+  background: #ffffff !important;
+  color: #1f2937 !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* 统一鼠标悬停颜色 */
+.admin-daily-table tbody tr:hover td,
+.daily-actions-first tbody tr:hover td,
+.task-pool-table tbody tr:hover td,
+.task-pool-actions-first tbody tr:hover td,
+.task-title-two-lines-table tbody tr:hover td {
+  background: #f8fbff !important;
+}
+
+/* 统一链接按钮颜色 */
+.admin-daily-table .link-button,
+.daily-actions-first .link-button,
+.task-pool-table .link-button,
+.task-pool-actions-first .link-button,
+.task-title-two-lines-table .link-button {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+}
+
+/* 统一普通按钮颜色 */
+.admin-daily-table button,
+.daily-actions-first button,
+.task-pool-table button,
+.task-pool-actions-first button,
+.task-title-two-lines-table button {
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+}
+
+/* 统一删除按钮颜色 */
+.admin-daily-table .danger,
+.daily-actions-first .danger,
+.task-pool-table .danger,
+.task-pool-actions-first .danger,
+.task-title-two-lines-table .danger,
+.admin-daily-table button.danger,
+.daily-actions-first button.danger,
+.task-pool-table button.danger,
+.task-pool-actions-first button.danger,
+.task-title-two-lines-table button.danger {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+/* 统一状态标签颜色 */
+.admin-daily-table .badge,
+.daily-actions-first .badge,
+.task-pool-table .badge,
+.task-pool-actions-first .badge,
+.task-title-two-lines-table .badge {
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+
+/* 待认领 / 待审核类 */
+.task-pool-actions-first .badge.draft,
+.task-pool-table .badge.draft {
+  background: #fff7ed !important;
+  color: #c2410c !important;
+}
+
+/* 已认领 / 已完成类 */
+.task-pool-actions-first .badge.approved,
+.task-pool-table .badge.approved {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+}
+
+/* 关闭 / 退回类 */
+.task-pool-actions-first .badge.returned,
+.task-pool-table .badge.returned {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+/* ===== 全屏左侧导航布局：类似 ChatGPT 页面 ===== */
+
+body.xy-left-sidebar-layout {
+  padding-left: 260px !important;
+  padding-top: 0 !important;
+  background: #f5f7fb !important;
+  overflow-x: hidden !important;
+}
+
+/* 左侧固定导航栏 */
+body.xy-left-sidebar-layout header.xy-left-sidebar,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+
+  width: 260px !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+
+  padding: 20px 14px !important;
+  box-sizing: border-box !important;
+
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+  border-bottom: none !important;
+  box-shadow: 8px 0 24px rgba(15, 23, 42, 0.04) !important;
+
+  z-index: 1000 !important;
+  overflow-y: auto !important;
+}
+
+/* 公司抬头区域 */
+body.xy-left-sidebar-layout header.xy-left-sidebar > div:first-child,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar > div:first-child,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar > div:first-child {
+  width: 100% !important;
+  margin-bottom: 22px !important;
+  padding: 4px 6px 18px 6px !important;
+  border-bottom: 1px solid #eef2f7 !important;
+}
+
+/* 公司名称 */
+body.xy-left-sidebar-layout header.xy-left-sidebar strong,
+body.xy-left-sidebar-layout header.xy-left-sidebar .brand,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar strong,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar .brand {
+  display: block !important;
+  white-space: normal !important;
+  line-height: 1.35 !important;
+  font-size: 16px !important;
+  color: #2563eb !important;
+}
+
+/* 导航改为纵向 */
+body.xy-left-sidebar-layout .xy-sidebar-nav,
+body.xy-left-sidebar-layout header.xy-left-sidebar nav,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar nav,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar nav {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+
+/* 左侧导航按钮 */
+body.xy-left-sidebar-layout .xy-sidebar-nav a,
+body.xy-left-sidebar-layout header.xy-left-sidebar nav a,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar nav a,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar nav a {
+  display: flex !important;
+  align-items: center !important;
+
+  width: 100% !important;
+  min-height: 42px !important;
+  padding: 10px 14px !important;
+  box-sizing: border-box !important;
+
+  border-radius: 12px !important;
+  color: #334155 !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+
+  background: transparent !important;
+  white-space: nowrap !important;
+}
+
+/* 当前页面高亮 */
+body.xy-left-sidebar-layout .xy-sidebar-nav a.active,
+body.xy-left-sidebar-layout header.xy-left-sidebar nav a.active,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar nav a.active,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar nav a.active {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+/* 鼠标悬停 */
+body.xy-left-sidebar-layout .xy-sidebar-nav a:hover,
+body.xy-left-sidebar-layout header.xy-left-sidebar nav a:hover,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar nav a:hover,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar nav a:hover {
+  background: #f1f5f9 !important;
+  color: #2563eb !important;
+}
+
+/* 管理员姓名、退出等区域也放左侧 */
+body.xy-left-sidebar-layout header.xy-left-sidebar nav span,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar nav span,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar nav span {
+  display: block !important;
+  padding: 12px 14px !important;
+  margin-top: 8px !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+  border-top: 1px solid #eef2f7 !important;
+}
+
+/* 退出按钮 */
+body.xy-left-sidebar-layout header.xy-left-sidebar nav form,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar nav form,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar nav form {
+  width: 100% !important;
+  margin-top: 4px !important;
+}
+
+body.xy-left-sidebar-layout header.xy-left-sidebar nav button,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar nav button,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar nav button {
+  width: 100% !important;
+  min-height: 42px !important;
+  border-radius: 12px !important;
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  font-weight: 700 !important;
+}
+
+/* 右侧主内容铺满 */
+body.xy-left-sidebar-layout main,
+body.xy-left-sidebar-layout .main,
+body.xy-left-sidebar-layout .content,
+body.xy-left-sidebar-layout .page,
+body.xy-left-sidebar-layout .container,
+body.xy-left-sidebar-layout .app,
+body.xy-left-sidebar-layout .wrapper {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 页面主体留出舒适边距 */
+body.xy-left-sidebar-layout main,
+body.xy-left-sidebar-layout .container {
+  padding-left: 28px !important;
+  padding-right: 28px !important;
+}
+
+/* 卡片铺满右侧区域 */
+body.xy-left-sidebar-layout .card,
+body.xy-left-sidebar-layout section,
+body.xy-left-sidebar-layout .panel {
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 表格区域铺满 */
+body.xy-left-sidebar-layout table {
+  width: 100% !important;
+}
+
+body.xy-left-sidebar-layout .table-wrap,
+body.xy-left-sidebar-layout .table-container,
+body.xy-left-sidebar-layout .card:has(table) {
+  width: 100% !important;
+  max-width: none !important;
+  overflow-x: auto !important;
+}
+
+/* 筛选区域也铺开 */
+body.xy-left-sidebar-layout form,
+body.xy-left-sidebar-layout .filters,
+body.xy-left-sidebar-layout .filter-form {
+  max-width: none !important;
+}
+
+/* 适配较窄屏幕：左侧导航略窄 */
+@media (max-width: 1100px) {
+  body.xy-left-sidebar-layout {
+    padding-left: 220px !important;
+  }
+
+  body.xy-left-sidebar-layout header.xy-left-sidebar,
+  body.xy-left-sidebar-layout .topbar.xy-left-sidebar,
+  body.xy-left-sidebar-layout .navbar.xy-left-sidebar {
+    width: 220px !important;
+  }
+
+  body.xy-left-sidebar-layout main,
+  body.xy-left-sidebar-layout .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* 任务总表：整体进度百分比样式 */
+.progress-percent-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* 任务总表：整体进度列居中 */
+.task-pool-actions-first th,
+.task-pool-actions-first td,
+.task-pool-table th,
+.task-pool-table td {
+  vertical-align: middle !important;
+}
+
+/* 任务总表：整体进度百分比样式 */
+.progress-percent-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* 任务总表：整体进度列居中 */
+.task-pool-actions-first th,
+.task-pool-actions-first td,
+.task-pool-table th,
+.task-pool-table td {
+  vertical-align: middle !important;
+}
+
+/* 左侧公司名称：强制一行显示 */
+.xy-company-name-one-line,
+body.xy-left-sidebar-layout header.xy-left-sidebar strong.xy-company-name-one-line,
+body.xy-left-sidebar-layout header.xy-left-sidebar .brand.xy-company-name-one-line,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar strong.xy-company-name-one-line,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar .brand.xy-company-name-one-line {
+  display: block !important;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+/* 左侧导航稍微加宽，保证公司名不换行 */
+body.xy-left-sidebar-layout {
+  padding-left: 290px !important;
+}
+
+body.xy-left-sidebar-layout header.xy-left-sidebar,
+body.xy-left-sidebar-layout .topbar.xy-left-sidebar,
+body.xy-left-sidebar-layout .navbar.xy-left-sidebar {
+  width: 290px !important;
+}
+
+/* 任务总表：当前已关闭的任务整行标灰 */
+.xy-task-row-closed td {
+  background: #f3f4f6 !important;
+  color: #9ca3af !important;
+}
+
+.xy-task-row-closed:hover td {
+  background: #e5e7eb !important;
+}
+
+/* 关闭图标样式 */
+.xy-closed-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 28px !important;
+  height: 28px !important;
+  margin: 2px auto 6px auto !important;
+
+  border-radius: 999px !important;
+  background: #e5e7eb !important;
+  color: #6b7280 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+/* 标灰行里的编辑、重新开放按钮仍然可以正常点击 */
+.xy-task-row-closed a,
+.xy-task-row-closed button {
+  opacity: 0.9 !important;
+}
+
+/* 任务总表：当前已关闭的 ❌ 图标调小 */
+.xy-closed-icon {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+
+  font-size: 10px !important;
+  line-height: 18px !important;
+
+  padding: 0 !important;
+  margin: 1px auto 4px auto !important;
+
+  background: #e5e7eb !important;
+  color: #6b7280 !important;
+  border-radius: 999px !important;
+}
+
+/* 如果 ❌ 没有被包成图标元素，也强制让操作列里的内容更紧凑 */
+.xy-task-row-closed td:first-child {
+  font-size: 12px !important;
+  line-height: 1.1 !important;
+}
+
+/* ===== 任务总表：安全版清爽操作区 ===== */
+
+.xy-task-pool-clean-table th:first-child,
+.xy-task-pool-clean-table td:first-child {
+  width: 130px !important;
+  min-width: 130px !important;
+  max-width: 130px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.xy-action-cell-clean {
+  padding: 6px 8px !important;
+  overflow: visible !important;
+}
+
+.xy-action-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  margin-bottom: 4px !important;
+}
+
+.xy-action-edit,
+.xy-action-cell-clean a.xy-action-edit,
+.xy-action-cell-clean .link-button.xy-action-edit {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 46px !important;
+  height: 28px !important;
+  padding: 0 10px !important;
+  border-radius: 8px !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+}
+
+.xy-more-actions {
+  position: relative !important;
+  display: inline-block !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.xy-more-actions summary {
+  list-style: none !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 78px !important;
+  height: 26px !important;
+  padding: 0 8px !important;
+  border-radius: 8px !important;
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+.xy-more-actions summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.xy-more-actions[open] summary {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+}
+
+.xy-more-actions-box {
+  position: absolute !important;
+  left: 0 !important;
+  top: 32px !important;
+  z-index: 2000 !important;
+  min-width: 190px !important;
+  max-width: 280px !important;
+  padding: 10px !important;
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  background: #ffffff !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.16) !important;
+  text-align: left !important;
+}
+
+.xy-more-actions-box form,
+.xy-more-actions-box .inline-form {
+  display: block !important;
+  margin: 6px 0 !important;
+}
+
+.xy-more-actions-box button,
+.xy-more-actions-box a,
+.xy-more-actions-box .link-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 28px !important;
+  padding: 5px 9px !important;
+  margin: 3px 3px 3px 0 !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+.xy-action-cell-clean .xy-closed-icon,
+.xy-closed-icon {
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  min-height: 14px !important;
+  font-size: 8px !important;
+  line-height: 14px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  background: #e5e7eb !important;
+  color: #6b7280 !important;
+}
+
+.xy-task-row-closed td {
+  background: #f3f4f6 !important;
+  color: #9ca3af !important;
+}
+
+.xy-task-row-closed:hover td {
+  background: #e5e7eb !important;
+}
+
+.xy-task-filter-tabs {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin: 0 0 14px 0 !important;
+  padding: 4px 0 !important;
+  overflow-x: auto !important;
+}
+
+.xy-task-filter-tabs button {
+  border: 1px solid #e5e7eb !important;
+  background: #ffffff !important;
+  color: #475569 !important;
+  min-height: 34px !important;
+  padding: 0 14px !important;
+  border-radius: 999px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+}
+
+.xy-task-filter-tabs button:hover {
+  background: #f8fafc !important;
+  color: #2563eb !important;
+}
+
+.xy-task-filter-tabs button.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #2563eb !important;
+}
+
+.xy-task-pool-clean-table,
+.xy-task-pool-clean-table tbody,
+.xy-task-pool-clean-table tr,
+.xy-task-pool-clean-table td {
+  overflow: visible !important;
+}
+
+.card:has(.xy-task-pool-clean-table),
+.table-wrap:has(.xy-task-pool-clean-table),
+.table-container:has(.xy-task-pool-clean-table) {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+/* ===== 管理后台：左侧导航分组 + 页面标题区 + 统计卡片 ===== */
+
+/* 左侧导航分组 */
+.xy-sidebar-group {
+  width: 100% !important;
+  margin-bottom: 18px !important;
+}
+
+.xy-sidebar-group-title {
+  padding: 0 12px 8px 12px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #94a3b8 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.xy-sidebar-group-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.xy-sidebar-group-list > a,
+.xy-sidebar-group-list > form,
+.xy-sidebar-group-list > div,
+.xy-sidebar-group-list > span {
+  width: 100% !important;
+}
+
+/* 左侧导航中的表单按钮统一 */
+.xy-sidebar-group-list form button {
+  width: 100% !important;
+}
+
+/* 页面标题区 */
+.xy-page-header {
+  width: 100% !important;
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+
+  margin: 0 0 18px 0 !important;
+  padding: 22px 24px !important;
+
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 60%) !important;
+  border: 1px solid #dbeafe !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05) !important;
+}
+
+.xy-page-header-left h1 {
+  margin: 0 0 8px 0 !important;
+  font-size: 26px !important;
+  line-height: 1.2 !important;
+  color: #0f172a !important;
+  font-weight: 900 !important;
+}
+
+.xy-page-header-left p {
+  margin: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #64748b !important;
+}
+
+/* 统计卡片区域 */
+.xy-stat-cards {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+  gap: 14px !important;
+
+  width: 100% !important;
+  margin: 0 0 18px 0 !important;
+}
+
+.xy-stat-card {
+  box-sizing: border-box !important;
+  min-height: 104px !important;
+
+  padding: 16px 18px !important;
+  border-radius: 16px !important;
+
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.04) !important;
+}
+
+.xy-stat-card-label {
+  font-size: 13px !important;
+  color: #64748b !important;
+  font-weight: 800 !important;
+  margin-bottom: 10px !important;
+}
+
+.xy-stat-card-value {
+  font-size: 28px !important;
+  line-height: 1 !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+  margin-bottom: 10px !important;
+}
+
+.xy-stat-card-desc {
+  font-size: 12px !important;
+  color: #94a3b8 !important;
+  line-height: 1.4 !important;
+}
+
+/* 右侧内容区更像后台系统 */
+body.xy-admin-layout-enhanced .card {
+  border-radius: 18px !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* 表格与标题区之间留白更统一 */
+body.xy-admin-layout-enhanced table {
+  margin-top: 8px !important;
+}
+
+/* 小屏适配 */
+@media (max-width: 900px) {
+  .xy-page-header {
+    flex-direction: column !important;
+    padding: 18px !important;
+  }
+
+  .xy-page-header-left h1 {
+    font-size: 22px !important;
+  }
+
+  .xy-stat-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ===== 任务总表：强制把状态列显示为整体进度百分比 ===== */
+
+.xy-force-progress-header {
+  width: 110px !important;
+  min-width: 110px !important;
+  max-width: 110px !important;
+  text-align: center !important;
+}
+
+.xy-force-progress-column {
+  width: 110px !important;
+  min-width: 110px !important;
+  max-width: 110px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.xy-force-progress-cell {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: 92px !important;
+  margin: 0 auto !important;
+}
+
+.xy-force-progress-number {
+  font-size: 13px !important;
+  line-height: 1 !important;
+  font-weight: 900 !important;
+  color: #2563eb !important;
+}
+
+.xy-force-progress-bar {
+  width: 78px !important;
+  height: 7px !important;
+  border-radius: 999px !important;
+  background: #e5e7eb !important;
+  overflow: hidden !important;
+}
+
+.xy-progress-fill {
+  height: 100% !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+}
+
+.xy-progress-fill.done {
+  background: #16a34a !important;
+}
+
+.xy-progress-fill.zero {
+  background: #cbd5e1 !important;
+}
+
+/* ===== 任务总表：整体进度强制显示 v3 ===== */
+
+.xy-force-progress-header {
+  width: 112px !important;
+  min-width: 112px !important;
+  max-width: 112px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.xy-force-progress-column {
+  width: 112px !important;
+  min-width: 112px !important;
+  max-width: 112px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.xy-force-progress-cell {
+  width: 92px !important;
+  margin: 0 auto !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+
+.xy-force-progress-number {
+  font-size: 13px !important;
+  line-height: 1 !important;
+  font-weight: 900 !important;
+  color: #2563eb !important;
+}
+
+.xy-force-progress-bar {
+  width: 78px !important;
+  height: 7px !important;
+  border-radius: 999px !important;
+  background: #e5e7eb !important;
+  overflow: hidden !important;
+}
+
+.xy-force-progress-fill {
+  height: 100% !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+}
+
+.xy-force-progress-fill.done {
+  background: #16a34a !important;
+}
+
+.xy-force-progress-fill.zero {
+  background: #cbd5e1 !important;
+}
+
+/* ===== Boss 日报看板：精简版 ===== */
+
+body.boss-daily-page {
+  margin: 0 !important;
+  padding: 0 0 0 250px !important;
+  background: #f5f7fb !important;
+  color: #0f172a !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+}
+
+.boss-sidebar {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 250px !important;
+  box-sizing: border-box !important;
+  padding: 22px 16px !important;
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+}
+
+.boss-brand {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  color: #2563eb !important;
+  white-space: nowrap !important;
+  margin-bottom: 24px !important;
+}
+
+.boss-sidebar a,
+.boss-sidebar button {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+  padding: 0 14px !important;
+  margin-bottom: 8px !important;
+  border: none !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  color: #334155 !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.boss-sidebar a.active,
+.boss-sidebar a:hover,
+.boss-sidebar button:hover {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+.boss-sidebar form {
+  margin-top: 16px !important;
+}
+
+.boss-main {
+  padding: 28px !important;
+  box-sizing: border-box !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.boss-page-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  padding: 24px !important;
+  margin-bottom: 18px !important;
+  border-radius: 18px !important;
+  border: 1px solid #dbeafe !important;
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 65%) !important;
+}
+
+.boss-page-header h1 {
+  margin: 0 0 8px 0 !important;
+  font-size: 26px !important;
+  font-weight: 900 !important;
+}
+
+.boss-page-header p {
+  margin: 0 !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+}
+
+.boss-stat-cards {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(140px, 1fr)) !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.boss-stat-card {
+  padding: 18px !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04) !important;
+}
+
+.boss-stat-card span {
+  display: block !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+  font-weight: 800 !important;
+  margin-bottom: 10px !important;
+}
+
+.boss-stat-card strong {
+  font-size: 28px !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+}
+
+.boss-card {
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+  border-radius: 18px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04) !important;
+}
+
+.boss-card-title {
+  margin-bottom: 14px !important;
+}
+
+.boss-card-title h2 {
+  margin: 0 0 6px 0 !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+}
+
+.boss-card-title p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+}
+
+.boss-table-wrap {
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.boss-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: 13px !important;
+}
+
+.boss-table th {
+  background: #f1f7ff !important;
+  color: #1f4e79 !important;
+  padding: 12px 10px !important;
+  border-bottom: 1px solid #dbeafe !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.boss-table td {
+  padding: 12px 10px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.boss-table tr:hover td {
+  background: #f8fbff !important;
+}
+
+.boss-task-title {
+  text-align: left !important;
+  min-width: 220px !important;
+  max-width: 420px !important;
+  white-space: normal !important;
+  line-height: 1.45 !important;
+}
+
+.boss-task-title a {
+  color: #2563eb !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+}
+
+.boss-progress-link {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: 88px !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+}
+
+.boss-progress-bar {
+  width: 76px !important;
+  height: 7px !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  background: #e5e7eb !important;
+}
+
+.boss-progress-fill {
+  height: 100% !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+}
+
+.boss-progress-fill.done {
+  background: #16a34a !important;
+}
+
+.boss-progress-fill.zero {
+  background: #cbd5e1 !important;
+}
+
+.boss-mini-progress {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 48px !important;
+  padding: 5px 9px !important;
+  border-radius: 999px !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+}
+
+.boss-latest-content,
+.boss-daily-content {
+  text-align: left !important;
+  min-width: 220px !important;
+  max-width: 420px !important;
+  white-space: normal !important;
+  line-height: 1.45 !important;
+}
+
+.boss-task-closed td {
+  background: #f3f4f6 !important;
+  color: #9ca3af !important;
+}
+
+.boss-filter {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 14px !important;
+}
+
+.boss-filter input,
+.boss-filter select {
+  height: 36px !important;
+  border-radius: 10px !important;
+  border: 1px solid #d1d5db !important;
+  padding: 0 10px !important;
+}
+
+.boss-filter button,
+.boss-filter a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 36px !important;
+  padding: 0 14px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: 800 !important;
+}
+
+@media (max-width: 1000px) {
+  body.boss-daily-page {
+    padding-left: 0 !important;
+  }
+
+  .boss-sidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .boss-main {
+    padding: 18px !important;
+  }
+
+  .boss-stat-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ===== Boss 日报看板：精简版 ===== */
+
+body.boss-daily-page {
+  margin: 0 !important;
+  padding: 0 0 0 250px !important;
+  background: #f5f7fb !important;
+  color: #0f172a !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+}
+
+.boss-sidebar {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 250px !important;
+  box-sizing: border-box !important;
+  padding: 22px 16px !important;
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+}
+
+.boss-brand {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  color: #2563eb !important;
+  white-space: nowrap !important;
+  margin-bottom: 24px !important;
+}
+
+.boss-sidebar a,
+.boss-sidebar button {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+  padding: 0 14px !important;
+  margin-bottom: 8px !important;
+  border: none !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  color: #334155 !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.boss-sidebar a.active,
+.boss-sidebar a:hover,
+.boss-sidebar button:hover {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+.boss-sidebar form {
+  margin-top: 16px !important;
+}
+
+.boss-main {
+  padding: 28px !important;
+  box-sizing: border-box !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.boss-page-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  padding: 24px !important;
+  margin-bottom: 18px !important;
+  border-radius: 18px !important;
+  border: 1px solid #dbeafe !important;
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 65%) !important;
+}
+
+.boss-page-header h1 {
+  margin: 0 0 8px 0 !important;
+  font-size: 26px !important;
+  font-weight: 900 !important;
+}
+
+.boss-page-header p {
+  margin: 0 !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+}
+
+.boss-stat-cards {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(140px, 1fr)) !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.boss-stat-card {
+  padding: 18px !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04) !important;
+}
+
+.boss-stat-card span {
+  display: block !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+  font-weight: 800 !important;
+  margin-bottom: 10px !important;
+}
+
+.boss-stat-card strong {
+  font-size: 28px !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+}
+
+.boss-card {
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+  border-radius: 18px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04) !important;
+}
+
+.boss-card-title {
+  margin-bottom: 14px !important;
+}
+
+.boss-card-title h2 {
+  margin: 0 0 6px 0 !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+}
+
+.boss-card-title p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+}
+
+.boss-table-wrap {
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.boss-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: 13px !important;
+}
+
+.boss-table th {
+  background: #f1f7ff !important;
+  color: #1f4e79 !important;
+  padding: 12px 10px !important;
+  border-bottom: 1px solid #dbeafe !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.boss-table td {
+  padding: 12px 10px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.boss-table tr:hover td {
+  background: #f8fbff !important;
+}
+
+.boss-task-title {
+  text-align: left !important;
+  min-width: 220px !important;
+  max-width: 420px !important;
+  white-space: normal !important;
+  line-height: 1.45 !important;
+}
+
+.boss-task-title a {
+  color: #2563eb !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+}
+
+.boss-progress-link {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: 88px !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+}
+
+.boss-progress-bar {
+  width: 76px !important;
+  height: 7px !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  background: #e5e7eb !important;
+}
+
+.boss-progress-fill {
+  height: 100% !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+}
+
+.boss-progress-fill.done {
+  background: #16a34a !important;
+}
+
+.boss-progress-fill.zero {
+  background: #cbd5e1 !important;
+}
+
+.boss-mini-progress {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 48px !important;
+  padding: 5px 9px !important;
+  border-radius: 999px !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+}
+
+.boss-latest-content,
+.boss-daily-content {
+  text-align: left !important;
+  min-width: 220px !important;
+  max-width: 420px !important;
+  white-space: normal !important;
+  line-height: 1.45 !important;
+}
+
+.boss-task-closed td {
+  background: #f3f4f6 !important;
+  color: #9ca3af !important;
+}
+
+.boss-filter {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 14px !important;
+}
+
+.boss-filter input,
+.boss-filter select {
+  height: 36px !important;
+  border-radius: 10px !important;
+  border: 1px solid #d1d5db !important;
+  padding: 0 10px !important;
+}
+
+.boss-filter button,
+.boss-filter a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 36px !important;
+  padding: 0 14px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: 800 !important;
+}
+
+@media (max-width: 1000px) {
+  body.boss-daily-page {
+    padding-left: 0 !important;
+  }
+
+  .boss-sidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .boss-main {
+    padding: 18px !important;
+  }
+
+  .boss-stat-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ===== Boss 任务日志详情页 ===== */
+
+.boss-back-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 36px !important;
+  padding: 0 14px !important;
+  border-radius: 10px !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+}
+
+.boss-task-summary {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+}
+
+.boss-task-summary h2 {
+  margin: 0 0 8px 0 !important;
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+}
+
+.boss-task-summary p {
+  margin: 0 !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+.boss-progress-large {
+  min-width: 140px !important;
+  text-align: center !important;
+}
+
+.boss-progress-large strong {
+  display: block !important;
+  margin-bottom: 8px !important;
+  font-size: 28px !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+}
+
+.boss-progress-bar.large {
+  width: 120px !important;
+  height: 9px !important;
+  margin: 0 auto !important;
+}
+
+.boss-stat-date {
+  font-size: 18px !important;
+}
+
+.boss-task-log-table th:nth-child(5),
+.boss-task-log-table td:nth-child(5),
+.boss-task-log-table th:nth-child(6),
+.boss-task-log-table td:nth-child(6),
+.boss-task-log-table th:nth-child(7),
+.boss-task-log-table td:nth-child(7) {
+  min-width: 220px !important;
+}
+
+.boss-log-content {
+  text-align: left !important;
+  white-space: normal !important;
+  line-height: 1.55 !important;
+  color: #334155 !important;
+}
+
+/* Boss 页面：强制显示日报看板入口 */
+.boss-daily-entry-link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  min-height: 42px !important;
+  padding: 0 14px !important;
+  margin: 6px 0 !important;
+
+  border-radius: 12px !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
+
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+}
+
+.boss-daily-entry-link:hover {
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+}
+
+/* 右上角兜底按钮 */
+.boss-daily-floating-entry {
+  position: fixed !important;
+  right: 24px !important;
+  top: 20px !important;
+  z-index: 99999 !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  height: 40px !important;
+  padding: 0 18px !important;
+
+  border-radius: 999px !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.28) !important;
+}
+
+.boss-daily-floating-entry:hover {
+  background: #1d4ed8 !important;
+}
+
+/* ===== Boss 页面：左侧导航融合优化 ===== */
+
+/* 隐藏之前右上角悬浮的日报看板按钮 */
+.boss-daily-floating-entry {
+  display: none !important;
+}
+
+/* 老板左侧导航统一样式 */
+.xy-boss-sidebar-unified {
+  display: flex !important;
+  flex-direction: column !important;
+
+  width: 250px !important;
+  min-width: 250px !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+
+  box-sizing: border-box !important;
+  padding: 22px 16px !important;
+
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+  box-shadow: 8px 0 24px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* 公司名称区域 */
+.xy-boss-brand {
+  padding-bottom: 20px !important;
+  margin-bottom: 20px !important;
+  border-bottom: 1px solid #eef2f7 !important;
+}
+
+.xy-boss-brand strong {
+  display: block !important;
+  white-space: nowrap !important;
+  color: #2563eb !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  line-height: 1.35 !important;
+}
+
+.xy-boss-brand span {
+  display: block !important;
+  margin-top: 6px !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+}
+
+/* 顶部核心功能 */
+.xy-boss-nav-top {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* 底部系统管理 */
+.xy-boss-nav-bottom {
+  margin-top: auto !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #eef2f7 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* 分组标题 */
+.xy-boss-group-title {
+  padding: 0 12px 4px 12px !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  color: #94a3b8 !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* 导航链接 */
+.xy-boss-nav-link,
+.xy-boss-sidebar-unified a {
+  display: flex !important;
+  align-items: center !important;
+
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+  padding: 0 14px !important;
+
+  border-radius: 12px !important;
+  background: transparent !important;
+  color: #334155 !important;
+
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+}
+
+.xy-boss-nav-link:hover,
+.xy-boss-sidebar-unified a:hover {
+  background: #f1f5f9 !important;
+  color: #2563eb !important;
+}
+
+.xy-boss-nav-link.active,
+.xy-boss-sidebar-unified a.active {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+/* 退出按钮 */
+.xy-boss-logout-form {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.xy-boss-logout-form button,
+.xy-boss-sidebar-unified form button {
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+  padding: 0 14px !important;
+
+  border: none !important;
+  border-radius: 12px !important;
+
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.xy-boss-logout-form button:hover,
+.xy-boss-sidebar-unified form button:hover {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+/* 老板身份文字放左下 */
+.xy-boss-identity {
+  margin-top: 6px !important;
+  padding: 10px 12px 0 12px !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+/* 如果页面主体因为旧样式没有让出左侧空间，这里统一修正 */
+body:has(.xy-boss-sidebar-unified) {
+  padding-left: 250px !important;
+}
+
+body:has(.xy-boss-sidebar-unified) .xy-boss-sidebar-unified,
+body:has(.xy-boss-sidebar-unified) header.xy-boss-sidebar-unified,
+body:has(.xy-boss-sidebar-unified) aside.xy-boss-sidebar-unified {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 1000 !important;
+}
+
+/* 老板页面右侧内容铺满 */
+body:has(.xy-boss-sidebar-unified) main,
+body:has(.xy-boss-sidebar-unified) .container,
+body:has(.xy-boss-sidebar-unified) .content,
+body:has(.xy-boss-sidebar-unified) .main {
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* boss 自定义日报页避免重复左边距 */
+body.boss-daily-page:has(.xy-boss-sidebar-unified) {
+  padding-left: 250px !important;
+}
+
+body.boss-daily-page:has(.xy-boss-sidebar-unified) .boss-main {
+  padding: 28px !important;
+}
+
+/* ===== Boss V2：精简老板端页面 ===== */
+
+body.boss-v2-page {
+  margin: 0 !important;
+  padding: 0 0 0 260px !important;
+  background: #f5f7fb !important;
+  color: #0f172a !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+}
+
+.boss-v2-sidebar {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 260px !important;
+  box-sizing: border-box !important;
+  padding: 24px 16px !important;
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.boss-v2-brand {
+  padding-bottom: 22px !important;
+  margin-bottom: 22px !important;
+  border-bottom: 1px solid #eef2f7 !important;
+}
+
+.boss-v2-brand strong {
+  display: block !important;
+  color: #2563eb !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  white-space: nowrap !important;
+}
+
+.boss-v2-brand span {
+  display: block !important;
+  margin-top: 6px !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+}
+
+.boss-v2-nav-main,
+.boss-v2-nav-bottom {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.boss-v2-nav-bottom {
+  margin-top: auto !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #eef2f7 !important;
+}
+
+.boss-v2-nav-title {
+  padding: 0 12px 4px 12px !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  color: #94a3b8 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.boss-v2-sidebar a,
+.boss-v2-sidebar button {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+  padding: 0 14px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #334155 !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.boss-v2-sidebar a:hover,
+.boss-v2-sidebar button:hover,
+.boss-v2-sidebar a.active {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+.boss-v2-sidebar form {
+  margin: 0 !important;
+}
+
+.boss-v2-sidebar form button:hover {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+.boss-v2-identity {
+  margin-top: 8px !important;
+  padding: 8px 12px 0 12px !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+}
+
+.boss-v2-main {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 28px !important;
+}
+
+.boss-v2-header {
+  padding: 24px !important;
+  margin-bottom: 18px !important;
+  border-radius: 18px !important;
+  border: 1px solid #dbeafe !important;
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 65%) !important;
+}
+
+.boss-v2-header h1 {
+  margin: 0 0 8px 0 !important;
+  font-size: 28px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+}
+
+.boss-v2-header p {
+  margin: 0 !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+}
+
+.boss-v2-stats {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.boss-v2-stats > div {
+  padding: 18px !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04) !important;
+}
+
+.boss-v2-stats span {
+  display: block !important;
+  margin-bottom: 10px !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+
+.boss-v2-stats strong {
+  color: #2563eb !important;
+  font-size: 28px !important;
+  font-weight: 900 !important;
+}
+
+.boss-v2-card {
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+  border-radius: 18px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04) !important;
+}
+
+.boss-v2-card-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 14px !important;
+}
+
+.boss-v2-card-head h2 {
+  margin: 0 0 6px 0 !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+}
+
+.boss-v2-card-head p {
+  margin: 0 !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+}
+
+.boss-v2-table-wrap {
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.boss-v2-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: 13px !important;
+}
+
+.boss-v2-table th {
+  padding: 12px 10px !important;
+  background: #f1f7ff !important;
+  color: #1f4e79 !important;
+  border-bottom: 1px solid #dbeafe !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.boss-v2-table td {
+  padding: 12px 10px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.boss-v2-table tr:hover td {
+  background: #f8fbff !important;
+}
+
+.boss-v2-title-cell,
+.boss-v2-content-cell {
+  text-align: left !important;
+  white-space: normal !important;
+  line-height: 1.5 !important;
+}
+
+.boss-v2-title-cell {
+  min-width: 220px !important;
+  max-width: 420px !important;
+  font-weight: 800 !important;
+}
+
+.boss-v2-title-cell a {
+  color: #2563eb !important;
+  text-decoration: none !important;
+}
+
+.boss-v2-content-cell {
+  min-width: 260px !important;
+  max-width: 520px !important;
+  color: #334155 !important;
+}
+
+.boss-v2-progress-link {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: 88px !important;
+  text-decoration: none !important;
+  color: #2563eb !important;
+}
+
+.boss-v2-progress-link strong {
+  font-size: 13px !important;
+  font-weight: 900 !important;
+}
+
+.boss-v2-progress-bar {
+  width: 78px !important;
+  height: 7px !important;
+  border-radius: 999px !important;
+  background: #e5e7eb !important;
+  overflow: hidden !important;
+}
+
+.boss-v2-progress-bar i {
+  display: block !important;
+  height: 100% !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+}
+
+.boss-v2-progress-bar i.done {
+  background: #16a34a !important;
+}
+
+.boss-v2-progress-bar i.zero {
+  background: #cbd5e1 !important;
+}
+
+.boss-v2-percent-pill,
+.boss-v2-status {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 50px !important;
+  padding: 5px 10px !important;
+  border-radius: 999px !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+}
+
+.boss-v2-small-link,
+.boss-v2-primary-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 32px !important;
+  padding: 0 12px !important;
+  border-radius: 10px !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.boss-v2-primary-link {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.boss-v2-task-summary {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+
+.boss-v2-task-summary h2 {
+  margin: 0 0 8px 0 !important;
+  font-size: 20px !important;
+  font-weight: 900 !important;
+}
+
+.boss-v2-task-summary p {
+  margin: 0 !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+.boss-v2-detail-block {
+  padding: 16px 0 !important;
+  border-bottom: 1px solid #eef2f7 !important;
+}
+
+.boss-v2-detail-block:last-child {
+  border-bottom: none !important;
+}
+
+.boss-v2-detail-block h3 {
+  margin: 0 0 8px 0 !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+}
+
+.boss-v2-detail-block p {
+  margin: 0 !important;
+  color: #334155 !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  white-space: pre-wrap !important;
+}
+
+.boss-v2-date,
+.boss-v2-name {
+  font-size: 18px !important;
+}
+
+@media (max-width: 1000px) {
+  body.boss-v2-page {
+    padding-left: 0 !important;
+  }
+
+  .boss-v2-sidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .boss-v2-main {
+    padding: 18px !important;
+  }
+
+  .boss-v2-card-head,
+  .boss-v2-task-summary {
+    flex-direction: column !important;
+  }
+}
+
+/* Boss 周报管理筛选区 */
+.boss-v2-filter {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+.boss-v2-filter input,
+.boss-v2-filter select {
+  height: 38px !important;
+  min-width: 160px !important;
+  box-sizing: border-box !important;
+  padding: 0 12px !important;
+  border-radius: 10px !important;
+  border: 1px solid #d1d5db !important;
+  background: #ffffff !important;
+  font-size: 14px !important;
+}
+
+.boss-v2-filter button,
+.boss-v2-filter a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 38px !important;
+  padding: 0 16px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: 900 !important;
+  cursor: pointer !important;
+}
+
+.boss-v2-filter a {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+}
+
+.boss-v2-status.approved {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+}
+
+.boss-v2-status.returned {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+.boss-v2-status.submitted {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+/* ===== 管理员日报表格：操作列最后、日报靠后、标题/内容截断 ===== */
+
+.xy-admin-daily-table-final {
+  width: 100% !important;
+  table-layout: fixed !important;
+}
+
+.xy-admin-daily-table-final th,
+.xy-admin-daily-table-final td {
+  text-align: center !important;
+  vertical-align: middle !important;
+  line-height: 1.35 !important;
+  padding: 10px 8px !important;
+}
+
+.xy-admin-daily-table-final th {
+  background: #f1f7ff !important;
+  color: #1f4e79 !important;
+  font-weight: 800 !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-date-cell {
+  width: 90px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-name-cell {
+  width: 80px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-position-cell {
+  width: 120px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-title-cell {
+  width: 180px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-content-cell {
+  width: 230px !important;
+  color: #334155 !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-title-cell span,
+.xy-admin-daily-table-final .xy-daily-content-cell span {
+  display: inline-block !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  text-align: left !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-problem-cell,
+.xy-admin-daily-table-final .xy-daily-plan-cell {
+  width: 160px !important;
+  color: #475569 !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-progress-cell {
+  width: 90px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-report-cell {
+  width: 90px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-action-last-cell {
+  width: 110px !important;
+}
+
+/* 日报查看按钮 */
+.xy-daily-view-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-height: 28px !important;
+  padding: 0 10px !important;
+
+  border-radius: 8px !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
+
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.xy-daily-view-link.disabled {
+  color: #94a3b8 !important;
+  background: #f1f5f9 !important;
+}
+
+/* 操作列放最后后，按钮保持紧凑 */
+.xy-daily-action-last-cell .inline-form,
+.xy-daily-action-last-cell form {
+  display: block !important;
+  margin: 4px auto !important;
+}
+
+.xy-daily-action-last-cell a,
+.xy-daily-action-last-cell button,
+.xy-daily-action-last-cell .link-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  margin: 3px auto !important;
+
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+/* ===== 删除每日任务页面重复顶部区块后，保留正常间距 ===== */
+body.xy-admin-layout-enhanced .xy-page-header,
+body.xy-admin-layout-enhanced .xy-stat-cards {
+  /* 默认不隐藏，具体由 JS 在 /admin/daily-tasks 删除 */
+}
+
+/* ===== 管理员日报表格：删除日报列，任务标题可点击，操作列最后 ===== */
+.xy-admin-daily-table-final {
+  width: 100% !important;
+  table-layout: fixed !important;
+}
+
+.xy-admin-daily-table-final th,
+.xy-admin-daily-table-final td {
+  text-align: center !important;
+  vertical-align: middle !important;
+  line-height: 1.35 !important;
+  padding: 10px 8px !important;
+}
+
+.xy-admin-daily-table-final th {
+  background: #f1f7ff !important;
+  color: #1f4e79 !important;
+  font-weight: 800 !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-date-cell {
+  width: 90px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-name-cell {
+  width: 80px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-position-cell {
+  width: 120px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-title-cell {
+  width: 190px !important;
+  font-weight: 800 !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-content-cell {
+  width: 240px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-title-cell span,
+.xy-admin-daily-table-final .xy-daily-title-link,
+.xy-admin-daily-table-final .xy-daily-content-cell span {
+  display: inline-block !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  text-align: left !important;
+}
+
+.xy-daily-title-link {
+  color: #2563eb !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+}
+
+.xy-daily-title-link:hover {
+  text-decoration: underline !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-problem-cell,
+.xy-admin-daily-table-final .xy-daily-plan-cell {
+  width: 160px !important;
+  color: #475569 !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-progress-cell {
+  width: 90px !important;
+}
+
+.xy-admin-daily-table-final .xy-daily-action-last-cell {
+  width: 110px !important;
+}
+
+.xy-daily-action-last-cell .inline-form,
+.xy-daily-action-last-cell form {
+  display: block !important;
+  margin: 4px auto !important;
+}
+
+.xy-daily-action-last-cell a,
+.xy-daily-action-last-cell button,
+.xy-daily-action-last-cell .link-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  margin: 3px auto !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+/* ===== 任务总表：操作列放到最后 ===== */
+.xy-task-pool-action-last th:last-child,
+.xy-task-pool-action-last td:last-child {
+  width: 132px !important;
+  min-width: 132px !important;
+  max-width: 132px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.xy-task-pool-action-last th:first-child,
+.xy-task-pool-action-last td:first-child {
+  width: auto !important;
+  min-width: 80px !important;
+  max-width: none !important;
+}
+
+.xy-task-pool-action-last td:last-child .inline-form,
+.xy-task-pool-action-last td:last-child form {
+  display: block !important;
+  margin: 4px auto !important;
+}
+
+.xy-task-pool-action-last td:last-child a,
+.xy-task-pool-action-last td:last-child button,
+.xy-task-pool-action-last td:last-child .link-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  margin: 3px auto !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+/* ===== 任务总表：按进度分类，不再显示已关闭筛选 ===== */
+
+/* 强制隐藏旧的“已关闭”按钮，如果旧脚本残留也不会显示 */
+.xy-task-filter-tabs button[data-filter="closed"] {
+  display: none !important;
+}
+
+/* 可继续 / 待认领 / 进行中：行左侧绿色标记 */
+.xy-task-row-green td:first-child {
+  position: relative !important;
+}
+
+.xy-task-row-green td:first-child::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 12px !important;
+  bottom: 12px !important;
+  width: 4px !important;
+  border-radius: 999px !important;
+  background: #22c55e !important;
+}
+
+/* 不可继续认领：整行标灰 */
+.xy-task-row-gray td {
+  background: #f3f4f6 !important;
+  color: #9ca3af !important;
+}
+
+.xy-task-row-gray:hover td {
+  background: #e5e7eb !important;
+}
+
+/* 不可继续认领时，操作按钮仍可点，但弱化 */
+.xy-task-row-gray a,
+.xy-task-row-gray button {
+  opacity: 0.85 !important;
+}
+
+/* 进度分类视觉辅助 */
+.xy-task-row-progress-todo .xy-force-progress-number,
+.xy-task-row-progress-todo .xy-progress-number {
+  color: #16a34a !important;
+}
+
+.xy-task-row-progress-doing .xy-force-progress-number,
+.xy-task-row-progress-doing .xy-progress-number {
+  color: #2563eb !important;
+}
+
+.xy-task-row-progress-done .xy-force-progress-number,
+.xy-task-row-progress-done .xy-progress-number {
+  color: #16a34a !important;
+}
+
+/* ===== 任务总表：任务标题完整显示，备注仅显示前10字 ===== */
+
+/* 任务标题完整显示，不再两行省略 */
+.xy-task-title-full-table .xy-task-title-full-cell {
+  min-width: 260px !important;
+  max-width: 520px !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+}
+
+/* 覆盖旧的两行截断样式 */
+.xy-task-title-full-table .task-title-clamp,
+.xy-task-title-full-table .xy-task-title-full-text {
+  display: inline !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  max-height: none !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+/* 如果任务标题是链接，也完整显示 */
+.xy-task-title-full-table a.xy-task-title-full-text {
+  color: #2563eb !important;
+  text-decoration: none !important;
+}
+
+.xy-task-title-full-table a.xy-task-title-full-text:hover {
+  text-decoration: underline !important;
+}
+
+/* 备注只显示前10字，完整内容鼠标悬停看 */
+.xy-task-title-full-table .xy-task-remark-short-cell {
+  max-width: 120px !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.xy-task-title-full-table .xy-task-remark-short-text {
+  display: inline-block !important;
+  max-width: 100px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  color: #475569 !important;
+  vertical-align: middle !important;
+}
+
+/* 任务总表单元格默认鼠标悬停可看完整内容 */
+.xy-task-title-full-table td {
+  cursor: default !important;
+}
+
+/* 任务总表：任务标题列加宽，每行约显示12个字 */
+.xy-task-title-full-table .xy-task-title-full-cell,
+.xy-task-pool-action-last .xy-task-title-full-cell,
+.task-pool-table .xy-task-title-full-cell,
+.task-pool-actions-first .xy-task-title-full-cell {
+  width: 230px !important;
+  min-width: 230px !important;
+  max-width: 230px !important;
+
+  white-space: normal !important;
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+
+  text-align: left !important;
+  line-height: 1.45 !important;
+}
+
+/* 任务标题文字：一行约12个中文字符，完整显示，自动换行 */
+.xy-task-title-full-table .xy-task-title-full-text,
+.xy-task-title-full-table .task-title-clamp,
+.xy-task-pool-action-last .xy-task-title-full-text,
+.task-pool-table .xy-task-title-full-text,
+.task-pool-actions-first .xy-task-title-full-text {
+  display: inline-block !important;
+
+  width: 12em !important;
+  max-width: 12em !important;
+
+  white-space: normal !important;
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-height: none !important;
+
+  line-height: 1.45 !important;
+  text-align: left !important;
+  font-weight: 800 !important;
+}
+
+/* ===== 任务总表稳定版：修复错位与卡顿 ===== */
+
+.xy-task-pool-stable-table {
+  width: 100% !important;
+  min-width: 1180px !important;
+  table-layout: fixed !important;
+  border-collapse: collapse !important;
+}
+
+.xy-task-pool-stable-table th,
+.xy-task-pool-stable-table td {
+  padding: 12px 10px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+.xy-task-pool-stable-table th {
+  background: #f1f7ff !important;
+  color: #1f4e79 !important;
+  font-weight: 900 !important;
+}
+
+/* 任务标题：稳定换行，不和日期重叠 */
+.xy-task-pool-stable-table .xy-stable-title-cell {
+  width: 260px !important;
+  min-width: 260px !important;
+  max-width: 260px !important;
+  text-align: left !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* 日期列不要被标题挤压 */
+.xy-task-pool-stable-table th:nth-child(4),
+.xy-task-pool-stable-table td:nth-child(4) {
+  min-width: 120px !important;
+  width: 120px !important;
+  max-width: 120px !important;
+  white-space: nowrap !important;
+}
+
+/* 进度列 */
+.xy-stable-progress-head,
+.xy-stable-progress-cell {
+  width: 110px !important;
+  min-width: 110px !important;
+  max-width: 110px !important;
+}
+
+.xy-stable-progress {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  width: 88px !important;
+  margin: 0 auto !important;
+}
+
+.xy-stable-progress strong {
+  font-size: 13px !important;
+  color: #2563eb !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+}
+
+.xy-stable-progress span {
+  width: 76px !important;
+  height: 7px !important;
+  border-radius: 999px !important;
+  background: #e5e7eb !important;
+  overflow: hidden !important;
+}
+
+.xy-stable-progress i {
+  display: block !important;
+  height: 100% !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+}
+
+.xy-stable-progress i.done {
+  background: #16a34a !important;
+}
+
+.xy-stable-progress i.zero {
+  background: #cbd5e1 !important;
+}
+
+/* 备注只显示短文本，完整内容靠 title 悬停 */
+.xy-stable-remark-cell {
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* 操作列在最后 */
+.xy-task-pool-stable-table th:last-child,
+.xy-task-pool-stable-table td:last-child {
+  width: 130px !important;
+  min-width: 130px !important;
+  max-width: 130px !important;
+}
+
+/* 绿色/灰色行标记 */
+.xy-stable-row-green td:first-child {
+  position: relative !important;
+}
+
+.xy-stable-row-green td:first-child::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 12px !important;
+  bottom: 12px !important;
+  width: 4px !important;
+  border-radius: 999px !important;
+  background: #22c55e !important;
+}
+
+.xy-stable-row-gray td {
+  background: #f3f4f6 !important;
+  color: #9ca3af !important;
+}
+
+.xy-stable-row-gray:hover td {
+  background: #e5e7eb !important;
+}
+
+/* 表格容器允许横向滚动，不挤压内容 */
+.card:has(.xy-task-pool-stable-table),
+.table-wrap:has(.xy-task-pool-stable-table),
+.table-container:has(.xy-task-pool-stable-table) {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+/* 隐藏旧的已关闭筛选 */
+.xy-task-filter-tabs button[data-filter="closed"] {
+  display: none !important;
+}
+
+/* ===== 任务总表：修复任务标题字体过大/竖排问题，压缩需求部门列 ===== */
+
+/* 表格整体固定布局，避免标题挤到日期 */
+.xy-task-pool-stable-table {
+  table-layout: fixed !important;
+  min-width: 1180px !important;
+}
+
+/* 所有单元格字体统一 */
+.xy-task-pool-stable-table th,
+.xy-task-pool-stable-table td {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+}
+
+/* 第1列：需求部门，压缩宽度 */
+.xy-task-pool-stable-table th:nth-child(1),
+.xy-task-pool-stable-table td:nth-child(1) {
+  width: 72px !important;
+  min-width: 72px !important;
+  max-width: 72px !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+  white-space: normal !important;
+  word-break: keep-all !important;
+  text-align: center !important;
+}
+
+/* 第2列：对接人，略微压缩 */
+.xy-task-pool-stable-table th:nth-child(2),
+.xy-task-pool-stable-table td:nth-child(2) {
+  width: 78px !important;
+  min-width: 78px !important;
+  max-width: 78px !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+  white-space: normal !important;
+  word-break: keep-all !important;
+  text-align: center !important;
+}
+
+/* 第3列：任务标题，加宽，但字体和其他字段一致 */
+.xy-task-pool-stable-table th:nth-child(3),
+.xy-task-pool-stable-table td:nth-child(3),
+.xy-task-pool-stable-table .xy-stable-title-cell,
+.xy-task-title-full-table .xy-task-title-full-cell,
+.xy-task-pool-action-last .xy-task-title-full-cell,
+.task-pool-table .xy-task-title-full-cell,
+.task-pool-actions-first .xy-task-title-full-cell {
+  width: 330px !important;
+  min-width: 330px !important;
+  max-width: 330px !important;
+
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+
+  text-align: left !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* 覆盖之前给标题设置的 12em / 粗体 / 截断样式 */
+.xy-task-pool-stable-table .xy-stable-title-cell *,
+.xy-task-pool-stable-table .xy-task-title-full-text,
+.xy-task-pool-stable-table .task-title-clamp,
+.xy-task-title-full-table .xy-task-title-full-text,
+.xy-task-title-full-table .task-title-clamp,
+.xy-task-pool-action-last .xy-task-title-full-text,
+.task-pool-table .xy-task-title-full-text,
+.task-pool-actions-first .xy-task-title-full-text {
+  width: auto !important;
+  max-width: none !important;
+
+  display: inline !important;
+
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-height: none !important;
+}
+
+/* 第4列：期望完成日期，固定宽度，防止被标题挤压 */
+.xy-task-pool-stable-table th:nth-child(4),
+.xy-task-pool-stable-table td:nth-child(4) {
+  width: 110px !important;
+  min-width: 110px !important;
+  max-width: 110px !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+
+/* 第5列：整体进度 */
+.xy-task-pool-stable-table th:nth-child(5),
+.xy-task-pool-stable-table td:nth-child(5) {
+  width: 110px !important;
+  min-width: 110px !important;
+  max-width: 110px !important;
+  text-align: center !important;
+}
+
+/* 第6列：认领/申请人 */
+.xy-task-pool-stable-table th:nth-child(6),
+.xy-task-pool-stable-table td:nth-child(6) {
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+/* 第7列：备注，保持短显示 */
+.xy-task-pool-stable-table th:nth-child(7),
+.xy-task-pool-stable-table td:nth-child(7) {
+  width: 130px !important;
+  min-width: 130px !important;
+  max-width: 130px !important;
+  text-align: center !important;
+}
+
+/* 最后一列：操作 */
+.xy-task-pool-stable-table th:last-child,
+.xy-task-pool-stable-table td:last-child {
+  width: 130px !important;
+  min-width: 130px !important;
+  max-width: 130px !important;
+  text-align: center !important;
+}
+
+/* 避免标题行过高得太夸张 */
+.xy-task-pool-stable-table tbody tr {
+  min-height: 72px !important;
+}
+
+.xy-task-pool-stable-table td {
+  vertical-align: middle !important;
+}
+
+/* ===== 最终表格调整：任务总表删除期望日期列，统一放大字体 ===== */
+
+/* 管理员任务总表整体字号统一，比原来放大一号 */
+.xy-final-admin-task-table,
+.xy-final-admin-task-table th,
+.xy-final-admin-task-table td,
+.xy-final-admin-task-table a,
+.xy-final-admin-task-table button,
+.xy-final-admin-task-table span {
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+.xy-final-admin-task-table th {
+  font-weight: 900 !important;
+}
+
+.xy-final-admin-task-table td {
+  font-weight: 600 !important;
+}
+
+/* 需求部门列压缩 */
+.xy-final-admin-task-table .xy-final-dept-col {
+  width: 76px !important;
+  min-width: 76px !important;
+  max-width: 76px !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-break: keep-all !important;
+}
+
+/* 对接人列 */
+.xy-final-admin-task-table .xy-final-contact-col {
+  width: 82px !important;
+  min-width: 82px !important;
+  max-width: 82px !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+/* 任务标题列加宽，字体和其他字段统一 */
+.xy-final-admin-task-table .xy-final-title-col {
+  width: 380px !important;
+  min-width: 380px !important;
+  max-width: 380px !important;
+  text-align: left !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  font-weight: 600 !important;
+}
+
+/* 覆盖之前任务标题过粗/过窄的样式 */
+.xy-final-admin-task-table .xy-final-title-col *,
+.xy-final-admin-task-table .xy-stable-title-cell *,
+.xy-final-admin-task-table .xy-task-title-full-text,
+.xy-final-admin-task-table .task-title-clamp {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  width: auto !important;
+  max-width: none !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* 整体进度列 */
+.xy-final-admin-task-table .xy-final-progress-col {
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  text-align: center !important;
+}
+
+/* 认领/申请人列 */
+.xy-final-admin-task-table .xy-final-assignee-col {
+  width: 180px !important;
+  min-width: 180px !important;
+  max-width: 180px !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+/* 备注列：仍然短显示，鼠标悬停显示完整 */
+.xy-final-admin-task-table .xy-final-remark-col {
+  width: 130px !important;
+  min-width: 130px !important;
+  max-width: 130px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* 操作列 */
+.xy-final-admin-task-table .xy-final-action-col {
+  width: 130px !important;
+  min-width: 130px !important;
+  max-width: 130px !important;
+  text-align: center !important;
+}
+
+/* 表格允许横向滚动，不再挤压错位 */
+.card:has(.xy-final-admin-task-table),
+.table-wrap:has(.xy-final-admin-task-table),
+.table-container:has(.xy-final-admin-task-table) {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+/* Boss 任务进度看板：删除最新日报日期列后，让最新更新内容更宽 */
+.xy-final-boss-task-board .boss-v2-content-cell,
+.xy-final-boss-task-board td:last-child {
+  min-width: 360px !important;
+  max-width: 680px !important;
+  text-align: left !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
+}
+
+/* ===== 管理员任务总表：删除重复导览后，统一表格字体 ===== */
+
+/* 任务总表所有文字统一字号 */
+.xy-task-pool-uniform-font,
+.xy-task-pool-uniform-font th,
+.xy-task-pool-uniform-font td,
+.xy-task-pool-uniform-font a,
+.xy-task-pool-uniform-font button,
+.xy-task-pool-uniform-font span,
+.xy-task-pool-uniform-font strong,
+.xy-task-pool-font-reset {
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+/* 表头可以略粗，但字号不变 */
+.xy-task-pool-uniform-font th,
+.xy-task-pool-uniform-font th * {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+}
+
+/* 表格内容统一，不让任务标题特别粗 */
+.xy-task-pool-uniform-font td,
+.xy-task-pool-uniform-font td *,
+.xy-task-pool-uniform-font .xy-stable-title-cell,
+.xy-task-pool-uniform-font .xy-stable-title-cell *,
+.xy-task-pool-uniform-font .xy-task-title-full-text,
+.xy-task-pool-uniform-font .task-title-clamp {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+/* 任务标题列只保留加宽，不额外放大字体 */
+.xy-task-pool-uniform-font .xy-stable-title-cell,
+.xy-task-pool-uniform-font .xy-final-title-col,
+.xy-task-pool-uniform-font .xy-task-title-full-cell {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* 进度数字也统一字号 */
+.xy-task-pool-uniform-font .xy-stable-progress strong,
+.xy-task-pool-uniform-font .xy-force-progress-number,
+.xy-task-pool-uniform-font .xy-progress-number {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+/* 操作按钮字号统一 */
+.xy-task-pool-uniform-font td:last-child a,
+.xy-task-pool-uniform-font td:last-child button,
+.xy-task-pool-uniform-font td:last-child .link-button {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+/* ===== 任务总表：最终强制统一字体大小 ===== */
+
+/* 表格整体统一 */
+.xy-task-pool-font-final {
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+/* 表头统一 */
+.xy-task-pool-font-final thead th,
+.xy-task-pool-font-final thead th *,
+.xy-task-pool-font-final th.xy-task-pool-font-final-item {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+}
+
+/* 表格内容统一：任务标题、部门、对接人、认领人、备注全部一样 */
+.xy-task-pool-font-final tbody td,
+.xy-task-pool-font-final tbody td *,
+.xy-task-pool-font-final .xy-task-pool-font-final-item,
+.xy-task-pool-font-final .xy-stable-title-cell,
+.xy-task-pool-font-final .xy-stable-title-cell *,
+.xy-task-pool-font-final .xy-final-title-col,
+.xy-task-pool-font-final .xy-final-title-col *,
+.xy-task-pool-font-final .xy-task-title-full-text,
+.xy-task-pool-font-final .task-title-clamp {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+/* 进度数字也统一，不再比其他文字更大 */
+.xy-task-pool-font-final .xy-stable-progress strong,
+.xy-task-pool-font-final .xy-force-progress-number,
+.xy-task-pool-font-final .xy-progress-number,
+.xy-task-pool-font-final .progress-percent-badge {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+/* 操作列按钮文字统一 */
+.xy-task-pool-font-final td:last-child a,
+.xy-task-pool-font-final td:last-child button,
+.xy-task-pool-font-final td:last-child .link-button,
+.xy-task-pool-font-final .xy-more-actions summary,
+.xy-task-pool-font-final .xy-more-actions-box button,
+.xy-task-pool-font-final .xy-more-actions-box a {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+/* 状态标签、已关闭提示等也统一字号 */
+.xy-task-pool-font-final .badge,
+.xy-task-pool-font-final .xy-closed-icon,
+.xy-task-pool-font-final .xy-action-edit {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+}
+
+/* 标题列只保留加宽和换行，不额外加粗 */
+.xy-task-pool-font-final .xy-stable-title-cell,
+.xy-task-pool-font-final .xy-final-title-col,
+.xy-task-pool-font-final td:nth-child(3) {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* 统一单元格垂直居中 */
+.xy-task-pool-font-final th,
+.xy-task-pool-font-final td {
+  vertical-align: middle !important;
+}
+
+/* 任务总表：统一字体调整为 16px */
+.xy-task-pool-font-final,
+.xy-task-pool-font-final th,
+.xy-task-pool-font-final td,
+.xy-task-pool-font-final a,
+.xy-task-pool-font-final button,
+.xy-task-pool-font-final span,
+.xy-task-pool-font-final strong,
+.xy-task-pool-font-final div,
+.xy-task-pool-font-final p,
+.xy-task-pool-font-final label,
+.xy-task-pool-font-final .xy-task-pool-font-final-item {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* 任务总表：无论是否可继续认领，需求部门列字体统一 */
+.xy-task-pool-font-final th:nth-child(1),
+.xy-task-pool-font-final td:nth-child(1),
+.xy-task-pool-font-final td:nth-child(1) *,
+.xy-task-pool-stable-table th:nth-child(1),
+.xy-task-pool-stable-table td:nth-child(1),
+.xy-task-pool-stable-table td:nth-child(1) *,
+.xy-final-admin-task-table th:nth-child(1),
+.xy-final-admin-task-table td:nth-child(1),
+.xy-final-admin-task-table td:nth-child(1) * {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  color: #0f172a !important;
+  text-align: center !important;
+}
+
+/* 不可继续认领/标灰行里，需求部门字体大小也保持一致，只允许颜色变灰 */
+.xy-stable-row-gray td:nth-child(1),
+.xy-stable-row-gray td:nth-child(1) *,
+.xy-task-row-gray td:nth-child(1),
+.xy-task-row-gray td:nth-child(1) *,
+.xy-task-row-closed td:nth-child(1),
+.xy-task-row-closed td:nth-child(1) * {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  color: #9ca3af !important;
+}
+
+/* ===== 任务总表：任务标题15字限制 + 任务内容10字预览 ===== */
+
+/* 任务标题列：最多展示15字，字号保持统一 */
+.xy-task-title-content-table .xy-task-title-limit-cell,
+.xy-task-title-content-table .xy-task-title-limit-cell *,
+.xy-task-pool-font-final .xy-task-title-limit-cell,
+.xy-task-pool-font-final .xy-task-title-limit-cell * {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* 任务内容列：只展示前10字，点击进入详情/编辑页查看 */
+.xy-task-title-content-table .xy-task-content-preview-cell,
+.xy-task-pool-font-final .xy-task-content-preview-cell {
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.xy-task-content-preview-link {
+  color: #2563eb !important;
+  text-decoration: none !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+}
+
+.xy-task-content-preview-link:hover {
+  text-decoration: underline !important;
+}
+
+/* 新增/编辑任务：标题字数提示 */
+.xy-title-limit-counter {
+  margin-top: 6px !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+  text-align: right !important;
+}
+
+.xy-title-limit-counter.danger {
+  color: #dc2626 !important;
+  font-weight: 700 !important;
+}
+
+/* 新增出来的任务内容模块 */
+.xy-task-content-form-block {
+  margin-top: 14px !important;
+  margin-bottom: 14px !important;
+}
+
+.xy-task-content-form-block label {
+  display: block !important;
+  margin-bottom: 8px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+
+.xy-task-content-form-block textarea {
+  width: 100% !important;
+  min-height: 96px !important;
+  padding: 10px 12px !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  resize: vertical !important;
+  box-sizing: border-box !important;
+}
+
+/* ===== 任务总表：强制把备注列作为任务内容展示 ===== */
+
+.xy-force-task-content-table .xy-force-task-content-head {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+}
+
+.xy-force-task-content-table .xy-force-task-content-cell,
+.xy-force-task-content-table .xy-force-task-content-cell *,
+.xy-force-task-content-link {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.xy-force-task-content-table .xy-force-task-content-cell {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.xy-force-task-content-link {
+  color: #2563eb !important;
+  text-decoration: none !important;
+}
+
+.xy-force-task-content-link:hover {
+  text-decoration: underline !important;
+}
+
+/* ===== 任务总表：任务内容字段，只属于任务总表 ===== */
+
+.xy-task-pool-content-only-table .xy-task-title-15-cell,
+.xy-task-pool-content-only-table .xy-task-title-15-cell *,
+.xy-task-pool-content-only-table .xy-task-content-10-cell,
+.xy-task-pool-content-only-table .xy-task-content-10-cell *,
+.xy-task-content-10-link {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.xy-task-pool-content-only-table .xy-task-title-15-cell {
+  text-align: left !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+.xy-task-pool-content-only-table .xy-task-content-head {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+}
+
+.xy-task-pool-content-only-table .xy-task-content-10-cell {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.xy-task-content-10-link {
+  color: #2563eb !important;
+  text-decoration: none !important;
+}
+
+.xy-task-content-10-link:hover {
+  text-decoration: underline !important;
+}
+
+.xy-task-title-15-counter {
+  margin-top: 6px !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+  text-align: right !important;
+}
+
+.xy-task-content-form-block {
+  margin-top: 14px !important;
+  margin-bottom: 14px !important;
+}
+
+.xy-task-content-form-block label {
+  display: block !important;
+  margin-bottom: 8px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+.xy-task-content-form-block textarea {
+  width: 100% !important;
+  min-height: 96px !important;
+  padding: 10px 12px !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+  resize: vertical !important;
+}
+
+/* ===== 管理员任务总表：最终强制备注列改为任务内容列 ===== */
+
+.xy-task-pool-final-content-table .xy-final-task-content-th {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+}
+
+.xy-task-pool-final-content-table .xy-final-task-content-td,
+.xy-task-pool-final-content-table .xy-final-task-content-td *,
+.xy-final-task-content-link {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.xy-task-pool-final-content-table .xy-final-task-content-td {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.xy-final-task-content-link {
+  color: #2563eb !important;
+  text-decoration: none !important;
+}
+
+.xy-final-task-content-link:hover {
+  text-decoration: underline !important;
+}
+
+/* ===== 实习生填写每日任务：多个任务条目 ===== */
+
+.xy-multi-daily-add-wrap {
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin-top: 12px !important;
+  margin-bottom: 14px !important;
+}
+
+.xy-multi-daily-add-btn {
+  border: none !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+  color: #fff !important;
+  padding: 10px 18px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.22) !important;
+}
+
+.xy-multi-daily-add-btn:hover {
+  background: #1d4ed8 !important;
+}
+
+.xy-multi-daily-block {
+  margin-top: 18px !important;
+  padding: 18px !important;
+  border: 1px solid #dbeafe !important;
+  border-radius: 16px !important;
+  background: #f8fbff !important;
+}
+
+.xy-multi-daily-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 12px !important;
+}
+
+.xy-multi-daily-title {
+  font-size: 16px !important;
+  font-weight: 900 !important;
+  color: #1e40af !important;
+}
+
+.xy-multi-daily-remove {
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 7px 14px !important;
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.xy-multi-daily-label {
+  display: block !important;
+  margin-top: 12px !important;
+  margin-bottom: 8px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+
+.xy-multi-daily-block select,
+.xy-multi-daily-block textarea {
+  width: 100% !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+}
+
+.xy-multi-daily-block textarea {
+  min-height: 140px !important;
+  resize: vertical !important;
+}
+
+/* ===== 实习生填写每日任务：多任务填写入口 ===== */
+
+.xy-daily-task-add-wrap {
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin-top: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.xy-daily-task-add-btn {
+  border: none !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  padding: 10px 18px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.xy-daily-task-add-btn:hover {
+  background: #1d4ed8 !important;
+}
+
+.xy-daily-task-extra {
+  margin-top: 18px !important;
+  padding: 18px !important;
+  border: 1px solid #bfdbfe !important;
+  border-radius: 16px !important;
+  background: #f8fbff !important;
+}
+
+.xy-daily-task-extra-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 14px !important;
+}
+
+.xy-daily-task-extra-title {
+  color: #1e40af !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+
+.xy-daily-task-remove-btn {
+  border: none !important;
+  border-radius: 999px !important;
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  padding: 7px 14px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.xy-daily-task-extra-label {
+  display: block !important;
+  margin-top: 12px !important;
+  margin-bottom: 8px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+
+.xy-daily-task-extra select,
+.xy-daily-task-extra textarea {
+  width: 100% !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+}
+
+.xy-daily-task-extra textarea {
+  min-height: 150px !important;
+  resize: vertical !important;
+}
+
+/* ===== 左侧导航：系统管理/退出固定到底部，字体放大一号 ===== */
+
+.xy-sidebar-bottom-font {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+
+/* 底部区域：系统管理、修改密码、用户身份、退出 */
+.xy-sidebar-bottom-area {
+  margin-top: auto !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+/* 左侧导航整体字体放大一号 */
+.xy-sidebar-bottom-font,
+.xy-sidebar-bottom-font a,
+.xy-sidebar-bottom-font button,
+.xy-sidebar-bottom-font div,
+.xy-sidebar-bottom-font span,
+.xy-sidebar-bottom-font p {
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+}
+
+/* 分组标题，例如：日报管理 / 其他 / 系统管理 */
+.xy-sidebar-bottom-font .nav-section,
+.xy-sidebar-bottom-font .section-title,
+.xy-sidebar-bottom-font [class*="section"],
+.xy-sidebar-bottom-area > div:first-child {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+}
+
+/* 导航菜单项 */
+.xy-sidebar-bottom-font a,
+.xy-sidebar-bottom-font button {
+  font-weight: 800 !important;
+}
+
+/* 退出按钮保持底部宽按钮样式 */
+.xy-sidebar-bottom-area button,
+.xy-sidebar-bottom-area a[href*="logout"],
+.xy-sidebar-bottom-area form button {
+  width: 100% !important;
+  font-size: 17px !important;
+  font-weight: 800 !important;
+}
+
+/* ===== 每日任务：每个任务独立整体进度 ===== */
+
+.xy-daily-task-progress-block {
+  margin-top: 14px !important;
+  margin-bottom: 14px !important;
+}
+
+.xy-daily-task-progress-block .xy-daily-progress-field,
+.xy-daily-task-progress-slot .xy-daily-progress-field {
+  width: 100% !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+  background: #fff !important;
+}
+
+.xy-daily-task-add-wrap {
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin-top: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.xy-daily-task-add-btn {
+  border: none !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  padding: 10px 18px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.xy-daily-task-add-btn:hover {
+  background: #1d4ed8 !important;
+}
+
+.xy-daily-task-extra {
+  margin-top: 18px !important;
+  padding: 18px !important;
+  border: 1px solid #bfdbfe !important;
+  border-radius: 16px !important;
+  background: #f8fbff !important;
+}
+
+.xy-daily-task-extra-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 14px !important;
+}
+
+.xy-daily-task-extra-title {
+  color: #1e40af !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+
+.xy-daily-task-remove-btn {
+  border: none !important;
+  border-radius: 999px !important;
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  padding: 7px 14px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.xy-daily-task-extra-label {
+  display: block !important;
+  margin-top: 12px !important;
+  margin-bottom: 8px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+
+.xy-daily-task-extra select,
+.xy-daily-task-extra textarea,
+.xy-daily-task-extra input {
+  width: 100% !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+}
+
+.xy-daily-task-extra textarea {
+  min-height: 150px !important;
+  resize: vertical !important;
+}
+
+/* ===== 每日任务：任务进度说明放在任务进度下方 ===== */
+
+.xy-task-progress-tip {
+  margin-top: 10px !important;
+  padding: 12px 14px !important;
+  border: 1px dashed #bfdbfe !important;
+  border-radius: 12px !important;
+  background: #f8fbff !important;
+  color: #475569 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.7 !important;
+}
+
+.xy-daily-task-progress-block {
+  margin-top: 14px !important;
+  margin-bottom: 14px !important;
+}
+
+.xy-daily-task-progress-block .xy-daily-progress-field,
+.xy-daily-task-progress-slot .xy-daily-progress-field {
+  width: 100% !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+  background: #fff !important;
+}
+
+/* ===== 实习生每日任务：每个任务独立任务进度条 ===== */
+
+.xy-progressbar-wrap {
+  --xy-progress-percent: 0%;
+  margin-top: 14px !important;
+  margin-bottom: 16px !important;
+  padding: 14px 16px !important;
+  border: 1px solid #dbeafe !important;
+  border-radius: 14px !important;
+  background: #f8fbff !important;
+}
+
+.xy-progressbar-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  margin-bottom: 10px !important;
+}
+
+.xy-progressbar-name {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+}
+
+.xy-progressbar-value {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  color: #2563eb !important;
+}
+
+.xy-progressbar-range {
+  width: 100% !important;
+  height: 8px !important;
+  border-radius: 999px !important;
+  outline: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: linear-gradient(to right, #2563eb 0%, #2563eb var(--xy-progress-percent), #e5e7eb var(--xy-progress-percent), #e5e7eb 100%) !important;
+}
+
+.xy-progressbar-range::-webkit-slider-thumb {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: #2563eb !important;
+  border: 3px solid #ffffff !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+  cursor: pointer !important;
+}
+
+.xy-progressbar-range::-moz-range-thumb {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: #2563eb !important;
+  border: 3px solid #ffffff !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+  cursor: pointer !important;
+}
+
+.xy-progressbar-ticks {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-top: 8px !important;
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+.xy-task-progress-tip {
+  margin-top: 10px !important;
+  padding: 10px 12px !important;
+  border: 1px dashed #bfdbfe !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  color: #475569 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.7 !important;
+}
+
+.xy-daily-task-add-wrap {
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin-top: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.xy-daily-task-add-btn {
+  border: none !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  padding: 10px 18px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.xy-daily-task-extra {
+  margin-top: 18px !important;
+  padding: 18px !important;
+  border: 1px solid #bfdbfe !important;
+  border-radius: 16px !important;
+  background: #f8fbff !important;
+}
+
+.xy-daily-task-extra-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 14px !important;
+}
+
+.xy-daily-task-extra-title {
+  color: #1e40af !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+
+.xy-daily-task-remove-btn {
+  border: none !important;
+  border-radius: 999px !important;
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  padding: 7px 14px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.xy-daily-task-extra-label {
+  display: block !important;
+  margin-top: 12px !important;
+  margin-bottom: 8px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+
+.xy-daily-task-extra select,
+.xy-daily-task-extra textarea {
+  width: 100% !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+}
+
+.xy-daily-task-extra textarea {
+  min-height: 150px !important;
+  resize: vertical !important;
+}
+
+/* ===== 实习生左侧导航：系统管理/修改密码移动到底部 ===== */
+
+.xy-intern-sidebar-bottom-layout {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: calc(100vh - 32px) !important;
+}
+
+.xy-intern-sidebar-bottom-box {
+  margin-top: auto !important;
+  padding-top: 16px !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+/* ===== 恢复实习生左侧导航：系统管理/修改密码回到导航栏内 ===== */
+
+/* 取消之前底部布局影响 */
+.xy-intern-sidebar-bottom-layout {
+  display: block !important;
+  min-height: auto !important;
+}
+
+.xy-intern-sidebar-bottom-box {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+
+/* 避免左侧导航被拉到页面底部 */
+aside,
+.sidebar,
+.side-nav,
+[class*="sidebar"],
+[class*="sider"] {
+  overflow: visible !important;
+}
+
+/* 实习生左侧导航：保持正常导航布局 */
+.xy-intern-sidebar-fixed-order {
+  display: block !important;
+}
+
+.xy-intern-sidebar-fixed-order a,
+.xy-intern-sidebar-fixed-order button {
+  width: 100% !important;
+}
+
+/* 实习生每日任务：隐藏旧的底部整体进度残留 */
+body:has(.xy-progressbar-wrap) select[name="progress"],
+body:has(.xy-progressbar-wrap) select[name="overallProgress"],
+body:has(.xy-progressbar-wrap) select[name="taskProgress"],
+body:has(.xy-progressbar-wrap) input[name="progress"],
+body:has(.xy-progressbar-wrap) input[name="overallProgress"],
+body:has(.xy-progressbar-wrap) input[name="taskProgress"] {
+  display: none !important;
+}

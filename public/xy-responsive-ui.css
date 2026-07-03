@@ -1,0 +1,241 @@
+/* =========================================================
+   手机端显示修复版
+   原则：不误隐藏页面，只把真正侧边栏做成抽屉
+   ========================================================= */
+
+:root {
+  --xy-primary: #1677FF;
+  --xy-bg: #F5F7FA;
+  --xy-card: #FFFFFF;
+  --xy-border: #E5E7EB;
+  --xy-radius: 10px;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body.xy-mobile-display-ready * {
+  box-sizing: border-box;
+}
+
+/* 默认不显示手机菜单按钮 */
+.xy-mobile-menu-btn,
+.xy-mobile-sidebar-mask {
+  display: none;
+}
+
+/* 表格滚动容器 */
+.xy-mobile-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 防止内容被误隐藏 */
+body.xy-mobile-display-ready main,
+body.xy-mobile-display-ready .main,
+body.xy-mobile-display-ready .content,
+body.xy-mobile-display-ready .page-content,
+body.xy-mobile-display-ready .app-main {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 手机端 */
+@media (max-width: 768px) {
+  body.xy-mobile-display-ready {
+    background: var(--xy-bg) !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 只有识别到真正侧边栏时，才给顶部留菜单空间 */
+  body.xy-mobile-display-ready.xy-has-mobile-sidebar {
+    padding-top: 52px !important;
+  }
+
+  /* 主内容必须显示 */
+  .xy-mobile-main-target {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    padding: 12px !important;
+    background: var(--xy-bg) !important;
+  }
+
+  /* 只有真正侧边栏才隐藏到左侧 */
+  .xy-mobile-sidebar-target {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 248px !important;
+    max-width: 80vw !important;
+    height: 100vh !important;
+    background: #fff !important;
+    z-index: 99995 !important;
+    transform: translateX(-105%) !important;
+    transition: transform 0.22s ease !important;
+    overflow-y: auto !important;
+    padding-top: 58px !important;
+    border-right: 1px solid var(--xy-border) !important;
+    box-shadow: 8px 0 24px rgba(0,0,0,0.12) !important;
+  }
+
+  body.xy-sidebar-open .xy-mobile-sidebar-target {
+    transform: translateX(0) !important;
+  }
+
+  .xy-mobile-menu-btn {
+    display: none !important;
+  }
+
+  body.xy-has-mobile-sidebar .xy-mobile-menu-btn {
+    display: flex !important;
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    z-index: 99999 !important;
+    width: 40px !important;
+    height: 40px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    border-radius: 10px !important;
+    background: var(--xy-primary) !important;
+    color: #fff !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+    box-shadow: 0 4px 12px rgba(22,119,255,0.22) !important;
+  }
+
+  .xy-mobile-sidebar-mask {
+    display: none !important;
+  }
+
+  body.xy-sidebar-open .xy-mobile-sidebar-mask {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(15,23,42,0.38) !important;
+    z-index: 99990 !important;
+  }
+
+  /* 登录页不要被响应式菜单影响 */
+  body:not(.xy-has-mobile-sidebar) .xy-mobile-menu-btn,
+  body:not(.xy-has-mobile-sidebar) .xy-mobile-sidebar-mask {
+    display: none !important;
+  }
+
+  /* 卡片 */
+  .card,
+  section,
+  .panel,
+  .box {
+    max-width: 100% !important;
+    border-radius: var(--xy-radius) !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* 统计卡片单列 */
+  .stats-row,
+  .stat-row,
+  .xy-stat-cards,
+  .stats-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* 表单竖排 */
+  form:not(.xy-table-form),
+  .filter-row,
+  .filter-bar,
+  .search-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  form:not(.xy-table-form) input,
+  form:not(.xy-table-form) select,
+  form:not(.xy-table-form) textarea,
+  .filter-row input,
+  .filter-row select,
+  .filter-row textarea,
+  .filter-bar input,
+  .filter-bar select,
+  .filter-bar textarea,
+  .search-bar input,
+  .search-bar select,
+  .search-bar textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  form:not(.xy-table-form) > button,
+  form:not(.xy-table-form) > .btn,
+  form:not(.xy-table-form) > input[type="submit"],
+  .filter-row > button,
+  .filter-bar > button,
+  .search-bar > button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* 表格横向滚动 */
+  .xy-mobile-table-wrap table {
+    min-width: 860px !important;
+    width: 100% !important;
+  }
+
+  th,
+  td {
+    white-space: nowrap !important;
+  }
+
+  .xy-task-name-text,
+  td:nth-child(3) {
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  table td:last-child a,
+  table td:last-child button,
+  table .action-cell a,
+  table .action-cell button,
+  table .xy-taskpool-action-cell a,
+  table .xy-taskpool-action-cell button {
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: auto !important;
+    display: inline-flex !important;
+    padding: 0 !important;
+    margin-right: 10px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .xy-mobile-main-target {
+    padding: 10px !important;
+  }
+
+  .xy-mobile-table-wrap table {
+    min-width: 780px !important;
+  }
+}

@@ -1,0 +1,518 @@
+/* =========================================================
+   解悠实习生周报系统 · 安全版 UI 优化
+   只优化视觉，不改 DOM 结构，不改业务数据
+   ========================================================= */
+
+:root {
+  --primary: #1677FF;
+  --primary-hover: #4096FF;
+  --primary-active: #0958D9;
+  --primary-bg: #E6F4FF;
+  --primary-border: #91CAFF;
+
+  --success: #52C41A;
+  --success-bg: #F6FFED;
+  --warning: #FAAD14;
+  --warning-bg: #FFFBE6;
+  --danger: #FF4D4F;
+  --danger-bg: #FFF2F0;
+  --danger-text: #F5222D;
+
+  --text-primary: #1F1F1F;
+  --text-secondary: #666;
+  --text-muted: #999;
+  --text-placeholder: #BFBFBF;
+
+  --bg-page: #F5F7FA;
+  --bg-card: #FFFFFF;
+  --bg-table-header: #FAFBFC;
+  --bg-table-hover: #FAFBFC;
+
+  --border: #F0F0F0;
+  --border-deep: #E5E7EB;
+  --border-input: #D9D9D9;
+
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-focus: 0 0 0 2px rgba(22,119,255,0.1);
+
+  --font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+/* ===== 基础：不改布局，只统一视觉 ===== */
+
+body.xy-safe-ui {
+  font-family: var(--font-family) !important;
+  font-size: 13px !important;
+  color: var(--text-primary) !important;
+  background: var(--bg-page) !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.3px !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+body.xy-safe-ui *,
+body.xy-safe-ui *::before,
+body.xy-safe-ui *::after {
+  box-sizing: border-box !important;
+}
+
+/* 字重克制：标题 500，正文 400 */
+body.xy-safe-ui :where(p, span, div, td, th, label, input, textarea, select, button, a) {
+  font-weight: 400;
+}
+
+body.xy-safe-ui :where(h1, h2, h3, h4, strong, .card-title, .page-title) {
+  font-weight: 500 !important;
+}
+
+/* ===== 内容区背景 ===== */
+
+body.xy-safe-ui main,
+body.xy-safe-ui .main,
+body.xy-safe-ui .content,
+body.xy-safe-ui .page-content,
+body.xy-safe-ui .app-main,
+body.xy-safe-ui [class*="content"],
+body.xy-safe-ui [class*="main"] {
+  background: var(--bg-page) !important;
+}
+
+/* ===== 页面标题 ===== */
+
+body.xy-safe-ui h1 {
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+  line-height: 1.4 !important;
+  margin-bottom: 4px !important;
+}
+
+body.xy-safe-ui h2 {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+}
+
+body.xy-safe-ui h3 {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+}
+
+body.xy-safe-ui p,
+body.xy-safe-ui .muted,
+body.xy-safe-ui .sub,
+body.xy-safe-ui .desc {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== 侧边栏：白底、蓝色选中 ===== */
+
+body.xy-safe-ui aside,
+body.xy-safe-ui .sidebar,
+body.xy-safe-ui .side-nav,
+body.xy-safe-ui [class*="sidebar"],
+body.xy-safe-ui [class*="sider"] {
+  background: #fff !important;
+  border-right: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+body.xy-safe-ui aside a,
+body.xy-safe-ui aside button,
+body.xy-safe-ui .sidebar a,
+body.xy-safe-ui .sidebar button,
+body.xy-safe-ui [class*="sidebar"] a,
+body.xy-safe-ui [class*="sidebar"] button,
+body.xy-safe-ui [class*="sider"] a,
+body.xy-safe-ui [class*="sider"] button {
+  border-radius: var(--radius) !important;
+  font-size: 13px !important;
+  color: var(--text-secondary) !important;
+  font-weight: 400 !important;
+  transition: all 0.15s ease !important;
+  box-shadow: none !important;
+}
+
+body.xy-safe-ui aside a:hover,
+body.xy-safe-ui aside button:hover,
+body.xy-safe-ui .sidebar a:hover,
+body.xy-safe-ui .sidebar button:hover,
+body.xy-safe-ui [class*="sidebar"] a:hover,
+body.xy-safe-ui [class*="sidebar"] button:hover {
+  background: #F5F5F5 !important;
+  color: var(--text-primary) !important;
+}
+
+body.xy-safe-ui aside a.active,
+body.xy-safe-ui aside button.active,
+body.xy-safe-ui .sidebar a.active,
+body.xy-safe-ui .sidebar button.active,
+body.xy-safe-ui [class*="sidebar"] a.active,
+body.xy-safe-ui [class*="sidebar"] button.active,
+body.xy-safe-ui aside a[aria-current="page"],
+body.xy-safe-ui .sidebar a[aria-current="page"] {
+  background: var(--primary) !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+}
+
+/* 分割线更淡 */
+body.xy-safe-ui aside hr,
+body.xy-safe-ui .sidebar hr,
+body.xy-safe-ui [class*="sidebar"] hr {
+  border: none !important;
+  border-top: 1px solid var(--border) !important;
+}
+
+/* ===== 卡片：白底、10px 圆角、轻阴影 ===== */
+
+body.xy-safe-ui .card,
+body.xy-safe-ui .xy-card,
+body.xy-safe-ui section,
+body.xy-safe-ui .panel,
+body.xy-safe-ui .box,
+body.xy-safe-ui .table-card,
+body.xy-safe-ui .filter-card,
+body.xy-safe-ui [class*="card"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* 卡片标题蓝色竖条 */
+body.xy-safe-ui .card > h2,
+body.xy-safe-ui .card > h3,
+body.xy-safe-ui section > h2,
+body.xy-safe-ui section > h3,
+body.xy-safe-ui [class*="card"] > h2,
+body.xy-safe-ui [class*="card"] > h3 {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+body.xy-safe-ui .card > h2::before,
+body.xy-safe-ui .card > h3::before,
+body.xy-safe-ui section > h2::before,
+body.xy-safe-ui section > h3::before,
+body.xy-safe-ui [class*="card"] > h2::before,
+body.xy-safe-ui [class*="card"] > h3::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 3px !important;
+  height: 14px !important;
+  background: var(--primary) !important;
+  border-radius: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+/* ===== 统计卡片 ===== */
+
+body.xy-safe-ui .stat-card,
+body.xy-safe-ui .stats-card,
+body.xy-safe-ui [class*="stat"] {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+body.xy-safe-ui .stat-label,
+body.xy-safe-ui [class*="stat"] .label,
+body.xy-safe-ui [class*="stat"] .stat-label {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  font-weight: 400 !important;
+}
+
+body.xy-safe-ui .stat-value,
+body.xy-safe-ui [class*="stat"] .value,
+body.xy-safe-ui [class*="stat"] .stat-value {
+  font-size: 24px !important;
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* ===== 表单 ===== */
+
+body.xy-safe-ui input,
+body.xy-safe-ui select,
+body.xy-safe-ui textarea {
+  font-family: var(--font-family) !important;
+  border: 1px solid var(--border-input) !important;
+  border-radius: var(--radius) !important;
+  background: #fff !important;
+  color: var(--text-primary) !important;
+  font-size: 13px !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: all 0.15s ease !important;
+}
+
+body.xy-safe-ui input:not([type="checkbox"]):not([type="radio"]),
+body.xy-safe-ui select {
+  min-height: 34px !important;
+  padding: 0 10px !important;
+}
+
+body.xy-safe-ui textarea {
+  padding: 10px 12px !important;
+  line-height: 1.6 !important;
+}
+
+body.xy-safe-ui input:focus,
+body.xy-safe-ui select:focus,
+body.xy-safe-ui textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow: var(--shadow-focus) !important;
+}
+
+body.xy-safe-ui input::placeholder,
+body.xy-safe-ui textarea::placeholder {
+  color: var(--text-placeholder) !important;
+}
+
+body.xy-safe-ui label,
+body.xy-safe-ui .form-label {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ===== 按钮 ===== */
+
+body.xy-safe-ui button,
+body.xy-safe-ui .btn,
+body.xy-safe-ui a.btn,
+body.xy-safe-ui input[type="submit"] {
+  min-height: 34px !important;
+  border-radius: var(--radius) !important;
+  font-size: 13px !important;
+  font-family: var(--font-family) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  box-shadow: none !important;
+}
+
+/* 主按钮 */
+body.xy-safe-ui button[type="submit"],
+body.xy-safe-ui input[type="submit"],
+body.xy-safe-ui .primary,
+body.xy-safe-ui .btn-primary,
+body.xy-safe-ui button[class*="primary"],
+body.xy-safe-ui a[class*="primary"] {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+body.xy-safe-ui button[type="submit"]:hover,
+body.xy-safe-ui input[type="submit"]:hover,
+body.xy-safe-ui .primary:hover,
+body.xy-safe-ui .btn-primary:hover {
+  background: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
+
+/* 默认按钮 */
+body.xy-safe-ui button:not([type="submit"]):not(.primary):not(.danger),
+body.xy-safe-ui .btn-default,
+body.xy-safe-ui .btn-secondary,
+body.xy-safe-ui .btn-o {
+  background: #fff !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-input) !important;
+}
+
+body.xy-safe-ui button:not([type="submit"]):not(.primary):not(.danger):hover,
+body.xy-safe-ui .btn-default:hover,
+body.xy-safe-ui .btn-secondary:hover,
+body.xy-safe-ui .btn-o:hover {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* 危险操作 */
+body.xy-safe-ui .danger,
+body.xy-safe-ui .btn-danger,
+body.xy-safe-ui button[class*="danger"],
+body.xy-safe-ui a[class*="danger"] {
+  color: var(--danger-text) !important;
+}
+
+/* ===== 表格 ===== */
+
+body.xy-safe-ui table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #fff !important;
+}
+
+body.xy-safe-ui thead th,
+body.xy-safe-ui th {
+  background: var(--bg-table-header) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  padding: 10px 14px !important;
+  text-align: left !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+body.xy-safe-ui tbody td,
+body.xy-safe-ui td {
+  padding: 10px 14px !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border) !important;
+  vertical-align: middle !important;
+}
+
+body.xy-safe-ui tbody tr:hover td {
+  background: var(--bg-table-hover) !important;
+}
+
+/* 表格操作列文字链接化 */
+body.xy-safe-ui td:last-child a,
+body.xy-safe-ui td:last-child button,
+body.xy-safe-ui .action-cell a,
+body.xy-safe-ui .action-cell button,
+body.xy-safe-ui .xy-taskpool-action-cell a,
+body.xy-safe-ui .xy-taskpool-action-cell button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  min-height: auto !important;
+  margin-right: 10px !important;
+  color: var(--primary) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+}
+
+body.xy-safe-ui td:last-child a:hover,
+body.xy-safe-ui td:last-child button:hover,
+body.xy-safe-ui .action-cell a:hover,
+body.xy-safe-ui .action-cell button:hover,
+body.xy-safe-ui .xy-taskpool-action-cell a:hover,
+body.xy-safe-ui .xy-taskpool-action-cell button:hover {
+  text-decoration: underline !important;
+}
+
+body.xy-safe-ui td:last-child a[href*="delete"],
+body.xy-safe-ui td:last-child button[class*="delete"],
+body.xy-safe-ui .action-cell .danger,
+body.xy-safe-ui .xy-taskpool-action-cell .danger {
+  color: var(--danger-text) !important;
+}
+
+/* ===== 标签 ===== */
+
+body.xy-safe-ui .tag,
+body.xy-safe-ui .badge,
+body.xy-safe-ui [class*="tag"],
+body.xy-safe-ui [class*="badge"],
+body.xy-safe-ui .xy-demo-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 2px 10px !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid transparent !important;
+}
+
+body.xy-safe-ui .tag-dot,
+body.xy-safe-ui .xy-demo-tag-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+/* ===== 筛选栏 ===== */
+
+body.xy-safe-ui .filter-bar,
+body.xy-safe-ui .filter-card,
+body.xy-safe-ui .search-bar,
+body.xy-safe-ui [class*="filter"] {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ===== 上传区域 ===== */
+
+body.xy-safe-ui .upload-area,
+body.xy-safe-ui .upload-zone,
+body.xy-safe-ui [class*="upload"] {
+  border: 1.5px dashed var(--border-input) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--bg-table-header) !important;
+  transition: all 0.2s ease !important;
+}
+
+body.xy-safe-ui .upload-area:hover,
+body.xy-safe-ui .upload-zone:hover,
+body.xy-safe-ui [class*="upload"]:hover {
+  border-color: var(--primary) !important;
+  background: var(--primary-bg) !important;
+}
+
+/* ===== 版本记录面板 ===== */
+
+body.xy-safe-ui .version-panel td,
+body.xy-safe-ui .xy-version-panel td {
+  background: var(--bg-table-header) !important;
+  border-bottom: 1px solid var(--border-deep) !important;
+}
+
+body.xy-safe-ui .version-item,
+body.xy-safe-ui .xy-version-item {
+  background: #fff !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid var(--border) !important;
+}
+
+body.xy-safe-ui .version-tag.current,
+body.xy-safe-ui .xy-version-tag {
+  background: var(--primary) !important;
+  color: #fff !important;
+}
+
+/* ===== 避免过重阴影和渐变 ===== */
+
+body.xy-safe-ui * {
+  text-shadow: none !important;
+}
+
+body.xy-safe-ui .card,
+body.xy-safe-ui [class*="card"],
+body.xy-safe-ui section,
+body.xy-safe-ui .panel,
+body.xy-safe-ui .box {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ===== 小屏幕 ===== */
+
+@media (max-width: 768px) {
+  body.xy-safe-ui table {
+    min-width: 900px !important;
+  }
+}

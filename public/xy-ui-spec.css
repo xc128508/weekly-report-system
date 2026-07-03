@@ -1,0 +1,533 @@
+/* =========================================================
+   解悠实习生日报系统 UI 规范皮肤 v2
+   目标：白底侧边栏 + 灰底内容区 + 白卡片 + 克制阴影
+   ========================================================= */
+
+:root {
+  --primary: #1677FF;
+  --primary-hover: #4096FF;
+  --primary-active: #0958D9;
+  --primary-bg: #E6F4FF;
+  --primary-border: #91CAFF;
+
+  --success: #52C41A;
+  --success-bg: #F6FFED;
+  --warning: #FAAD14;
+  --warning-bg: #FFFBE6;
+  --danger: #FF4D4F;
+  --danger-bg: #FFF2F0;
+  --danger-text: #F5222D;
+
+  --text-primary: #1F1F1F;
+  --text-secondary: #666;
+  --text-muted: #999;
+  --text-placeholder: #BFBFBF;
+
+  --bg-page: #F5F7FA;
+  --bg-card: #FFFFFF;
+  --bg-table-header: #FAFBFC;
+  --bg-table-hover: #FAFBFC;
+
+  --border: #F0F0F0;
+  --border-deep: #E5E7EB;
+  --border-input: #D9D9D9;
+
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-focus: 0 0 0 2px rgba(22,119,255,0.1);
+
+  --font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  --sidebar-width: 200px;
+}
+
+/* ===== 基础 ===== */
+
+html,
+body {
+  font-family: var(--font-family) !important;
+  font-size: 13px !important;
+  color: var(--text-primary) !important;
+  background: var(--bg-page) !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.3px !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+body,
+body * {
+  box-sizing: border-box !important;
+}
+
+/* 避免全站字重过重 */
+body :where(p, span, div, td, th, label, input, textarea, select, button, a) {
+  font-weight: 400;
+}
+
+body :where(h1, h2, h3, h4, .page-title, .card-title, .stat-value) {
+  font-weight: 500 !important;
+}
+
+/* ===== 左侧导航 ===== */
+
+aside,
+.sidebar,
+.side-nav,
+[class*="sidebar"],
+[class*="sider"] {
+  background: #fff !important;
+  border-right: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+aside a,
+aside button,
+.sidebar a,
+.sidebar button,
+.side-nav a,
+.side-nav button,
+[class*="sidebar"] a,
+[class*="sidebar"] button,
+[class*="sider"] a,
+[class*="sider"] button {
+  border-radius: var(--radius) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.15s ease !important;
+}
+
+aside a:hover,
+aside button:hover,
+.sidebar a:hover,
+.sidebar button:hover,
+.side-nav a:hover,
+.side-nav button:hover,
+[class*="sidebar"] a:hover,
+[class*="sidebar"] button:hover,
+[class*="sider"] a:hover,
+[class*="sider"] button:hover {
+  background: #F5F5F5 !important;
+  color: var(--text-primary) !important;
+}
+
+aside a.active,
+aside button.active,
+.sidebar a.active,
+.sidebar button.active,
+.side-nav a.active,
+.side-nav button.active,
+[class*="sidebar"] a.active,
+[class*="sidebar"] button.active,
+[class*="sider"] a.active,
+[class*="sider"] button.active,
+aside a[aria-current="page"],
+.sidebar a[aria-current="page"] {
+  background: var(--primary) !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+}
+
+/* 兼容当前系统蓝色选中块 */
+aside a[style*="background"],
+.sidebar a[style*="background"],
+[class*="sidebar"] a[style*="background"] {
+  border-radius: var(--radius) !important;
+}
+
+/* 侧边栏公司名 */
+aside strong,
+.sidebar strong,
+[class*="sidebar"] strong,
+[class*="sider"] strong {
+  font-weight: 500 !important;
+}
+
+/* ===== 内容区 ===== */
+
+main,
+.main,
+.content,
+.page-content,
+.app-main,
+[class*="content"],
+[class*="main"] {
+  background: var(--bg-page) !important;
+}
+
+/* 页面标题 */
+h1 {
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+  line-height: 1.4 !important;
+  margin-bottom: 4px !important;
+}
+
+h2 {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+}
+
+h3 {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+/* ===== 卡片 ===== */
+
+.card,
+.xy-card,
+section,
+.panel,
+.box,
+.table-card,
+.filter-card,
+[class*="card"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* 避免把按钮也误当 card */
+button[class*="card"],
+a[class*="card"] {
+  border-radius: var(--radius) !important;
+}
+
+/* 卡片内标题左侧蓝色竖条 */
+.card > h2,
+.xy-card > h2,
+section > h2,
+.panel > h2,
+.box > h2,
+[class*="card"] > h2 {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 14px !important;
+}
+
+.card > h2::before,
+.xy-card > h2::before,
+section > h2::before,
+.panel > h2::before,
+.box > h2::before,
+[class*="card"] > h2::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 3px !important;
+  height: 14px !important;
+  background: var(--primary) !important;
+  border-radius: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+/* 顶部欢迎区不要过重 */
+.xy-page-header,
+.page-header,
+.hero,
+[class*="header-card"] {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ===== 统计卡片 ===== */
+
+.stat-card,
+.stats-card,
+[class*="stat"] {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.stat-card .stat-label,
+[class*="stat"] .stat-label,
+.stat-label {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  font-weight: 400 !important;
+}
+
+.stat-card .stat-value,
+[class*="stat"] .stat-value,
+.stat-value {
+  font-size: 24px !important;
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* ===== 表单 ===== */
+
+input,
+textarea,
+select {
+  font-family: var(--font-family) !important;
+  border: 1px solid var(--border-input) !important;
+  border-radius: var(--radius) !important;
+  background: #fff !important;
+  color: var(--text-primary) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: all 0.15s ease !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select {
+  min-height: 34px !important;
+  padding: 0 10px !important;
+  font-size: 13px !important;
+}
+
+textarea {
+  padding: 10px !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: var(--shadow-focus) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-placeholder) !important;
+}
+
+label,
+.form-label {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: 6px !important;
+}
+
+/* ===== 按钮 ===== */
+
+button,
+.btn,
+a.btn,
+input[type="submit"] {
+  min-height: 34px !important;
+  border-radius: var(--radius) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  box-shadow: none !important;
+}
+
+/* 主按钮 */
+button[type="submit"],
+input[type="submit"],
+.btn-primary,
+.primary,
+a.primary,
+button.primary,
+button[class*="primary"],
+a[class*="primary"] {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+.btn-primary:hover,
+.primary:hover,
+a.primary:hover,
+button.primary:hover,
+button[class*="primary"]:hover,
+a[class*="primary"]:hover {
+  background: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
+
+/* 普通按钮 */
+button:not([type="submit"]):not(.xy-daily-task-add-btn):not(.xy-daily-task-remove-btn),
+.btn-default,
+.btn-secondary {
+  background: #fff !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-input) !important;
+}
+
+button:not([type="submit"]):hover,
+.btn-default:hover,
+.btn-secondary:hover {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* 删除危险按钮 */
+button.delete,
+button.danger,
+.btn-danger,
+a.delete,
+a.danger {
+  color: var(--danger-text) !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+/* ===== 表格 ===== */
+
+table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #fff !important;
+}
+
+thead th {
+  background: var(--bg-table-header) !important;
+  color: var(--text-secondary) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 10px 14px !important;
+  text-align: left !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+tbody td {
+  color: var(--text-primary) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid var(--border) !important;
+  vertical-align: middle !important;
+}
+
+tbody tr:hover td {
+  background: var(--bg-table-hover) !important;
+}
+
+/* 操作列：尽量文字化 */
+td:last-child a,
+td:last-child button,
+.action-cell a,
+.action-cell button {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  margin-right: 10px !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--primary) !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+td:last-child a:hover,
+td:last-child button:hover,
+.action-cell a:hover,
+.action-cell button:hover {
+  text-decoration: underline !important;
+}
+
+td:last-child a[href*="delete"],
+td:last-child button[class*="delete"],
+td:last-child button[class*="danger"] {
+  color: var(--danger-text) !important;
+}
+
+/* ===== 标签 ===== */
+
+.badge,
+.tag,
+.status,
+[class*="badge"],
+[class*="tag"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 2px 10px !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid transparent !important;
+}
+
+/* ===== 筛选栏 ===== */
+
+.filter-bar,
+.filter-card,
+.search-bar,
+[class*="filter"] {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ===== 任务进度条 ===== */
+
+.xy-progressbar-wrap,
+.xy-stable-progress,
+[class*="progress"] {
+  font-size: 13px !important;
+}
+
+.xy-progressbar-range {
+  accent-color: var(--primary) !important;
+}
+
+.xy-task-progress-tip {
+  border: 1px dashed var(--primary-border) !important;
+  border-radius: var(--radius-md) !important;
+  background: #fff !important;
+  color: var(--text-secondary) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+/* ===== 轻量修正：不要大面积蓝色阴影 ===== */
+
+* {
+  text-shadow: none !important;
+}
+
+/* 保留按钮阴影克制 */
+button,
+.card,
+[class*="card"] {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ===== 页面整体间距 ===== */
+
+main,
+.main,
+.content,
+.page-content {
+  padding: 20px 24px !important;
+}
+
+/* 移动端基础适配 */
+@media (max-width: 768px) {
+  main,
+  .main,
+  .content,
+  .page-content {
+    padding: 14px !important;
+  }
+
+  table {
+    min-width: 900px !important;
+  }
+}
