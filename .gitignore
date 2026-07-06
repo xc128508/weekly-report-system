@@ -39,3 +39,4 @@ _archive/
 tmp/
 temp/
 .cache/
+data/api-token.txt

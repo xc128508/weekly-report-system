@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 const DB_PATH = path.join(__dirname, '..', 'data', 'db.json');
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true, limit: '5mb' }));
+app.use(express.json({ limit: '5mb' }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(
   session({
@@ -463,8 +463,8 @@ function layout({ title, user, content }) {
   <title>${escapeHtml(title)} - 解悠数字科技（南京）有限公司</title>
   <link rel="stylesheet" href="/styles.css" />
 <link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
 <body>
   ${nav}
@@ -703,8 +703,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
 </html>`;
 }
@@ -1537,8 +1537,8 @@ app.get('/login', (req, res) => {
   <title>登录 - 解悠数字科技（南京）有限公司实习生周报系统</title>
   <link rel="stylesheet" href="/styles.css" />
 <link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
 <body class="login-body">
   <section class="login-card">
@@ -1561,8 +1561,8 @@ app.get('/login', (req, res) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
 </html>`);
 });
@@ -1887,8 +1887,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
           <!doctype html>
           <html>
           <head><meta charset="utf-8"><title>填写不完整</title><link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -1901,8 +1901,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -1921,8 +1921,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
           <!doctype html>
           <html>
           <head><meta charset="utf-8"><title>任务重复</title><link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -1935,8 +1935,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -1975,8 +1975,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
           <!doctype html>
           <html>
           <head><meta charset="utf-8"><title>今日已填写</title><link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -1989,8 +1989,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -2109,8 +2109,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
           <!doctype html>
           <html>
           <head><meta charset="utf-8"><title>填写不完整</title><link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -2122,8 +2122,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -2136,8 +2136,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
           <!doctype html>
           <html>
           <head><meta charset="utf-8"><title>进度错误</title><link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -2149,8 +2149,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -2173,8 +2173,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
           <!doctype html>
           <html>
           <head><meta charset="utf-8"><title>任务重复</title><link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -2186,8 +2186,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -2226,8 +2226,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
           <!doctype html>
           <html>
           <head><meta charset="utf-8"><title>今日已填写</title><link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -2239,8 +2239,8 @@ app.use('/intern/daily-tasks', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -2963,8 +2963,8 @@ function bossV2Layout({ title, subtitle, active = 'daily', body }) {
   <title>${bossV2Esc(title)} - 解悠数字科技（南京）有限公司</title>
   <link rel="stylesheet" href="/styles.css" />
 <link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
 <body class="boss-v2-page">
   <aside class="boss-v2-sidebar">
@@ -3007,8 +3007,8 @@ function bossV2Layout({ title, subtitle, active = 'daily', body }) {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
 </html>
   `;
@@ -4020,8 +4020,8 @@ app.use('/admin/task-pool', (req, res, next) => {
             <meta charset="utf-8">
             <title>任务标题过长</title>
           <link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -4034,8 +4034,8 @@ app.use('/admin/task-pool', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -4080,8 +4080,8 @@ app.use('/admin/task-pool', (req, res, next) => {
             <meta charset="utf-8">
             <title>任务标题过长</title>
           <link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
           <body>
             <script>
@@ -4094,8 +4094,8 @@ app.use('/admin/task-pool', (req, res, next) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
           </html>
         `);
@@ -5658,8 +5658,8 @@ app.get('/boss/weekly-management', requireLogin, requireBoss, (req, res) => {
   <title>周报管理 - 解悠数字科技（南京）有限公司</title>
   <link rel="stylesheet" href="/styles.css" />
 <link rel="stylesheet" href="/admin-taskpool-template.css?v=2026070304">
-<link rel="stylesheet" href="/xy-safe-ui-polish.css?v=2026070301">
-<link rel="stylesheet" href="/xy-responsive-ui.css?v=2026070303">
+<link rel="stylesheet" href="/intern-mobile-only.css?v=2026070302">
+<link rel="stylesheet" href="/admin-taskpool-version-edit.css?v=2026070601">
 </head>
 <body class="boss-v2-page">
   <aside class="boss-v2-sidebar">
@@ -5771,12 +5771,833 @@ app.get('/boss/weekly-management', requireLogin, requireBoss, (req, res) => {
 <script src="/intern-remove-old-progress-row.js?v=2026070301"></script>
 <script src="/admin-taskpool-template.js?v=2026070304"></script>
 <script src="/admin-taskpool-remove-claim-status.js?v=2026070301"></script>
-<script src="/xy-safe-ui-polish.js?v=2026070301"></script>
-<script src="/xy-responsive-ui.js?v=2026070303"></script>
+<script src="/intern-mobile-only.js?v=2026070302"></script>
+<script src="/admin-taskpool-version-edit.js?v=2026070601"></script>
 </body>
 </html>
   `);
 });
+
+// ==================== XY_WEEKLY_REPORT_IMPORT_API_BEGIN ====================
+// 周报导入 API：供内部文档转周报工具调用
+// 认证方式：请求头 x-api-token 或 body.token
+app.get('/api/weekly-reports/import/health', (req, res) => {
+  try {
+    const fsLocal = require('fs');
+    const pathLocal = require('path');
+    const tokenPath = pathLocal.join(__dirname, '..', 'data', 'api-token.txt');
+
+    const savedToken = fsLocal.existsSync(tokenPath)
+      ? fsLocal.readFileSync(tokenPath, 'utf8').trim()
+      : '';
+
+    const inputToken = String(
+      req.headers['x-api-token'] ||
+      req.query.token ||
+      ''
+    ).trim();
+
+    if (!savedToken || inputToken !== savedToken) {
+      return res.status(401).json({
+        success: false,
+        message: 'API token 无效'
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: 'weekly report import api is ready'
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: 'health check failed',
+      error: err.message
+    });
+  }
+});
+
+app.post('/api/weekly-reports/import', (req, res) => {
+  try {
+    const fsLocal = require('fs');
+    const pathLocal = require('path');
+    const cryptoLocal = require('crypto');
+
+    const tokenPath = pathLocal.join(__dirname, '..', 'data', 'api-token.txt');
+    const dbPath = pathLocal.join(__dirname, '..', 'data', 'db.json');
+
+    const savedToken = fsLocal.existsSync(tokenPath)
+      ? fsLocal.readFileSync(tokenPath, 'utf8').trim()
+      : '';
+
+    const inputToken = String(
+      req.headers['x-api-token'] ||
+      req.body.token ||
+      ''
+    ).trim();
+
+    if (!savedToken || inputToken !== savedToken) {
+      return res.status(401).json({
+        success: false,
+        message: 'API token 无效'
+      });
+    }
+
+    const body = req.body || {};
+
+    const username = String(body.username || body.account || '').trim();
+    const startDate = String(body.startDate || body.weekStart || body.periodStart || '').trim();
+    const endDate = String(body.endDate || body.weekEnd || body.periodEnd || '').trim();
+    const content = String(body.content || body.markdown || body.reportContent || '').trim();
+
+    if (!username) {
+      return res.status(400).json({
+        success: false,
+        message: '缺少 username'
+      });
+    }
+
+    if (!startDate || !endDate) {
+      return res.status(400).json({
+        success: false,
+        message: '缺少 startDate 或 endDate'
+      });
+    }
+
+    if (!content) {
+      return res.status(400).json({
+        success: false,
+        message: '缺少 content 或 markdown'
+      });
+    }
+
+    if (!fsLocal.existsSync(dbPath)) {
+      return res.status(500).json({
+        success: false,
+        message: '未找到 data/db.json'
+      });
+    }
+
+    const db = JSON.parse(fsLocal.readFileSync(dbPath, 'utf8'));
+
+    function arr(name) {
+      if (!Array.isArray(db[name])) db[name] = [];
+      return db[name];
+    }
+
+    function nowText() {
+      const d = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      return (
+        d.getFullYear() + '-' +
+        pad(d.getMonth() + 1) + '-' +
+        pad(d.getDate()) + ' ' +
+        pad(d.getHours()) + ':' +
+        pad(d.getMinutes()) + ':' +
+        pad(d.getSeconds())
+      );
+    }
+
+    function makeId(prefix) {
+      return prefix + '_' + Date.now() + '_' + cryptoLocal.randomBytes(4).toString('hex');
+    }
+
+    function getUserList() {
+      if (Array.isArray(db.users)) return db.users;
+      if (Array.isArray(db.interns)) return db.interns;
+      if (Array.isArray(db.accounts)) return db.accounts;
+      return [];
+    }
+
+    function getUserName(user) {
+      return (
+        user.realName ||
+        user.name ||
+        user.nickname ||
+        user.displayName ||
+        user.username ||
+        username
+      );
+    }
+
+    function getUserPosition(user) {
+      return (
+        user.position ||
+        user.job ||
+        user.roleName ||
+        user.title ||
+        ''
+      );
+    }
+
+    function parseSection(md, titleList) {
+      const lines = String(md || '').split(/\r?\n/);
+      let collecting = false;
+      const result = [];
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+
+        if (/^#{1,6}\s+/.test(trimmed)) {
+          const heading = trimmed.replace(/^#{1,6}\s+/, '').trim();
+
+          if (titleList.some(t => heading.indexOf(t) !== -1)) {
+            collecting = true;
+            continue;
+          }
+
+          if (collecting) break;
+        }
+
+        if (collecting) result.push(line);
+      }
+
+      return result.join('\n').trim();
+    }
+
+    const users = getUserList();
+
+    const user = users.find(u => {
+      const candidates = [
+        u.username,
+        u.account,
+        u.userName,
+        u.realName,
+        u.name,
+        u.id,
+        u.userId
+      ].filter(Boolean).map(x => String(x).trim());
+
+      return candidates.includes(username);
+    });
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: '未找到用户：' + username
+      });
+    }
+
+    const userId = user.id || user.userId || user.username || username;
+    const realName = getUserName(user);
+    const position = getUserPosition(user);
+    const now = nowText();
+
+    const reports = arr('reports');
+
+    const workContent = String(body.workContent || body.thisWeekWork || parseSection(content, ['本周工作内容', '工作内容']) || '').trim();
+    const achievements = String(body.achievements || body.results || parseSection(content, ['本周成果', '工作成果', '成果']) || '').trim();
+    const problems = String(body.problems || body.issue || parseSection(content, ['遇到的问题', '问题']) || '').trim();
+    const solutions = String(body.solutions || body.solution || parseSection(content, ['解决方案', '处理方案']) || '').trim();
+    const nextPlan = String(body.nextPlan || body.nextWeekPlan || parseSection(content, ['下周计划', '计划']) || '').trim();
+    const supportNeeded = String(body.supportNeeded || body.support || parseSection(content, ['需要支持', '支持']) || '').trim();
+
+    const existingIndex = reports.findIndex(r => {
+      const rUser = String(r.username || r.account || r.userId || r.internId || '').trim();
+      const rStart = String(r.startDate || r.weekStart || r.periodStart || '').trim();
+      const rEnd = String(r.endDate || r.weekEnd || r.periodEnd || '').trim();
+
+      return (
+        (rUser === username || rUser === String(userId)) &&
+        rStart === startDate &&
+        rEnd === endDate
+      );
+    });
+
+    const reportId = existingIndex >= 0
+      ? (reports[existingIndex].id || reports[existingIndex].reportId || makeId('weekly'))
+      : makeId('weekly');
+
+    const report = {
+      ...(existingIndex >= 0 ? reports[existingIndex] : {}),
+
+      id: reportId,
+      reportId,
+
+      type: 'weekly',
+      source: 'api_import',
+
+      userId,
+      internId: userId,
+      username,
+      account: username,
+      realName,
+      name: realName,
+      position,
+
+      startDate,
+      endDate,
+      weekStart: startDate,
+      weekEnd: endDate,
+      periodStart: startDate,
+      periodEnd: endDate,
+      period: startDate + ' 至 ' + endDate,
+
+      title: body.title || ('实习周报 ' + startDate + ' 至 ' + endDate),
+
+      content,
+      markdown: content,
+      reportContent: content,
+
+      workContent,
+      thisWeekWork: workContent,
+      achievements,
+      results: achievements,
+      problems,
+      issue: problems,
+      solutions,
+      solution: solutions,
+      nextPlan,
+      nextWeekPlan: nextPlan,
+      supportNeeded,
+      support: supportNeeded,
+
+      status: body.status || 'submitted',
+      submittedAt: existingIndex >= 0
+        ? (reports[existingIndex].submittedAt || now)
+        : now,
+      updatedAt: now
+    };
+
+    if (existingIndex >= 0) {
+      reports[existingIndex] = report;
+    } else {
+      reports.push(report);
+    }
+
+    fsLocal.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+
+    return res.json({
+      success: true,
+      message: existingIndex >= 0 ? '周报已更新' : '周报导入成功',
+      reportId,
+      username,
+      realName,
+      startDate,
+      endDate,
+      mode: existingIndex >= 0 ? 'update' : 'create'
+    });
+  } catch (err) {
+    console.error('[API weekly import error]', err);
+    return res.status(500).json({
+      success: false,
+      message: '周报导入失败',
+      error: err.message
+    });
+  }
+});
+// ==================== XY_WEEKLY_REPORT_IMPORT_API_END ====================
+
+// ==================== XY_TASK_VERSION_API_BEGIN ====================
+// 任务总表版本记录 API：用于 /admin/task-pool 展开面板的版本新增、修改、删除
+app.get('/api/admin/task-pool/:id/versions', requireLogin, requireAdmin, (req, res) => {
+  try {
+    const fsLocal = require('fs');
+    const pathLocal = require('path');
+    const cryptoLocal = require('crypto');
+    const dbPath = pathLocal.join(__dirname, '..', 'data', 'db.json');
+
+    function readDbLocal() {
+      return JSON.parse(fsLocal.readFileSync(dbPath, 'utf8'));
+    }
+
+    function writeDbLocal(db) {
+      fsLocal.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+    }
+
+    function makeId() {
+      return 'ver_' + Date.now() + '_' + cryptoLocal.randomBytes(4).toString('hex');
+    }
+
+    function dateOnly(v) {
+      if (!v) return '';
+      return String(v).slice(0, 10);
+    }
+
+    function findTask(db, id) {
+      const target = String(id || '').trim();
+      const keys = ['taskPool', 'tasks', 'taskPools', 'task_pool'];
+
+      for (const key of keys) {
+        if (!Array.isArray(db[key])) continue;
+
+        const item = db[key].find(t => {
+          const ids = [
+            t.id,
+            t._id,
+            t.taskId,
+            t.taskPoolId,
+            t.poolTaskId
+          ].filter(Boolean).map(x => String(x).trim());
+
+          return ids.includes(target);
+        });
+
+        if (item) return item;
+      }
+
+      for (const [key, value] of Object.entries(db)) {
+        if (!Array.isArray(value)) continue;
+
+        const item = value.find(t => {
+          if (!t || typeof t !== 'object') return false;
+
+          const ids = [
+            t.id,
+            t._id,
+            t.taskId,
+            t.taskPoolId,
+            t.poolTaskId
+          ].filter(Boolean).map(x => String(x).trim());
+
+          return ids.includes(target);
+        });
+
+        if (item) return item;
+      }
+
+      return null;
+    }
+
+    function normalizeVersion(v, index) {
+      return {
+        id: v.id || v.versionId || ('ver_' + index),
+        version: v.version || v.v || v.name || ('v' + (index + 1) + '.0'),
+        desc: v.desc || v.description || v.content || v.note || '',
+        time: dateOnly(v.time || v.date || v.createdAt || v.updatedAt || ''),
+        current: v.current !== false
+      };
+    }
+
+    const db = readDbLocal();
+    const task = findTask(db, req.params.id);
+
+    if (!task) {
+      return res.status(404).json({
+        success: false,
+        message: '未找到任务'
+      });
+    }
+
+    if (!Array.isArray(task.versions)) {
+      const initDesc = String(
+        task.taskContent ||
+        task.content ||
+        task.description ||
+        task.remark ||
+        task.note ||
+        '初始版本'
+      ).trim();
+
+      const initTime = dateOnly(
+        task.expectedDate ||
+        task.dueDate ||
+        task.deadline ||
+        task.endDate ||
+        task.createdAt ||
+        ''
+      );
+
+      task.versions = [{
+        id: makeId(),
+        version: 'v1.0',
+        desc: initDesc && initDesc !== '-' ? initDesc : '初始版本',
+        time: initTime,
+        current: true,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }];
+
+      writeDbLocal(db);
+    }
+
+    return res.json({
+      success: true,
+      versions: task.versions.map(normalizeVersion)
+    });
+  } catch (err) {
+    console.error('[task version list error]', err);
+    return res.status(500).json({
+      success: false,
+      message: '读取版本记录失败',
+      error: err.message
+    });
+  }
+});
+
+app.post('/api/admin/task-pool/:id/versions', requireLogin, requireAdmin, (req, res) => {
+  try {
+    const fsLocal = require('fs');
+    const pathLocal = require('path');
+    const cryptoLocal = require('crypto');
+    const dbPath = pathLocal.join(__dirname, '..', 'data', 'db.json');
+
+    function readDbLocal() {
+      return JSON.parse(fsLocal.readFileSync(dbPath, 'utf8'));
+    }
+
+    function writeDbLocal(db) {
+      fsLocal.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+    }
+
+    function makeId() {
+      return 'ver_' + Date.now() + '_' + cryptoLocal.randomBytes(4).toString('hex');
+    }
+
+    function findTask(db, id) {
+      const target = String(id || '').trim();
+      const keys = ['taskPool', 'tasks', 'taskPools', 'task_pool'];
+
+      for (const key of keys) {
+        if (!Array.isArray(db[key])) continue;
+
+        const item = db[key].find(t => {
+          const ids = [
+            t.id,
+            t._id,
+            t.taskId,
+            t.taskPoolId,
+            t.poolTaskId
+          ].filter(Boolean).map(x => String(x).trim());
+
+          return ids.includes(target);
+        });
+
+        if (item) return item;
+      }
+
+      for (const value of Object.values(db)) {
+        if (!Array.isArray(value)) continue;
+
+        const item = value.find(t => {
+          if (!t || typeof t !== 'object') return false;
+
+          const ids = [
+            t.id,
+            t._id,
+            t.taskId,
+            t.taskPoolId,
+            t.poolTaskId
+          ].filter(Boolean).map(x => String(x).trim());
+
+          return ids.includes(target);
+        });
+
+        if (item) return item;
+      }
+
+      return null;
+    }
+
+    const db = readDbLocal();
+    const task = findTask(db, req.params.id);
+
+    if (!task) {
+      return res.status(404).json({
+        success: false,
+        message: '未找到任务'
+      });
+    }
+
+    const version = String(req.body.version || req.body.v || '').trim();
+    const desc = String(req.body.desc || req.body.description || '').trim();
+    const time = String(req.body.time || req.body.date || '').trim();
+
+    if (!version) {
+      return res.status(400).json({
+        success: false,
+        message: '请填写版本号'
+      });
+    }
+
+    if (!desc) {
+      return res.status(400).json({
+        success: false,
+        message: '请填写版本描述'
+      });
+    }
+
+    if (!Array.isArray(task.versions)) task.versions = [];
+
+    task.versions.forEach(v => {
+      v.current = false;
+    });
+
+    const item = {
+      id: makeId(),
+      version,
+      v: version,
+      desc,
+      description: desc,
+      time,
+      date: time,
+      current: true,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    task.versions.unshift(item);
+
+    writeDbLocal(db);
+
+    return res.json({
+      success: true,
+      message: '版本已添加',
+      version: item
+    });
+  } catch (err) {
+    console.error('[task version add error]', err);
+    return res.status(500).json({
+      success: false,
+      message: '添加版本失败',
+      error: err.message
+    });
+  }
+});
+
+app.post('/api/admin/task-pool/:id/versions/:versionId', requireLogin, requireAdmin, (req, res) => {
+  try {
+    const fsLocal = require('fs');
+    const pathLocal = require('path');
+    const dbPath = pathLocal.join(__dirname, '..', 'data', 'db.json');
+
+    function readDbLocal() {
+      return JSON.parse(fsLocal.readFileSync(dbPath, 'utf8'));
+    }
+
+    function writeDbLocal(db) {
+      fsLocal.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+    }
+
+    function findTask(db, id) {
+      const target = String(id || '').trim();
+      const keys = ['taskPool', 'tasks', 'taskPools', 'task_pool'];
+
+      for (const key of keys) {
+        if (!Array.isArray(db[key])) continue;
+
+        const item = db[key].find(t => {
+          const ids = [
+            t.id,
+            t._id,
+            t.taskId,
+            t.taskPoolId,
+            t.poolTaskId
+          ].filter(Boolean).map(x => String(x).trim());
+
+          return ids.includes(target);
+        });
+
+        if (item) return item;
+      }
+
+      for (const value of Object.values(db)) {
+        if (!Array.isArray(value)) continue;
+
+        const item = value.find(t => {
+          if (!t || typeof t !== 'object') return false;
+
+          const ids = [
+            t.id,
+            t._id,
+            t.taskId,
+            t.taskPoolId,
+            t.poolTaskId
+          ].filter(Boolean).map(x => String(x).trim());
+
+          return ids.includes(target);
+        });
+
+        if (item) return item;
+      }
+
+      return null;
+    }
+
+    const db = readDbLocal();
+    const task = findTask(db, req.params.id);
+
+    if (!task || !Array.isArray(task.versions)) {
+      return res.status(404).json({
+        success: false,
+        message: '未找到任务或版本记录'
+      });
+    }
+
+    const versionId = String(req.params.versionId || '').trim();
+
+    const item = task.versions.find((v, index) => {
+      const ids = [
+        v.id,
+        v.versionId,
+        'ver_' + index
+      ].filter(Boolean).map(x => String(x).trim());
+
+      return ids.includes(versionId);
+    });
+
+    if (!item) {
+      return res.status(404).json({
+        success: false,
+        message: '未找到版本'
+      });
+    }
+
+    const version = String(req.body.version || req.body.v || '').trim();
+    const desc = String(req.body.desc || req.body.description || '').trim();
+    const time = String(req.body.time || req.body.date || '').trim();
+
+    if (!version) {
+      return res.status(400).json({
+        success: false,
+        message: '请填写版本号'
+      });
+    }
+
+    if (!desc) {
+      return res.status(400).json({
+        success: false,
+        message: '请填写版本描述'
+      });
+    }
+
+    item.version = version;
+    item.v = version;
+    item.desc = desc;
+    item.description = desc;
+    item.time = time;
+    item.date = time;
+    item.updatedAt = new Date().toISOString();
+
+    writeDbLocal(db);
+
+    return res.json({
+      success: true,
+      message: '版本已保存',
+      version: item
+    });
+  } catch (err) {
+    console.error('[task version update error]', err);
+    return res.status(500).json({
+      success: false,
+      message: '保存版本失败',
+      error: err.message
+    });
+  }
+});
+
+app.post('/api/admin/task-pool/:id/versions/:versionId/delete', requireLogin, requireAdmin, (req, res) => {
+  try {
+    const fsLocal = require('fs');
+    const pathLocal = require('path');
+    const dbPath = pathLocal.join(__dirname, '..', 'data', 'db.json');
+
+    function readDbLocal() {
+      return JSON.parse(fsLocal.readFileSync(dbPath, 'utf8'));
+    }
+
+    function writeDbLocal(db) {
+      fsLocal.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+    }
+
+    function findTask(db, id) {
+      const target = String(id || '').trim();
+      const keys = ['taskPool', 'tasks', 'taskPools', 'task_pool'];
+
+      for (const key of keys) {
+        if (!Array.isArray(db[key])) continue;
+
+        const item = db[key].find(t => {
+          const ids = [
+            t.id,
+            t._id,
+            t.taskId,
+            t.taskPoolId,
+            t.poolTaskId
+          ].filter(Boolean).map(x => String(x).trim());
+
+          return ids.includes(target);
+        });
+
+        if (item) return item;
+      }
+
+      for (const value of Object.values(db)) {
+        if (!Array.isArray(value)) continue;
+
+        const item = value.find(t => {
+          if (!t || typeof t !== 'object') return false;
+
+          const ids = [
+            t.id,
+            t._id,
+            t.taskId,
+            t.taskPoolId,
+            t.poolTaskId
+          ].filter(Boolean).map(x => String(x).trim());
+
+          return ids.includes(target);
+        });
+
+        if (item) return item;
+      }
+
+      return null;
+    }
+
+    const db = readDbLocal();
+    const task = findTask(db, req.params.id);
+
+    if (!task || !Array.isArray(task.versions)) {
+      return res.status(404).json({
+        success: false,
+        message: '未找到任务或版本记录'
+      });
+    }
+
+    const versionId = String(req.params.versionId || '').trim();
+
+    const before = task.versions.length;
+
+    task.versions = task.versions.filter((v, index) => {
+      const ids = [
+        v.id,
+        v.versionId,
+        'ver_' + index
+      ].filter(Boolean).map(x => String(x).trim());
+
+      return !ids.includes(versionId);
+    });
+
+    if (task.versions.length === before) {
+      return res.status(404).json({
+        success: false,
+        message: '未找到版本'
+      });
+    }
+
+    if (task.versions.length > 0 && !task.versions.some(v => v.current === true)) {
+      task.versions[0].current = true;
+    }
+
+    writeDbLocal(db);
+
+    return res.json({
+      success: true,
+      message: '版本已删除'
+    });
+  } catch (err) {
+    console.error('[task version delete error]', err);
+    return res.status(500).json({
+      success: false,
+      message: '删除版本失败',
+      error: err.message
+    });
+  }
+});
+// ==================== XY_TASK_VERSION_API_END ====================
+
+
 
 
 app.listen(PORT, HOST, () => {
