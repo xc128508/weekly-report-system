@@ -1,0 +1,344 @@
+/* =========================================================
+   老板端统一导航：服务端渲染版
+   公司名称在最上方，功能模块在中间，账号管理在最下方
+   ========================================================= */
+
+html,
+body.xy-boss4-page {
+  margin: 0 !important;
+  min-height: 100vh !important;
+  background: #F5F7FA !important;
+  color: #1F1F1F !important;
+  font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+body.xy-boss4-page {
+  padding-left: 260px !important;
+  box-sizing: border-box !important;
+}
+
+/* 新导航 */
+.xy-boss4-navrail {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 260px !important;
+  height: 100vh !important;
+  box-sizing: border-box !important;
+  padding: 24px 16px !important;
+  background: #FFFFFF !important;
+  border-right: 1px solid #E5E7EB !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  z-index: 9999 !important;
+}
+
+/* 1. 公司名称：最上方 */
+.xy-boss4-brand {
+  order: 1 !important;
+  flex: 0 0 auto !important;
+  padding-bottom: 18px !important;
+  margin-bottom: 22px !important;
+  border-bottom: 1px solid #F0F0F0 !important;
+}
+
+.xy-boss4-company {
+  color: #1677FF !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  white-space: normal !important;
+}
+
+.xy-boss4-system {
+  margin-top: 2px !important;
+  color: #666 !important;
+  font-size: 12px !important;
+}
+
+/* 2. 功能模块：中间 */
+.xy-boss4-function {
+  order: 2 !important;
+  flex: 0 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+/* 3. 账号管理：最下方 */
+.xy-boss4-account {
+  order: 3 !important;
+  margin-top: auto !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #F0F0F0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.xy-boss4-title {
+  padding: 0 12px 6px !important;
+  color: #8FA0B8 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.xy-boss4-link,
+.xy-boss4-logout-btn {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+  padding: 0 14px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #1F2937 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  text-align: left !important;
+  cursor: pointer !important;
+}
+
+.xy-boss4-link:hover,
+.xy-boss4-logout-btn:hover {
+  background: #F5F7FA !important;
+  color: #1677FF !important;
+}
+
+.xy-boss4-link.active {
+  background: #EAF2FF !important;
+  color: #1677FF !important;
+}
+
+.xy-boss4-logout-form {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.xy-boss4-identity {
+  margin-top: 18px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #F0F0F0 !important;
+  color: #6B7280 !important;
+  font-size: 13px !important;
+}
+
+/* 主内容 */
+.xy-boss4-main {
+  box-sizing: border-box !important;
+  padding: 28px !important;
+  background: #F5F7FA !important;
+}
+
+.xy-boss4-header {
+  background: #FFFFFF !important;
+  border: 1px solid #DBEAFE !important;
+  border-radius: 16px !important;
+  padding: 24px 28px !important;
+  margin-bottom: 18px !important;
+}
+
+.xy-boss4-header h1 {
+  margin: 0 !important;
+  color: #0F172A !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+}
+
+.xy-boss4-header p {
+  margin: 8px 0 0 !important;
+  color: #64748B !important;
+  font-size: 14px !important;
+}
+
+/* 卡片和表格 */
+.xy-boss4-stats {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.xy-boss4-stat,
+.xy-boss4-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+}
+
+.xy-boss4-stat {
+  padding: 18px 20px !important;
+}
+
+.xy-boss4-stat span {
+  display: block !important;
+  color: #64748B !important;
+  font-size: 13px !important;
+  margin-bottom: 6px !important;
+}
+
+.xy-boss4-stat strong {
+  color: #2563EB !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+}
+
+.xy-boss4-card {
+  padding: 20px 24px !important;
+  margin-bottom: 18px !important;
+}
+
+.xy-boss4-card h2 {
+  margin: 0 0 8px !important;
+  color: #0F172A !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.xy-boss4-card p {
+  margin: 0 0 14px !important;
+  color: #64748B !important;
+}
+
+.xy-boss4-filter {
+  display: grid !important;
+  grid-template-columns: 1fr 220px auto auto !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.xy-boss4-filter input,
+.xy-boss4-filter select {
+  height: 38px !important;
+  border: 1px solid #D9D9D9 !important;
+  border-radius: 8px !important;
+  padding: 0 12px !important;
+  font-size: 13px !important;
+  box-sizing: border-box !important;
+}
+
+.xy-boss4-btn {
+  height: 38px !important;
+  padding: 0 18px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.xy-boss4-btn.primary {
+  background: #1677FF !important;
+  color: #fff !important;
+}
+
+.xy-boss4-btn.default {
+  background: #F1F5F9 !important;
+  color: #334155 !important;
+}
+
+.xy-boss4-table-wrap {
+  overflow-x: auto !important;
+}
+
+.xy-boss4-table {
+  width: 100% !important;
+  min-width: 900px !important;
+  border-collapse: collapse !important;
+  background: #fff !important;
+}
+
+.xy-boss4-table th {
+  background: #EFF6FF !important;
+  color: #174A7C !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 12px !important;
+  border-bottom: 1px solid #DBEAFE !important;
+  text-align: center !important;
+}
+
+.xy-boss4-table td {
+  color: #334155 !important;
+  font-size: 13px !important;
+  padding: 12px !important;
+  border-bottom: 1px solid #E5E7EB !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.xy-boss4-table tbody tr:hover td {
+  background: #FAFBFC !important;
+}
+
+.xy-boss4-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 3px 10px !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  background: #EAF2FF !important;
+  color: #1677FF !important;
+}
+
+.xy-boss4-tag.approved {
+  background: #F6FFED !important;
+  color: #389E0D !important;
+}
+
+.xy-boss4-tag.rejected {
+  background: #FFF2F0 !important;
+  color: #CF1322 !important;
+}
+
+.xy-boss4-view-link {
+  color: #1677FF !important;
+  text-decoration: none !important;
+  background: #EFF6FF !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+}
+
+.xy-boss4-view-link:hover {
+  text-decoration: underline !important;
+}
+
+@media (max-width: 900px) {
+  body.xy-boss4-page {
+    padding-left: 0 !important;
+  }
+
+  .xy-boss4-navrail {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid #E5E7EB !important;
+  }
+
+  .xy-boss4-account {
+    margin-top: 18px !important;
+  }
+
+  .xy-boss4-main {
+    padding: 18px !important;
+  }
+
+  .xy-boss4-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .xy-boss4-filter {
+    grid-template-columns: 1fr !important;
+  }
+}

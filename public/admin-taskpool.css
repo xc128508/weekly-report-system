@@ -1,0 +1,829 @@
+/* =========================================================
+   admin-taskpool.css
+   管理员任务总表统一样式文件
+   由以下文件整合：
+   - admin-taskpool-template.css
+   - admin-taskpool-version-edit.css
+   - admin-taskpool-content-panel.css
+   - admin-taskpool-font-plus.css
+   ========================================================= */
+
+/* ===== BEGIN admin-taskpool-template.css ===== */
+/* =========================================================
+   任务总表专用模板样式
+   只作用于 /admin/task-pool，不影响其他页面
+   ========================================================= */
+
+body.xy-taskpool-template-page {
+  --p: #1677FF;
+  --p-d: #0958D9;
+  --p-bg: #F0F5FF;
+  --p-b: #91CAFF;
+  --s: #52C41A;
+  --s-bg: #F6FFED;
+  --w: #FAAD14;
+  --w-bg: #FFFBE6;
+  --d: #FF4D4F;
+  --d-bg: #FFF2F0;
+  --bg: #F2F4F7;
+  --card: #fff;
+  --t1: #1F1F1F;
+  --t2: #666;
+  --t3: #999;
+  --t4: #BFBFBF;
+  --b1: #E5E7EB;
+  --b2: #F0F0F0;
+  --b3: #F5F5F5;
+  --r: 6px;
+  --r2: 8px;
+  --r3: 10px;
+  --ff: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+
+  background: var(--bg) !important;
+  font-family: var(--ff) !important;
+  color: var(--t1) !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.3px !important;
+}
+
+/* 只在任务总表内容区做克制风格 */
+body.xy-taskpool-template-page main,
+body.xy-taskpool-template-page .main,
+body.xy-taskpool-template-page .content,
+body.xy-taskpool-template-page [class*="main"],
+body.xy-taskpool-template-page [class*="content"] {
+  background: var(--bg) !important;
+}
+
+/* 页面头部 */
+body.xy-taskpool-template-page h1 {
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  color: var(--t1) !important;
+}
+
+body.xy-taskpool-template-page h2,
+body.xy-taskpool-template-page h3 {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--t1) !important;
+}
+
+/* 卡片 */
+body.xy-taskpool-template-page .card,
+body.xy-taskpool-template-page section,
+body.xy-taskpool-template-page .panel,
+body.xy-taskpool-template-page .box,
+body.xy-taskpool-template-page [class*="card"] {
+  background: var(--card) !important;
+  border-radius: var(--r3) !important;
+  border: 0.5px solid var(--b1) !important;
+  box-shadow: none !important;
+}
+
+/* 卡片标题左侧蓝条 */
+body.xy-taskpool-template-page .card > h2,
+body.xy-taskpool-template-page .card > h3,
+body.xy-taskpool-template-page section > h2,
+body.xy-taskpool-template-page section > h3,
+body.xy-taskpool-template-page [class*="card"] > h2,
+body.xy-taskpool-template-page [class*="card"] > h3 {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  margin-bottom: 14px !important;
+}
+
+body.xy-taskpool-template-page .card > h2::before,
+body.xy-taskpool-template-page .card > h3::before,
+body.xy-taskpool-template-page section > h2::before,
+body.xy-taskpool-template-page section > h3::before,
+body.xy-taskpool-template-page [class*="card"] > h2::before,
+body.xy-taskpool-template-page [class*="card"] > h3::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 3px !important;
+  height: 16px !important;
+  background: var(--p) !important;
+  border-radius: 2px !important;
+}
+
+/* 统计卡片 */
+body.xy-taskpool-template-page .stat-card,
+body.xy-taskpool-template-page [class*="stat"] {
+  background: #fff !important;
+  border-radius: var(--r3) !important;
+  border: 0.5px solid var(--b1) !important;
+  box-shadow: none !important;
+}
+
+body.xy-taskpool-template-page .stat-label,
+body.xy-taskpool-template-page [class*="stat"] .label,
+body.xy-taskpool-template-page [class*="stat"] .stat-label {
+  font-size: 12px !important;
+  color: var(--t3) !important;
+  font-weight: 400 !important;
+}
+
+body.xy-taskpool-template-page .stat-value,
+body.xy-taskpool-template-page [class*="stat"] .value,
+body.xy-taskpool-template-page [class*="stat"] .stat-value {
+  font-size: 24px !important;
+  color: var(--t1) !important;
+  font-weight: 500 !important;
+}
+
+/* 筛选栏 */
+body.xy-taskpool-template-page input,
+body.xy-taskpool-template-page select,
+body.xy-taskpool-template-page textarea {
+  border: 0.5px solid var(--b1) !important;
+  border-radius: var(--r) !important;
+  background: #fff !important;
+  color: var(--t1) !important;
+  font-size: 12px !important;
+  font-family: var(--ff) !important;
+  box-shadow: none !important;
+}
+
+body.xy-taskpool-template-page input:focus,
+body.xy-taskpool-template-page select:focus,
+body.xy-taskpool-template-page textarea:focus {
+  outline: none !important;
+  border-color: var(--p) !important;
+  box-shadow: 0 0 0 2px rgba(22,119,255,0.08) !important;
+}
+
+body.xy-taskpool-template-page button,
+body.xy-taskpool-template-page .btn,
+body.xy-taskpool-template-page a.btn {
+  border-radius: var(--r) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  box-shadow: none !important;
+}
+
+/* 隐藏旧的二级 tab */
+body.xy-taskpool-template-page .xy-task-filter-tabs {
+  display: none !important;
+}
+
+/* 任务总表模板表格 */
+body.xy-taskpool-template-page .xy-taskpool-demo-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #fff !important;
+  table-layout: fixed !important;
+  min-width: 1080px !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table th {
+  text-align: left !important;
+  font-weight: 400 !important;
+  font-size: 11px !important;
+  color: var(--t3) !important;
+  padding: 10px 12px !important;
+  border-bottom: 0.5px solid var(--b1) !important;
+  background: #FAFBFC !important;
+  white-space: nowrap !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table td {
+  padding: 12px !important;
+  border-bottom: 0.5px solid var(--b2) !important;
+  font-size: 12px !important;
+  color: var(--t2) !important;
+  vertical-align: middle !important;
+  font-weight: 400 !important;
+  background: #fff !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table tr:hover td {
+  background: #FAFBFC !important;
+}
+
+/* 列宽 */
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(1),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(1) {
+  width: 92px !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(2),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(2) {
+  width: 82px !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(3),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(3) {
+  width: 320px !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(4),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(4) {
+  width: 110px !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(5),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(5) {
+  width: 92px !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(6),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(6) {
+  width: 100px !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(7),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(7) {
+  width: 170px !important;
+}
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(8),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(8) {
+  width: 160px !important;
+}
+
+/* 任务名称 */
+.xy-task-name-cell {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+}
+
+.xy-task-name-text {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: var(--t2) !important;
+}
+
+.xy-expand-arrow {
+  display: inline-block !important;
+  width: 12px !important;
+  color: var(--t3) !important;
+  font-size: 10px !important;
+  transition: transform 0.2s !important;
+  flex-shrink: 0 !important;
+}
+
+.xy-taskpool-row.open .xy-expand-arrow {
+  transform: rotate(90deg) !important;
+}
+
+/* 标签 */
+.xy-demo-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  font-size: 10px !important;
+  padding: 2px 8px !important;
+  border-radius: 20px !important;
+  white-space: nowrap !important;
+  font-weight: 400 !important;
+}
+
+.xy-demo-tag-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+.xy-tag-progress {
+  background: #E6FFFB !important;
+  color: #08964C !important;
+}
+
+.xy-tag-progress .xy-demo-tag-dot {
+  background: #52C41A !important;
+}
+
+.xy-tag-done {
+  background: #F6FFED !important;
+  color: #389E0D !important;
+}
+
+.xy-tag-done .xy-demo-tag-dot {
+  background: #52C41A !important;
+}
+
+.xy-tag-claimed {
+  background: #FFFBE6 !important;
+  color: #AD6800 !important;
+}
+
+.xy-tag-claimed .xy-demo-tag-dot {
+  background: #FAAD14 !important;
+}
+
+.xy-tag-closed {
+  background: #F5F5F5 !important;
+  color: #999 !important;
+}
+
+.xy-tag-closed .xy-demo-tag-dot {
+  background: #BFBFBF !important;
+}
+
+.xy-tag-pending {
+  background: #F5F5F5 !important;
+  color: #999 !important;
+}
+
+.xy-tag-pending .xy-demo-tag-dot {
+  background: #D9D9D9 !important;
+}
+
+/* 操作列文字链接 */
+.xy-taskpool-action-cell {
+  display: flex !important;
+  gap: 14px !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+}
+
+.xy-taskpool-action-cell a,
+.xy-taskpool-action-cell button {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  min-height: auto !important;
+  color: var(--p) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+}
+
+.xy-taskpool-action-cell a:hover,
+.xy-taskpool-action-cell button:hover {
+  opacity: 0.75 !important;
+  text-decoration: underline !important;
+}
+
+.xy-taskpool-action-cell a[href*="delete"],
+.xy-taskpool-action-cell button[class*="delete"],
+.xy-taskpool-action-cell button[class*="danger"],
+.xy-taskpool-action-cell form[action*="delete"] button {
+  color: #F5222D !important;
+}
+
+/* 版本记录展开面板 */
+.xy-version-panel {
+  display: none;
+}
+
+.xy-version-panel.show {
+  display: table-row !important;
+}
+
+.xy-version-panel td {
+  background: #FAFBFC !important;
+  border-bottom: 0.5px solid #E5E7EB !important;
+  padding: 0 !important;
+}
+
+.xy-version-inner {
+  padding: 16px 24px !important;
+}
+
+.xy-version-header {
+  font-size: 11px !important;
+  color: var(--t3) !important;
+  margin-bottom: 10px !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.xy-version-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.xy-version-item {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  background: #fff !important;
+  border-radius: var(--r) !important;
+  border: 0.5px solid var(--b2) !important;
+}
+
+.xy-version-tag {
+  font-size: 10px !important;
+  padding: 1px 7px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  font-weight: 500 !important;
+  background: var(--p) !important;
+  color: #fff !important;
+}
+
+.xy-version-desc {
+  font-size: 12px !important;
+  color: var(--t2) !important;
+  flex: 1 !important;
+}
+
+.xy-version-time {
+  font-size: 10px !important;
+  color: var(--t4) !important;
+  flex-shrink: 0 !important;
+}
+
+/* 表格外层可滚动 */
+body.xy-taskpool-template-page .xy-taskpool-table-wrap {
+  overflow-x: auto !important;
+}
+
+/* ===== 任务总表：删除认领状态列后的列宽 ===== */
+body.xy-taskpool-template-page .xy-claim-status-removed,
+body.xy-taskpool-template-page .xy-taskpool-demo-table {
+  min-width: 980px !important;
+}
+
+/* 任务名称加宽 */
+body.xy-taskpool-template-page .xy-claim-status-removed th:nth-child(3),
+body.xy-taskpool-template-page .xy-claim-status-removed td:nth-child(3),
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(3),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(3) {
+  width: 380px !important;
+}
+
+/* 认领人列 */
+body.xy-taskpool-template-page .xy-claim-status-removed th:nth-child(6),
+body.xy-taskpool-template-page .xy-claim-status-removed td:nth-child(6),
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(6),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(6) {
+  width: 190px !important;
+}
+
+/* 操作列 */
+body.xy-taskpool-template-page .xy-claim-status-removed th:nth-child(7),
+body.xy-taskpool-template-page .xy-claim-status-removed td:nth-child(7),
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(7),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(7) {
+  width: 160px !important;
+}
+
+/* ===== 任务总表：任务名称完整显示，不省略 ===== */
+
+body.xy-taskpool-template-page .xy-taskpool-demo-table {
+  table-layout: auto !important;
+  min-width: 1080px !important;
+}
+
+/* 任务名称列加宽 */
+body.xy-taskpool-template-page .xy-taskpool-demo-table th:nth-child(3),
+body.xy-taskpool-template-page .xy-taskpool-demo-table td:nth-child(3),
+body.xy-taskpool-template-page .xy-claim-status-removed th:nth-child(3),
+body.xy-taskpool-template-page .xy-claim-status-removed td:nth-child(3) {
+  width: 430px !important;
+  min-width: 430px !important;
+  max-width: 430px !important;
+}
+
+/* 任务名称文字完整显示，自动换行 */
+body.xy-taskpool-template-page .xy-task-name-cell {
+  align-items: flex-start !important;
+  white-space: normal !important;
+}
+
+body.xy-taskpool-template-page .xy-task-name-text {
+  display: inline !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.6 !important;
+  max-width: none !important;
+}
+
+/* ===== XY_ALIGN_TASKPOOL_COLUMNS_BEGIN ===== */
+/* 任务总表：除任务名称外，其余列统一居中；只改文字对齐，不改布局 */
+
+/* 表头默认居中 */
+body.xy-taskpool-template-page .xy-taskpool-demo-table thead th {
+  text-align: center !important;
+}
+
+/* 普通数据行默认居中，避免影响版本记录展开面板 */
+body.xy-taskpool-template-page .xy-taskpool-demo-table tbody tr:not(.xy-version-panel) > td {
+  text-align: center !important;
+}
+
+/* 第 3 列：任务名称保持左对齐，方便阅读长文本 */
+body.xy-taskpool-template-page .xy-taskpool-demo-table thead th:nth-child(3),
+body.xy-taskpool-template-page .xy-taskpool-demo-table tbody tr:not(.xy-version-panel) > td:nth-child(3) {
+  text-align: left !important;
+}
+
+/* 任务名称内部文字保持左对齐 */
+body.xy-taskpool-template-page .xy-task-name-cell,
+body.xy-taskpool-template-page .xy-task-name-text {
+  text-align: left !important;
+}
+
+/* 状态标签在单元格内居中显示 */
+body.xy-taskpool-template-page .xy-taskpool-demo-table tbody tr:not(.xy-version-panel) > td .tag,
+body.xy-taskpool-template-page .xy-taskpool-demo-table tbody tr:not(.xy-version-panel) > td [class*="tag"],
+body.xy-taskpool-template-page .xy-taskpool-demo-table tbody tr:not(.xy-version-panel) > td [class*="badge"] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 操作列文字链接居中显示，但仍保持文字链接样式 */
+body.xy-taskpool-template-page .xy-taskpool-action-cell,
+body.xy-taskpool-template-page .action-cell {
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+/* ===== XY_ALIGN_TASKPOOL_COLUMNS_END ===== */
+
+/* ===== END admin-taskpool-template.css ===== */
+
+/* ===== BEGIN admin-taskpool-version-edit.css ===== */
+/* 任务总表版本记录编辑区 */
+.xy-real-version-box {
+  padding: 16px 24px;
+  background: #FAFBFC;
+}
+
+.xy-real-version-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.xy-real-version-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  margin-right: 10px;
+}
+
+.xy-real-version-status {
+  font-size: 11px;
+  color: #999;
+}
+
+.xy-real-version-add-btn,
+.xy-real-version-save-add,
+.xy-real-version-cancel-add,
+.xy-real-version-save,
+.xy-real-version-delete {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+}
+
+.xy-real-version-add-btn,
+.xy-real-version-save-add,
+.xy-real-version-save {
+  color: #1677FF;
+}
+
+.xy-real-version-cancel-add,
+.xy-real-version-delete {
+  color: #F5222D;
+}
+
+.xy-real-version-add-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid #91CAFF;
+  border-radius: 6px;
+}
+
+.xy-real-version-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.xy-real-version-item {
+  display: grid;
+  grid-template-columns: 90px minmax(220px, 1fr) 140px 42px 42px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fff;
+  border: 1px solid #F0F0F0;
+  border-radius: 6px;
+}
+
+.xy-real-version-input {
+  height: 30px;
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
+  padding: 0 8px;
+  font-size: 12px;
+  font-family: inherit;
+  background: #fff;
+  color: #1F1F1F;
+}
+
+.xy-real-version-input:focus {
+  outline: none;
+  border-color: #1677FF;
+  box-shadow: 0 0 0 2px rgba(22,119,255,0.08);
+}
+
+.xy-real-version-empty {
+  padding: 14px 12px;
+  text-align: center;
+  color: #999;
+  background: #fff;
+  border: 1px dashed #E5E7EB;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .xy-real-version-item {
+    grid-template-columns: 1fr;
+  }
+
+  .xy-real-version-add-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ===== END admin-taskpool-version-edit.css ===== */
+
+/* ===== BEGIN admin-taskpool-content-panel.css ===== */
+/* 管理员任务总表：任务内容模块，显示在版本记录上方 */
+
+body.xy-admin-task-content-page .xy-admin-task-content-box {
+  background: #FFFFFF !important;
+  border: 1px solid #F0F0F0 !important;
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  margin: 0 0 12px 0 !important;
+}
+
+body.xy-admin-task-content-page .xy-admin-task-content-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-bottom: 8px !important;
+  color: #1F1F1F !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+body.xy-admin-task-content-page .xy-admin-task-content-title::before {
+  content: "" !important;
+  width: 3px !important;
+  height: 14px !important;
+  border-radius: 999px !important;
+  background: #1677FF !important;
+}
+
+body.xy-admin-task-content-page .xy-admin-task-content-text {
+  color: #666 !important;
+  font-size: 13px !important;
+  line-height: 1.8 !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+}
+
+body.xy-admin-task-content-page .xy-admin-task-content-empty {
+  color: #999 !important;
+}
+
+/* ===== END admin-taskpool-content-panel.css ===== */
+
+/* ===== BEGIN admin-taskpool-font-plus.css ===== */
+/* 仅管理员任务总表字体放大一号 */
+body.xy-admin-taskpool-font-plus .card,
+body.xy-admin-taskpool-font-plus table,
+body.xy-admin-taskpool-font-plus .task-pool-table,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table,
+body.xy-admin-taskpool-font-plus table,
+body.xy-admin-taskpool-font-plus th,
+body.xy-admin-taskpool-font-plus td,
+body.xy-admin-taskpool-font-plus button,
+body.xy-admin-taskpool-font-plus input,
+body.xy-admin-taskpool-font-plus select,
+body.xy-admin-taskpool-font-plus textarea,
+body.xy-admin-taskpool-font-plus .link-button,
+body.xy-admin-taskpool-font-plus .ghost-link,
+body.xy-admin-taskpool-font-plus .secondary {
+  font-size: 13px !important;
+}
+
+body.xy-admin-taskpool-font-plus table th {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+body.xy-admin-taskpool-font-plus table td {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
+body.xy-admin-taskpool-font-plus .page-title h1,
+body.xy-admin-taskpool-font-plus h1 {
+  font-size: 26px !important;
+}
+
+body.xy-admin-taskpool-font-plus .page-title p,
+body.xy-admin-taskpool-font-plus .muted,
+body.xy-admin-taskpool-font-plus .hint {
+  font-size: 16px !important;
+}
+
+body.xy-admin-taskpool-font-plus .xy-task-title-btn,
+body.xy-admin-taskpool-font-plus .xy-admin-task-title-btn,
+body.xy-admin-taskpool-font-plus td:first-child button {
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+body.xy-admin-taskpool-font-plus .xy-version-panel,
+body.xy-admin-taskpool-font-plus .xy-version-panel-row,
+body.xy-admin-taskpool-font-plus .xy-admin-task-content-box {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
+/* ===== XY_TASKPOOL_FONT_PLUS_FINAL_BEGIN ===== */
+body.xy-admin-taskpool-font-plus .task-pool-table,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table,
+body.xy-admin-taskpool-font-plus table {
+  font-size: 16px !important;
+}
+
+body.xy-admin-taskpool-font-plus .task-pool-table th,
+body.xy-admin-taskpool-font-plus .task-pool-table td,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table th,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table td,
+body.xy-admin-taskpool-font-plus table th,
+body.xy-admin-taskpool-font-plus table td {
+  font-size: 16px !important;
+  line-height: 1.72 !important;
+}
+
+body.xy-admin-taskpool-font-plus .task-pool-table thead th,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table thead th,
+body.xy-admin-taskpool-font-plus table thead th {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+/* 操作列保持小一号 */
+body.xy-admin-taskpool-font-plus .task-pool-table td:last-child,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table td:last-child,
+body.xy-admin-taskpool-font-plus table td:last-child,
+body.xy-admin-taskpool-font-plus .task-pool-table th:last-child,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table th:last-child,
+body.xy-admin-taskpool-font-plus table th:last-child {
+  font-size: 13px !important;
+}
+
+body.xy-admin-taskpool-font-plus .task-pool-table td:last-child a,
+body.xy-admin-taskpool-font-plus .task-pool-table td:last-child button,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table td:last-child a,
+body.xy-admin-taskpool-font-plus .xy-taskpool-demo-table td:last-child button,
+body.xy-admin-taskpool-font-plus table td:last-child a,
+body.xy-admin-taskpool-font-plus table td:last-child button,
+body.xy-admin-taskpool-font-plus table td:last-child .link-button,
+body.xy-admin-taskpool-font-plus table td:last-child .ghost,
+body.xy-admin-taskpool-font-plus table td:last-child .small {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+/* 展开后的任务内容区域也放大一号 */
+body.xy-admin-taskpool-font-plus .xy-version-panel,
+body.xy-admin-taskpool-font-plus .xy-real-version-box,
+body.xy-admin-taskpool-font-plus .xy-admin-task-content-box,
+body.xy-admin-taskpool-font-plus .xy-admin-task-content-box *,
+body.xy-admin-taskpool-font-plus .xy-version-panel * {
+  font-size: 16px !important;
+  line-height: 1.72 !important;
+}
+/* ===== XY_TASKPOOL_FONT_PLUS_FINAL_END ===== */
+
+/* ===== END admin-taskpool-font-plus.css ===== */

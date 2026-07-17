@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": "46c204b9-0b83-4044-a74d-2583aee7e113",
+      "username": "admin",
+      "passwordHash": "",
+      "realName": "管理员",
+      "position": "进程监督管理员",
+      "role": "admin",
+      "createdAt": "2026-06-30T01:46:06.110Z",
+      "password": "123456",
+      "token": "",
+      "session": ""
+    },
+    {
+      "id": "0f6185fd-7783-45b9-920f-3fec0bd39bae",
+      "username": "boss",
+      "passwordHash": "",
+      "realName": "负责人",
+      "position": "团队负责人",
+      "role": "boss",
+      "createdAt": "2026-06-30T01:46:06.180Z",
+      "updatedAt": "2026-07-03T01:33:50.730Z",
+      "password": "123456",
+      "token": "",
+      "session": ""
+    }
+  ],
+  "reports": [],
+  "feedbacks": [],
+  "dailyTasks": [],
+  "taskPool": []
+}

@@ -1,0 +1,47 @@
+# 依赖
+node_modules/
+package-lock.json
+
+# 真实业务数据，绝对不要上传
+data/db.json
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# 环境变量
+.env
+.env.*
+!.env.example
+
+# 日志
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 上传文件/附件
+uploads/
+public/uploads/
+
+# 备份和归档
+*.bak
+*.bak-*
+*_backup*
+backup/
+backups/
+cleanup_archive/
+_archive/
+
+# 系统文件
+.DS_Store
+
+# 临时文件
+tmp/
+temp/
+.cache/
+data/api-token.txt
+code_review/
+cleanup_reports/
+responsive-source-export-*
+server-html-css-js-index.txt

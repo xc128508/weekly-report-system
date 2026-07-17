@@ -1,0 +1,86 @@
+/* 统一每日任务进度条样式：填写页、修改页共用 */
+.xy-daily-progressbar-card {
+  margin: 18px 0 !important;
+  padding: 18px !important;
+  border: 1px solid #bfdbfe !important;
+  background: #eff6ff !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+.xy-daily-progressbar-card * {
+  box-sizing: border-box !important;
+}
+
+.xy-daily-progressbar-top {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 12px !important;
+  color: #0f172a !important;
+}
+
+.xy-daily-progressbar-title {
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  color: #0f172a !important;
+}
+
+.xy-daily-progressbar-value {
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  color: #2563eb !important;
+}
+
+.xy-daily-progressbar-track {
+  height: 10px !important;
+  background: #e5e7eb !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  margin: 10px 0 !important;
+  width: 100% !important;
+}
+
+.xy-daily-progressbar-fill {
+  height: 100% !important;
+  background: #2563eb !important;
+  border-radius: 999px !important;
+  width: 0%;
+  transition: width .15s ease !important;
+}
+
+.xy-daily-progressbar-range {
+  width: 100% !important;
+  display: block !important;
+  margin: 14px 0 0 !important;
+}
+
+.xy-daily-progressbar-ticks {
+  display: flex !important;
+  justify-content: space-between !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+  margin-top: 8px !important;
+}
+
+.xy-daily-progressbar-tip {
+  margin: 12px 0 0 !important;
+  padding: 10px 12px !important;
+  border: 1px dashed #93c5fd !important;
+  border-radius: 12px !important;
+  color: #475569 !important;
+  background: #f8fbff !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* 禁止左侧栏出现进度条 */
+.xy-left-sidebar .xy-daily-progressbar-card,
+.xy-left-sidebar .xy-progressbar-wrap,
+.xy-left-sidebar .xy-linked-progressbar-wrap,
+aside .xy-daily-progressbar-card,
+nav .xy-daily-progressbar-card,
+.sidebar .xy-daily-progressbar-card {
+  display: none !important;
+}

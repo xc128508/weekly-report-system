@@ -1,0 +1,220 @@
+/* 实习生任务认领页：后端渲染任务工作台，前端只保留轻量页面标识 */
+.xy-intern-taskpool-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 0 18px;
+}
+
+.xy-intern-taskpool-summary > div {
+  min-height: 74px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.xy-intern-taskpool-summary span {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.xy-intern-taskpool-summary strong {
+  color: #0f172a;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.xy-intern-taskpool-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.xy-intern-task-card {
+  min-width: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.xy-intern-task-card.is-mine {
+  border-color: #bfdbfe;
+}
+
+.xy-intern-task-card.is-pending {
+  border-color: #fde68a;
+}
+
+.xy-intern-task-card-head,
+.xy-intern-task-progress-top,
+.xy-intern-task-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.xy-intern-task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.xy-intern-task-meta span,
+.xy-intern-task-state {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.xy-intern-task-state {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.xy-intern-task-card-title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 800;
+  letter-spacing: 0;
+  word-break: break-word;
+}
+
+.xy-intern-task-progress {
+  display: grid;
+  gap: 7px;
+}
+
+.xy-intern-task-progress-top {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.xy-intern-task-progress-top strong {
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.xy-intern-task-progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.xy-intern-task-progress-track span {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  background: #2563eb;
+}
+
+.xy-intern-task-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.xy-intern-task-info-grid > div {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #eef2f7;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.xy-intern-task-info-grid span {
+  display: block;
+  margin-bottom: 4px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.xy-intern-task-info-grid strong {
+  display: block;
+  color: #0f172a;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.xy-intern-task-content {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.xy-intern-task-content summary {
+  min-height: 40px;
+  padding: 10px 12px;
+  cursor: pointer;
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 800;
+  list-style-position: inside;
+}
+
+.xy-intern-task-content > div {
+  padding: 0 12px 12px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.75;
+  word-break: break-word;
+}
+
+.xy-intern-task-card-actions {
+  margin-top: auto;
+  min-height: 36px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.xy-intern-task-action-form {
+  display: inline-flex;
+  margin: 0;
+}
+
+.xy-intern-task-empty {
+  grid-column: 1 / -1;
+  padding: 28px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .xy-intern-taskpool-summary,
+  .xy-intern-taskpool-board,
+  .xy-intern-task-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .xy-intern-task-card {
+    padding: 14px;
+  }
+}

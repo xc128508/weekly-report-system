@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    container_name: weekly-report-system
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 8082
+    ports:
+      - "10100:8082"
+    volumes:
+      - ${HOME}/data/weekly-report-system:/app/data

@@ -1,0 +1,321 @@
+/* =========================================================
+   老板端页面重建样式
+   使用全新 xy-boss3-* class，避免被旧 boss-v2 样式影响
+   只作用于老板端页面
+   ========================================================= */
+
+html,
+body.xy-boss3-page {
+  margin: 0 !important;
+  min-height: 100vh !important;
+  background: #F5F7FA !important;
+  color: #1F1F1F !important;
+  font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.2px !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body.xy-boss3-page {
+  display: flex !important;
+}
+
+/* 左侧导航 */
+.xy-boss3-navrail {
+  width: 260px !important;
+  min-height: 100vh !important;
+  box-sizing: border-box !important;
+  padding: 24px 16px !important;
+  background: #FFFFFF !important;
+  border-right: 1px solid #E5E7EB !important;
+  flex-shrink: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+}
+
+.xy-boss3-brand {
+  padding-bottom: 18px !important;
+  margin-bottom: 22px !important;
+  border-bottom: 1px solid #F0F0F0 !important;
+}
+
+.xy-boss3-company {
+  color: #1677FF !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  white-space: normal !important;
+}
+
+.xy-boss3-system {
+  margin-top: 2px !important;
+  color: #666 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+
+.xy-boss3-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  margin-bottom: 20px !important;
+}
+
+.xy-boss3-group.system {
+  margin-top: 4px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #F0F0F0 !important;
+}
+
+.xy-boss3-title {
+  padding: 0 12px 6px !important;
+  color: #8FA0B8 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+}
+
+.xy-boss3-link,
+.xy-boss3-logout-btn {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+  padding: 0 14px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #1F2937 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+}
+
+.xy-boss3-link:hover,
+.xy-boss3-logout-btn:hover {
+  background: #F5F7FA !important;
+  color: #1677FF !important;
+}
+
+.xy-boss3-link.active {
+  background: #EAF2FF !important;
+  color: #1677FF !important;
+}
+
+.xy-boss3-logout-form {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.xy-boss3-identity {
+  margin-top: 18px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #F0F0F0 !important;
+  color: #6B7280 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+
+/* 主内容区 */
+.xy-boss3-main {
+  flex: 1 !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  padding: 28px !important;
+  background: #F5F7FA !important;
+}
+
+.xy-boss3-header {
+  background: #FFFFFF !important;
+  border: 1px solid #DBEAFE !important;
+  border-radius: 16px !important;
+  padding: 24px 28px !important;
+  margin-bottom: 18px !important;
+}
+
+.xy-boss3-header h1 {
+  margin: 0 !important;
+  color: #0F172A !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+.xy-boss3-header p {
+  margin: 8px 0 0 !important;
+  color: #64748B !important;
+  font-size: 14px !important;
+}
+
+/* 兼容原 boss-v2 内容组件，让主体视觉继续正常 */
+.xy-boss3-page .boss-v2-stats {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.xy-boss3-page .boss-v2-stat,
+.xy-boss3-page .boss-v2-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+}
+
+.xy-boss3-page .boss-v2-stat {
+  padding: 18px 20px !important;
+}
+
+.xy-boss3-page .boss-v2-stat span {
+  display: block !important;
+  color: #64748B !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  margin-bottom: 6px !important;
+}
+
+.xy-boss3-page .boss-v2-stat strong {
+  color: #2563EB !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+}
+
+.xy-boss3-page .boss-v2-card {
+  padding: 20px 24px !important;
+  margin-bottom: 18px !important;
+}
+
+.xy-boss3-page .boss-v2-card h2 {
+  margin: 0 0 8px !important;
+  color: #0F172A !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.xy-boss3-page .boss-v2-card p {
+  margin: 0 0 14px !important;
+  color: #64748B !important;
+}
+
+.xy-boss3-page table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #FFFFFF !important;
+}
+
+.xy-boss3-page th {
+  background: #EFF6FF !important;
+  color: #174A7C !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 12px !important;
+  border-bottom: 1px solid #DBEAFE !important;
+  text-align: center !important;
+}
+
+.xy-boss3-page td {
+  color: #334155 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  padding: 12px !important;
+  border-bottom: 1px solid #E5E7EB !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+.xy-boss3-page tbody tr:hover td {
+  background: #FAFBFC !important;
+}
+
+.xy-boss3-page .boss-v2-title-cell,
+.xy-boss3-page .boss-v2-content-cell {
+  text-align: left !important;
+}
+
+.xy-boss3-page .boss-v2-small-link,
+.xy-boss3-page .boss-v2-primary-link {
+  color: #1677FF !important;
+  text-decoration: none !important;
+}
+
+.xy-boss3-page .boss-v2-small-link:hover,
+.xy-boss3-page .boss-v2-primary-link:hover {
+  text-decoration: underline !important;
+}
+
+@media (max-width: 900px) {
+  body.xy-boss3-page {
+    display: block !important;
+  }
+
+  .xy-boss3-navrail {
+    width: 100% !important;
+    min-height: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid #E5E7EB !important;
+  }
+
+  .xy-boss3-main {
+    padding: 18px !important;
+  }
+
+  .xy-boss3-page .boss-v2-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ===== XY_BOSS3_ALL_PAGES_COMPAT_BEGIN ===== */
+/* 老板端所有页面兼容：即使内容区还残留 boss-v2-main，也按新布局显示 */
+
+body.xy-boss3-page .boss-v2-main {
+  flex: 1 !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  padding: 28px !important;
+  background: #F5F7FA !important;
+}
+
+body.xy-boss3-page .boss-v2-header {
+  background: #FFFFFF !important;
+  border: 1px solid #DBEAFE !important;
+  border-radius: 16px !important;
+  padding: 24px 28px !important;
+  margin-bottom: 18px !important;
+}
+
+body.xy-boss3-page .boss-v2-header h1 {
+  margin: 0 !important;
+  color: #0F172A !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+body.xy-boss3-page .boss-v2-header p {
+  margin: 8px 0 0 !important;
+  color: #64748B !important;
+  font-size: 14px !important;
+}
+
+/* 防止任何旧 boss-v2 sidebar 样式干扰新导航 */
+body.xy-boss3-page .xy-boss3-navrail,
+body.xy-boss3-page .xy-boss3-navrail * {
+  box-sizing: border-box !important;
+}
+
+body.xy-boss3-page .xy-boss3-navrail {
+  position: sticky !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+/* ===== XY_BOSS3_ALL_PAGES_COMPAT_END ===== */

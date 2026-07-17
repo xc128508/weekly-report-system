@@ -1,0 +1,231 @@
+/* =========================================================
+   实习生周报系统 · UI 基础优化层
+   执行范围：测试环境
+   目标：参考 UI 规范统一字体、颜色、卡片、表格、按钮、输入框
+   原则：不改核心数据逻辑、不改业务交互、不重建 DOM
+   ========================================================= */
+
+:root {
+  --primary: #1677FF;
+  --primary-hover: #4096FF;
+  --primary-active: #0958D9;
+  --primary-bg: #E6F4FF;
+  --primary-border: #91CAFF;
+
+  --success: #52C41A;
+  --success-bg: #F6FFED;
+  --warning: #FAAD14;
+  --warning-bg: #FFFBE6;
+  --danger: #FF4D4F;
+  --danger-bg: #FFF2F0;
+  --danger-text: #F5222D;
+
+  --text-primary: #1F1F1F;
+  --text-secondary: #666;
+  --text-muted: #999;
+  --text-placeholder: #BFBFBF;
+
+  --bg-page: #F5F7FA;
+  --bg-card: #FFFFFF;
+  --bg-table-header: #FAFBFC;
+  --bg-table-hover: #FAFBFC;
+
+  --border: #F0F0F0;
+  --border-deep: #E5E7EB;
+  --border-input: #D9D9D9;
+
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-focus: 0 0 0 2px rgba(22,119,255,0.10);
+
+  --font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+}
+
+/* 只做基础字体统一，不改变布局宽高 */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: var(--font-family) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+}
+
+/* 字重统一：避免 700 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+  font-weight: 500 !important;
+}
+
+body,
+p,
+span,
+div,
+td,
+input,
+select,
+textarea,
+a {
+  font-weight: 400;
+}
+
+th,
+label,
+button,
+.btn,
+.tag,
+.badge {
+  font-weight: 500 !important;
+}
+
+/* 输入框：只统一视觉，不改布局 */
+input,
+select,
+textarea {
+  border-color: var(--border-input);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow: var(--shadow-focus) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-placeholder);
+}
+
+/* 按钮：不改变原始 display 和宽度，只统一颜色、圆角、字重 */
+button,
+.btn,
+a.btn,
+input[type="submit"] {
+  border-radius: var(--radius);
+  font-weight: 500 !important;
+  box-shadow: none;
+}
+
+button[type="submit"]:not(.ghost),
+.btn-primary,
+.btn-p {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+button[type="submit"]:not(.ghost):hover,
+.btn-primary:hover,
+.btn-p:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* 表格：统一视觉，不改表格结构 */
+table {
+  border-collapse: collapse;
+}
+
+thead th {
+  background: var(--bg-table-header);
+  color: var(--text-secondary);
+  font-weight: 500 !important;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody td {
+  color: var(--text-secondary);
+  border-bottom-color: var(--border);
+}
+
+tbody tr:hover td {
+  background: var(--bg-table-hover);
+}
+
+/* 操作列：保持纯文字链接 */
+td:last-child a,
+td:last-child button,
+.action-cell a,
+.action-cell button,
+.xy-taskpool-action-cell a,
+.xy-taskpool-action-cell button {
+  box-shadow: none !important;
+}
+
+.action-cell a,
+.xy-taskpool-action-cell a,
+.act-link,
+.btn-link {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.action-cell a:hover,
+.xy-taskpool-action-cell a:hover,
+.act-link:hover,
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* 删除类操作 */
+.act-danger,
+.btn-d,
+td:last-child .danger,
+td:last-child button.danger {
+  color: var(--danger-text) !important;
+}
+
+/* 卡片：只统一视觉，不改现有尺寸和位置 */
+.card,
+.panel,
+.box {
+  background: var(--bg-card);
+  border-color: var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 卡片标题：仅在已有标题结构下增强，不新增布局 */
+.card-title {
+  font-weight: 500 !important;
+  color: var(--text-primary);
+}
+
+/* 标签 */
+.tag,
+.badge {
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+}
+
+.tag-dot {
+  flex-shrink: 0;
+}
+
+/* 页面背景：不强制登录页布局，仅统一后台底色 */
+body:not(.login-body) {
+  background: var(--bg-page);
+}

@@ -1,0 +1,66 @@
+/* =========================================================
+   仅字体优化层
+   只改字体相关属性，不改布局、不改间距、不改宽度、不改行高
+   ========================================================= */
+
+/* 全局字体族：参考 UI 规范，PingFang SC 优先 */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+th,
+td,
+a,
+label {
+  font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 标题和关键文字：只调整字重，不改字号/行高/间距 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.company,
+.system-name,
+.card-title,
+.stat-value,
+strong,
+b {
+  font-weight: 500 !important;
+}
+
+/* 正文：保持克制字重 */
+body,
+p,
+span,
+div,
+td,
+input,
+select,
+textarea,
+a {
+  font-weight: 400;
+}
+
+/* 表头、标签、按钮：中等字重 */
+th,
+label,
+button,
+.btn,
+.badge,
+.tag {
+  font-weight: 500 !important;
+}
+
+/* 占位符只改字重，不改颜色、不改尺寸 */
+input::placeholder,
+textarea::placeholder {
+  font-weight: 400;
+}

@@ -1,0 +1,16 @@
+node_modules
+npm-debug.log*
+.git
+.DS_Store
+.env
+.env.*
+data
+logs
+*.log
+backup
+backups
+cleanup_archive
+_archive
+code_review
+cleanup_reports
+responsive-source-export-*

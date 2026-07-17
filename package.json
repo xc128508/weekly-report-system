@@ -1,0 +1,26 @@
+{
+  "name": "weekly-report-system",
+  "version": "1.0.0",
+  "description": "轻量级实习生日报与周报管理系统",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "keywords": [
+    "weekly-report",
+    "intern",
+    "management"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
