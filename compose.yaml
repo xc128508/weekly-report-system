@@ -7,6 +7,7 @@ services:
       NODE_ENV: production
       HOST: 0.0.0.0
       PORT: 8082
+      AI_WEEKLY_MODEL: qwen3.7-max
     ports:
       - "10100:8082"
     volumes:

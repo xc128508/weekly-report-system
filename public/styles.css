@@ -5981,3 +5981,127 @@ table:has(.xy-intern-task-title-td) td:nth-child(6) {
   white-space: normal;
 }
 /* ===== XY_REFACTOR_ROUND2_COMPONENTS_END ===== */
+
+/* ===== XY_ACCOUNT_DEPARTMENT_MANAGEMENT_BEGIN ===== */
+.xy-account-types {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--xy-space-4, 16px);
+  margin-bottom: var(--xy-space-5, 20px);
+}
+
+.xy-account-type {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  min-height: 104px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--xy-radius-md, 12px);
+  background: var(--card);
+  box-shadow: var(--xy-shadow-card);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.xy-account-type:hover {
+  border-color: #93c5fd;
+}
+
+.xy-account-type.is-active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, .12);
+}
+
+.xy-account-type span {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.xy-account-type strong {
+  color: var(--primary);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.xy-account-type small {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.xy-account-form {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.2fr 1.1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.xy-account-form button,
+.xy-department-form button {
+  min-height: 44px;
+}
+
+.xy-account-table {
+  min-width: 880px;
+}
+
+.xy-account-table th:nth-child(3),
+.xy-account-table td:nth-child(3) {
+  min-width: 180px;
+}
+
+.xy-table-subtext {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.xy-account-actions {
+  min-width: 150px;
+  white-space: nowrap;
+}
+
+.xy-account-actions .inline-form {
+  margin-left: 6px;
+}
+
+.xy-account-actions button:disabled,
+.xy-department-table button:disabled {
+  background: #cbd5e1;
+  color: #64748b;
+}
+
+.xy-department-form {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+  max-width: 620px;
+}
+
+.xy-department-table {
+  min-width: 640px;
+}
+
+@media (max-width: 1000px) {
+  .xy-account-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .xy-account-form button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .xy-account-types,
+  .xy-account-form,
+  .xy-department-form {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== XY_ACCOUNT_DEPARTMENT_MANAGEMENT_END ===== */

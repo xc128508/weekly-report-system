@@ -281,7 +281,7 @@ app.use((req, res, next) => {
 
 const PORT = process.env.PORT || 8082;
 const HOST = process.env.HOST || '0.0.0.0';
-const DB_PATH = path.join(__dirname, '..', 'data', 'db.json');
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, '..', 'data', 'db.json');
 let jsonDbStore = null;
 
 app.use(express.urlencoded({ extended: true, limit: '5mb' }));
@@ -465,6 +465,40 @@ function seedTaskPool() {
   ];
 }
 
+function ensureDepartmentRecords(db) {
+  const original = Array.isArray(db.departments) ? db.departments : null;
+  const existing = (original || []).map((department) => {
+    if (typeof department === 'string') {
+      return { id: id(), name: normalizeDepartment(department), createdAt: now() };
+    }
+    return {
+      ...department,
+      id: department.id || id(),
+      name: normalizeDepartment(department.name)
+    };
+  }).filter((department) => department.name);
+
+  const usedNames = []
+    .concat((db.taskPool || []).map((task) => task.department))
+    .concat((db.users || []).map((user) => user.department))
+    .concat((db.reports || []).map((report) => report.department))
+    .map(normalizeDepartment)
+    .filter(Boolean);
+  const seedNames = original ? usedNames : DEPARTMENTS.concat(usedNames);
+  const byName = new Map(existing.map((department) => [department.name, department]));
+
+  seedNames.forEach((name) => {
+    if (!byName.has(name)) {
+      byName.set(name, { id: id(), name, createdAt: now() });
+    }
+  });
+
+  const next = Array.from(byName.values()).sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
+  const changed = JSON.stringify(original || []) !== JSON.stringify(next);
+  db.departments = next;
+  return changed;
+}
+
 function ensureDb() {
   const dataDir = path.dirname(DB_PATH);
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
@@ -514,7 +548,8 @@ function ensureDb() {
       reports: [],
       feedbacks: [],
       dailyTasks: [],
-      taskPool: seedTaskPool()
+      taskPool: seedTaskPool(),
+      departments: DEPARTMENTS.map((name) => ({ id: id(), name, createdAt: now() }))
     };
     fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
     return;
@@ -525,6 +560,7 @@ function ensureDb() {
   if (!Array.isArray(db.feedbacks)) { db.feedbacks = []; changed = true; }
   if (!Array.isArray(db.dailyTasks)) { db.dailyTasks = []; changed = true; }
   if (!Array.isArray(db.taskPool) || db.taskPool.length === 0) { db.taskPool = seedTaskPool(); changed = true; }
+  if (ensureDepartmentRecords(db)) changed = true;
   db.taskPool.forEach((task) => {
     if (!task.id) { task.id = id(); changed = true; }
     if (task.department !== normalizeDepartment(task.department)) { task.department = normalizeDepartment(task.department); changed = true; }
@@ -960,12 +996,13 @@ function progressBar(progress, className = '') {
 }
 
 function roleText(role) {
-  return { admin: '管理员', boss: '老板', intern: '实习生' }[role] || role;
+  return { admin: '管理员', boss: '负责人', employee: '正式员工', intern: '实习生' }[role] || role;
 }
 
 function redirectPathByRole(role) {
   if (role === 'admin') return '/admin/dashboard';
   if (role === 'boss') return '/boss/dashboard';
+  if (role === 'employee') return '/change-password';
   return '/intern/dashboard';
 }
 
@@ -1068,6 +1105,7 @@ function xyUnifiedAdminNavLinks() {
 
     <div class="xy-sidebar-section-title">系统管理</div>
     <a href="/admin/users">账号管理</a>
+    <a href="/admin/departments">部门管理</a>
     <a href="/change-password">修改密码</a>
   `;
 }
@@ -1080,6 +1118,8 @@ function layout({ title, user, content }) {
     navLinks = xyUnifiedAdminNavLinks();
   } else if (user?.role === 'boss') {
     navLinks = '<a href="/boss/weekly-management">周报管理</a><a href="/admin/users">账号管理</a><a href="/change-password">修改密码</a>';
+  } else if (user?.role === 'employee') {
+    navLinks = '<a href="/change-password">修改密码</a>';
   } else if (user?.role === 'intern') {
     navLinks = '<a href="/intern/dashboard">我的周报</a><a href="/intern/reports/new">填写周报</a><a href="/intern/daily-tasks">每日任务</a><a href="/intern/task-pool">任务认领</a><a href="/change-password">修改密码</a>';
   }
@@ -1739,9 +1779,14 @@ function normalizeDepartment(name = '') {
   return map[text] || text;
 }
 
-function departmentOptions(selected = '') {
+function departmentOptions(selected = '', db = readDb()) {
   const normalized = normalizeDepartment(selected);
-  const values = Array.from(new Set(DEPARTMENTS.concat(normalized ? [normalized] : [])));
+  const managed = Array.isArray(db.departments)
+    ? db.departments.map((department) => normalizeDepartment(department.name || department))
+    : DEPARTMENTS;
+  const values = Array.from(new Set(managed.concat(normalized ? [normalized] : [])))
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b, 'zh-CN'));
   return values.map((dept) => `<option value="${escapeHtml(dept)}" ${dept === normalized ? 'selected' : ''}>${escapeHtml(dept)}</option>`).join('');
 }
 
@@ -1964,7 +2009,7 @@ async function buildWeeklyDraftWithAI(db, user, weekStart, weekEnd) {
 
   const apiKey = process.env.AI_WEEKLY_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
   const baseUrl = process.env.AI_WEEKLY_BASE_URL || 'https://llm-hhgz43e7bd8791r5.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
-  const model = process.env.AI_WEEKLY_MODEL || 'qwen-plus';
+  const model = process.env.AI_WEEKLY_MODEL || 'qwen3.7-max';
 
   if (!apiKey) {
     return {
@@ -2388,9 +2433,9 @@ app.get('/change-password', requireLogin, (req, res) => {
     short: '新密码至少需要 6 位。'
   };
   const error = req.query.error ? `<div class="alert error">${escapeHtml(errorMap[req.query.error] || '修改失败，请重试。')}</div>` : '';
-  const internTip = req.user.role === 'intern'
-    ? '<p class="muted">实习生账号仅可修改自己的登录密码，不能新增或修改其他实习生账号。</p>'
-    : '<p class="muted">管理员和老板也可以在“账号管理”中创建、修改实习生账号或重置密码。</p>';
+  const internTip = ['intern', 'employee'].includes(req.user.role)
+    ? '<p class="muted">当前账号仅可修改自己的登录密码。</p>'
+    : '<p class="muted">管理员可以在“账号管理”中维护实习生、正式员工和管理员账号。</p>';
 
   res.send(layout({
     title: '修改密码',
@@ -6935,211 +6980,6 @@ app.post('/boss/reports/:id/feedback', requireLogin, requireBoss, (req, res) => 
   res.redirect(`/boss/reports/${report.id}`);
 });
 
-app.get('/admin/users', requireLogin, requireAccountManager, (req, res) => {
-  const db = readDb();
-  const interns = db.users.filter((u) => u.role === 'intern');
-  const rows = interns.length
-    ? interns.map((u) => `<tr>
-        <td>${escapeHtml(u.realName)}</td>
-        <td>${escapeHtml(u.username)}</td>
-        <td>${escapeHtml(u.position)}</td>
-        <td>${escapeHtml((u.createdAt || '').slice(0, 10))}</td>
-        <td><a class="link-button" href="/admin/users/${u.id}/edit">修改 / 重置密码</a></td>
-        <td>
-          <form method="post" action="/admin/users/${u.id}/delete" class="inline-form" onsubmit="return confirm('确认删除该实习生账号吗？该实习生的日报、周报也会同步删除。');">
-            <button class="danger small" type="submit">删除</button>
-          </form>
-        </td>
-      </tr>`).join('')
-    : '<tr><td colspan="6" class="empty">暂无实习生账号。</td></tr>';
-  const success = req.query.created
-    ? '<div class="alert success">实习生账号已创建。</div>'
-    : (req.query.updated ? '<div class="alert success">实习生账号信息已更新。</div>' : (req.query.deleted ? '<div class="alert success">实习生账号已删除。</div>' : ''));
-  res.send(layout({
-    title: '账号管理',
-    user: req.user,
-    content: `<section class="page-title"><div><h1>实习生账号管理</h1><p>管理员和老板可新增、修改实习生账号；实习生只能修改自己的密码。</p></div></section>
-      ${success}
-      <section class="card">
-        <h2>新增实习生</h2>
-        <form method="post" action="/admin/users" class="filter-form user-form">
-          <input name="realName" placeholder="姓名，例如：王五" required />
-          <input name="position" placeholder="职位，例如：AI工程师实习生" required />
-          <input name="username" placeholder="账号，例如：wangwu" required />
-          <input name="password" placeholder="初始密码" required />
-          <button class="primary" type="submit">创建账号</button>
-        </form>
-      </section>
-      <section class="card">
-        <h2>实习生列表</h2>
-        <table><thead><tr><th>姓名</th><th>账号</th><th>职位</th><th>创建时间</th><th>操作</th><th>删除</th></tr></thead><tbody>${rows}</tbody></table>
-      </section>`
-  }));
-});
-
-
-
-
-app.post('/admin/users/:id/delete', requireLogin, requireAccountManager, (req, res) => {
-  const db = readDb();
-  const intern = db.users.find((u) => u.id === req.params.id && u.role === 'intern');
-  if (!intern) return res.status(404).send('实习生账号不存在');
-
-  const internId = intern.id;
-  const internName = intern.realName;
-
-  // 1. 删除实习生账号
-  db.users = db.users.filter((u) => u.id !== internId);
-
-  // 2. 删除该实习生的日报
-  if (Array.isArray(db.dailyTasks)) {
-    db.dailyTasks = db.dailyTasks.filter((t) => t.userId !== internId);
-  }
-
-  // 3. 删除该实习生的周报，以及对应反馈
-  let deletedReportIds = [];
-  if (Array.isArray(db.reports)) {
-    deletedReportIds = db.reports
-      .filter((r) => r.userId === internId)
-      .map((r) => r.id);
-    db.reports = db.reports.filter((r) => r.userId !== internId);
-  }
-
-  if (Array.isArray(db.feedbacks)) {
-    db.feedbacks = db.feedbacks.filter((f) => !deletedReportIds.includes(f.reportId));
-  }
-
-  // 4. 从任务总表认领人中移除该实习生
-  if (Array.isArray(db.taskPool)) {
-    db.taskPool.forEach((task) => {
-      if (Array.isArray(task.assigneeNames)) {
-        task.assigneeNames = task.assigneeNames.filter((name) => name !== internName);
-      }
-
-      if (typeof task.assigneeName === 'string') {
-        task.assigneeName = task.assigneeName
-          .split(/[,，、;；]+/)
-          .map((x) => x.trim())
-          .filter((x) => x && x !== internName)
-          .join(',');
-      }
-
-      if (Array.isArray(task.claimedByUserIds)) {
-        task.claimedByUserIds = task.claimedByUserIds.filter((id) => id !== internId);
-      }
-
-      if (task.claimedByUserId === internId) {
-        task.claimedByUserId = Array.isArray(task.claimedByUserIds) && task.claimedByUserIds.length
-          ? task.claimedByUserIds[0]
-          : '';
-      }
-
-      if (task.pendingClaimUserId === internId) {
-        delete task.pendingClaimUserId;
-        delete task.pendingClaimName;
-        delete task.pendingClaimAt;
-      }
-
-      const hasAssignee =
-        (Array.isArray(task.claimedByUserIds) && task.claimedByUserIds.length > 0) ||
-        (Array.isArray(task.assigneeNames) && task.assigneeNames.length > 0) ||
-        String(task.assigneeName || '').trim();
-
-      if (!hasAssignee && !['已完成', '进行中'].includes(task.status)) {
-        task.status = '待认领';
-        task.claimDate = '';
-      }
-
-      task.updatedAt = now();
-    });
-  }
-
-  if (typeof syncTaskPoolProgressFromDailyTasks === 'function') syncTaskPoolProgressFromDailyTasks(db);
-  writeDb(db);
-  res.redirect('/admin/users?deleted=1');
-});
-
-app.get('/admin/users/:id/edit', requireLogin, requireAccountManager, (req, res) => {
-  const db = readDb();
-  const intern = db.users.find((u) => u.id === req.params.id && u.role === 'intern');
-  if (!intern) return res.status(404).send('实习生账号不存在');
-  const errorMap = {
-    duplicate: '账号已存在，请换一个账号名。',
-    short: '新密码至少需要 6 位；不修改密码可留空。'
-  };
-  const error = req.query.error ? `<div class="alert error">${escapeHtml(errorMap[req.query.error] || '修改失败，请重试。')}</div>` : '';
-  res.send(layout({
-    title: '修改实习生账号',
-    user: req.user,
-    content: `<section class="page-title">
-        <div><h1>修改实习生账号</h1><p>仅管理员和老板可以修改实习生账号信息或重置密码。</p></div>
-        <a class="ghost-link" href="/admin/users">返回账号管理</a>
-      </section>
-      <section class="card">
-        ${error}
-        <form method="post" action="/admin/users/${intern.id}" class="form">
-          <label>姓名<input name="realName" value="${escapeHtml(intern.realName)}" required /></label>
-          <label>职位<input name="position" value="${escapeHtml(intern.position)}" required /></label>
-          <label>账号<input name="username" value="${escapeHtml(intern.username)}" required /></label>
-          <label>重置密码<input type="password" name="password" placeholder="不修改密码请留空；新密码至少 6 位" /></label>
-          <div class="actions"><button class="primary" type="submit">保存修改</button></div>
-        </form>
-      </section>`
-  }));
-});
-
-app.post('/admin/users/:id', requireLogin, requireAccountManager, (req, res) => {
-  const db = readDb();
-  const intern = db.users.find((u) => u.id === req.params.id && u.role === 'intern');
-  if (!intern) return res.status(404).send('实习生账号不存在');
-  const username = (req.body.username || '').trim();
-  if (!username || db.users.some((u) => u.username === username && u.id !== intern.id)) {
-    return res.redirect(`/admin/users/${intern.id}/edit?error=duplicate`);
-  }
-  const newPassword = String(req.body.password || '');
-  if (newPassword && newPassword.length < 6) {
-    return res.redirect(`/admin/users/${intern.id}/edit?error=short`);
-  }
-  intern.realName = req.body.realName || username;
-  intern.position = req.body.position || '实习生';
-  intern.username = username;
-  if (newPassword) intern.passwordHash = bcrypt.hashSync(newPassword, 10);
-  intern.updatedAt = now();
-  // 同步历史每日任务中的冗余展示字段，避免改名/改职位后老记录显示不一致。
-  db.dailyTasks.forEach((task) => {
-    if (task.userId === intern.id) {
-      task.userName = intern.realName;
-      task.position = intern.position;
-    }
-  });
-  if (typeof syncTaskPoolProgressFromDailyTasks === 'function') syncTaskPoolProgressFromDailyTasks(db);
-  writeDb(db);
-  res.redirect('/admin/users?updated=1');
-});
-
-app.post('/admin/users', requireLogin, requireAccountManager, (req, res) => {
-  const db = readDb();
-  const username = (req.body.username || '').trim();
-  if (!username || db.users.some((u) => u.username === username)) {
-    return res.status(400).send('账号为空或已存在，请返回修改。');
-  }
-  if (String(req.body.password || '').length < 6) {
-    return res.status(400).send('初始密码至少需要 6 位，请返回修改。');
-  }
-  db.users.push({
-    id: id(),
-    username,
-    passwordHash: bcrypt.hashSync(req.body.password || '123456', 10),
-    realName: req.body.realName || username,
-    position: req.body.position || '实习生',
-    role: 'intern',
-    createdAt: now()
-  });
-  if (typeof syncTaskPoolProgressFromDailyTasks === 'function') syncTaskPoolProgressFromDailyTasks(db);
-  writeDb(db);
-  res.redirect('/admin/users?created=1');
-});
-
 ensureDb();
 
 
@@ -9838,7 +9678,14 @@ registerAdminRoutes(app, {
   requireLogin,
   requireAdmin,
   readDb,
-  reportService
+  writeDb,
+  reportService,
+  layout,
+  escapeHtml,
+  id,
+  now,
+  normalizeDepartment,
+  syncTaskPoolProgressFromDailyTasks
 });
 
 registerBossRoutes(app, {

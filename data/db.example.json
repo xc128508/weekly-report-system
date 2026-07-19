@@ -29,5 +29,12 @@
   "reports": [],
   "feedbacks": [],
   "dailyTasks": [],
-  "taskPool": []
+  "taskPool": [],
+  "departments": [
+    {
+      "id": "example-department-id",
+      "name": "产品研发部",
+      "createdAt": "2026-06-30T01:46:06.110Z"
+    }
+  ]
 }
